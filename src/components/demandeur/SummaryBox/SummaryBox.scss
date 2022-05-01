@@ -1,0 +1,25 @@
+.Summarybox {
+  border-radius: 0.7rem !important;
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-between;
+  margin: 3rem 0rem;
+  overflow: hidden !important;
+  border: 1px solid #e0e0e0;
+
+  &-item {
+    width: 20%;
+    padding: 0rem 0rem 0rem 2rem;
+    margin: auto;
+
+    h1 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #828282;
+    }
+
+    p {
+      font-size: 1.6rem;
+    }
+  }
+}

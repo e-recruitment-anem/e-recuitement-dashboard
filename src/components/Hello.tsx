@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import NavBar from "./NavBar";
 
 const Hello = () => {
-  return (
-    <div>Hello from components</div>
-  )
-}
+  return <NavBar />;
+};
 
-export default Hello
+export default Hello;

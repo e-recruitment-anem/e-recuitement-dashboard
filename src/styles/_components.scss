@@ -1,1 +1,156 @@
 // COMPONENTS STYLE
+
+body {
+  background-color: #fafafa !important;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2rem 8rem !important;
+  background-color: white;
+
+  &-logo {
+    width: 5.75rem;
+    height: 3rem;
+    margin: auto 0rem;
+  }
+
+  &-center {
+    width: 50rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: auto;
+
+    &--link {
+      text-decoration: none;
+      color: black;
+      font-weight: 600;
+      font-size: 1.7rem;
+    }
+  }
+
+  &-right {
+    width: 12rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &--profile {
+      width: 4.5rem;
+      height: 4.5rem;
+    }
+
+    &--notification {
+      width: 3rem;
+      height: 3rem;
+      margin: auto 0rem;
+    }
+  }
+}
+
+.offerdetails {
+  margin: 5rem 8rem;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+
+  &__bigcard {
+    width: 66%;
+    background-color: white;
+    border-radius: 1rem !important;
+    border: none !important;
+    overflow: hidden;
+
+    &-content {
+      padding: 0rem 3.5rem;
+    }
+
+    &--cover {
+      width: 100%;
+      height: 20rem;
+      object-fit: cover;
+      margin-bottom: 6rem;
+    }
+
+    &--profilepic {
+      width: 10rem;
+      border-radius: 0.7rem;
+      border: 0.45rem solid #ffffff;
+      margin-top: -13rem;
+    }
+
+    &--heading {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      h1 {
+        font-size: 2.4rem;
+        font-weight: 700;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #0061ff;
+        margin-top: 1rem;
+      }
+
+      span {
+        font-size: 1.5rem;
+        font-weight: 600;
+
+        &:first-child {
+          color: #bdbdbd;
+        }
+      }
+    }
+
+    h1 {
+      font-weight: 700;
+    }
+
+    &--exigences {
+      margin-top: 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &--description {
+      margin-top: 2rem;
+      p {
+        font-size: 1.4rem;
+        color: #828282;
+        line-height: 2.5rem;
+        margin-top: 1.8rem;
+      }
+    }
+
+    &--detailspoints {
+      margin: 3rem 0rem 5rem 0rem;
+      &-item {
+        display: flex;
+        margin-left: 3rem;
+        margin-top: 2rem;
+
+        p {
+          font-size: 1.5rem;
+          margin: auto 2rem;
+        }
+      }
+    }
+  }
+
+  &__similaroffers {
+    width: 30%;
+
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 2rem;
+      margin-top: 0rem;
+    }
+  }
+}
