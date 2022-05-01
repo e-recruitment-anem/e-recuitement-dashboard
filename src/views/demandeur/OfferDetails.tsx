@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import React, { FC } from "react";
+import { v4 as uuidv4 } from "uuid";
 import SimilarOffers from "../../components/demandeur/SimilarOffers/SimilarOffers";
 import SkillTag from "../../components/demandeur/SkillTag/SkillTag";
 import SummaryBox from "../../components/demandeur/SummaryBox/SummaryBox";
@@ -25,6 +26,54 @@ const OfferDetails: FC = () => {
     { title: "Type de contrat", content: "CDI / CDD" },
     { title: "Salaire annuel", content: "230.000 DA" },
     { title: "Durée", content: "18 mois" },
+  ];
+
+  const similarOffers = [
+    {
+      role: "UI/UX Design",
+      description:
+        "Nisi turpis duis quisque est leo at et fermentum. Pretium nulla libero integer volutpat et odio eu ac neque. Non dolor et aliquet fringilla. Non lacinia commodo quam sed nullam gravida",
+      agence: "Yassir Algérie",
+      deadline: "Il y a 8 jours: ",
+      applicants: "12 applicant",
+      agenceImage: "img/demandeur/agencelogo.png",
+      cover: "img/demandeur/agencelogo.png",
+    },
+    {
+      role: "UI/UX Design",
+      description:
+        "Nisi turpis duis quisque est leo at et fermentum. Pretium nulla libero integer volutpat et odio eu ac neque. Non dolor et aliquet fringilla. Non lacinia commodo quam sed nullam gravida",
+      agence: "Yassir Algérie",
+      deadline: "Il y a 8 jours: ",
+      applicants: "12 applicant",
+      agenceImage: "img/demandeur/agencelogo.png",
+      cover: "img/demandeur/agencelogo.png",
+    },
+    {
+      role: "UI/UX Design",
+      description:
+        "Nisi turpis duis quisque est leo at et fermentum. Pretium nulla libero integer volutpat et odio eu ac neque. Non dolor et aliquet fringilla. Non lacinia commodo quam sed nullam gravida",
+      agence: "Yassir Algérie",
+      deadline: "Il y a 8 jours: ",
+      applicants: "12 applicant",
+      agenceImage: "img/demandeur/agencelogo.png",
+      cover: "img/demandeur/agencelogo.png",
+    },
+  ];
+
+  const skills = [
+    "Figma",
+    "ReactJs",
+    "Figma",
+    "ReactJs",
+    "Figma",
+    "ReactJs",
+    "Figma",
+    "ReactJs",
+    "Figma",
+    "ReactJs",
+    "Figma",
+    "ReactJs",
   ];
   return (
     <>
@@ -58,18 +107,9 @@ const OfferDetails: FC = () => {
             <div>
               <h1>Exigences</h1>
               <div className="offerdetails__bigcard--exigences">
-                <SkillTag content="Figma" />
-                <SkillTag content="React Js" />
-                <SkillTag content="Figma" />
-                <SkillTag content="React Js" />
-                <SkillTag content="Figma" />
-                <SkillTag content="React Js" />
-                <SkillTag content="Figma" />
-                <SkillTag content="React Js" />
-                <SkillTag content="Figma" />
-                <SkillTag content="React Js" />
-                <SkillTag content="Figma" />
-                <SkillTag content="React Js" />
+                {skills.map((skill) => (
+                  <SkillTag key={uuidv4()} content={skill} />
+                ))}
               </div>
             </div>
             <div className="offerdetails__bigcard--description">
@@ -125,42 +165,28 @@ const OfferDetails: FC = () => {
         </Box>
         <div className="offerdetails__similaroffers">
           <h1>Offres similaires</h1>
-          <SimilarOffers
-            role="UI/UX Design"
-            description="
-            Nisi turpis duis quisque est leo at et fermentum. Pretium nulla
-            libero integer volutpat et odio eu ac neque. Non dolor et aliquet
-            fringilla. Non lacinia commodo quam sed nullam gravida"
-            agence="Yassir Algérie"
-            deadline="Il y a 8 jours: "
-            applicants="12 applicant"
-            agenceImage="img/demandeur/agencelogo.png"
-            cover="img/demandeur/agencelogo.png"
-          />
-          <SimilarOffers
-            role="UI/UX Design"
-            description="
-            Nisi turpis duis quisque est leo at et fermentum. Pretium nulla
-            libero integer volutpat et odio eu ac neque. Non dolor et aliquet
-            fringilla. Non lacinia commodo quam sed nullam gravida"
-            agence="Yassir Algérie"
-            deadline="Il y a 8 jours: "
-            applicants="12 applicant"
-            agenceImage="img/demandeur/agencelogo.png"
-            cover="img/demandeur/agencelogo.png"
-          />
-          <SimilarOffers
-            role="UI/UX Design"
-            description="
-            Nisi turpis duis quisque est leo at et fermentum. Pretium nulla
-            libero integer volutpat et odio eu ac neque. Non dolor et aliquet
-            fringilla. Non lacinia commodo quam sed nullam gravida"
-            agence="Yassir Algérie"
-            deadline="Il y a 8 jours: "
-            applicants="12 applicant"
-            agenceImage="img/demandeur/agencelogo.png"
-            cover="img/demandeur/agencelogo.png"
-          />
+          {similarOffers.map(
+            ({
+              role,
+              description,
+              agence,
+              deadline,
+              applicants,
+              agenceImage,
+              cover,
+            }) => (
+              <SimilarOffers
+                key={uuidv4()}
+                role={role}
+                description={description}
+                agence={agence}
+                deadline={deadline}
+                applicants={applicants}
+                agenceImage={agenceImage}
+                cover={cover}
+              />
+            )
+          )}
         </div>
       </div>
     </>
