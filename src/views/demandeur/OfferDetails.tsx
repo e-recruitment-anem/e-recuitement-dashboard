@@ -19,6 +19,13 @@ const circle = (
 );
 
 const OfferDetails: FC = () => {
+  const summaryBoxItems = [
+    { title: "Experience", content: "Minimum 3 ans" },
+    { title: "Type de travail", content: "À distance" },
+    { title: "Type de contrat", content: "CDI / CDD" },
+    { title: "Salaire annuel", content: "230.000 DA" },
+    { title: "Durée", content: "18 mois" },
+  ];
   return (
     <>
       <NavBar />
@@ -47,7 +54,7 @@ const OfferDetails: FC = () => {
               </div>
             </div>
 
-            <SummaryBox />
+            <SummaryBox items={summaryBoxItems} />
             <div>
               <h1>Exigences</h1>
               <div className="offerdetails__bigcard--exigences">
