@@ -4,6 +4,7 @@ body {
   background-color: #fafafa !important;
 }
 
+// NAVIGATION BAR
 .navbar {
   display: flex;
   flex-direction: row;
@@ -51,6 +52,7 @@ body {
   }
 }
 
+//OFFER DETAILS
 .offerdetails {
   margin: 5rem 8rem;
   height: fit-content;
@@ -151,6 +153,32 @@ body {
       font-size: 2.6rem;
       margin-bottom: 2rem;
       margin-top: 0rem;
+    }
+  }
+}
+
+//HOME PAGE JOB-SEEKER
+.home {
+  &__jobOffers {
+    padding: 2rem 8rem;
+    @media screen and (max-width: 37.5em) {
+      padding: 2rem 4rem;
+    }
+
+    h1 {
+      font-size: 2.7rem;
+      font-weight: 700;
+      margin-bottom: 2.8rem;
+      @media screen and (max-width: 37.5em) {
+        font-size: 2.4rem;
+      }
+    }
+
+    &--container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
   }
 }

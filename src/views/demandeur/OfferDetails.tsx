@@ -1,8 +1,8 @@
 import { Box } from "@chakra-ui/react";
 import React, { FC } from "react";
-import SimilarOffers from "../../components/demandeur/SimilarOffers/SimilarOffers";
-import SkillTag from "../../components/demandeur/SkillTag/SkillTag";
-import SummaryBox from "../../components/demandeur/SummaryBox/SummaryBox";
+import SimilarOffers from "../../components/JobSeeker/SimilarOffers/SimilarOffers";
+import SkillTag from "../../components/JobSeeker/SkillTag/SkillTag";
+import SummaryBox from "../../components/JobSeeker/SummaryBox/SummaryBox";
 import NavBar from "../../components/NavBar";
 import "../../styles/_components.scss";
 
@@ -51,18 +51,18 @@ const OfferDetails: FC = () => {
             <div>
               <h1>Exigences</h1>
               <div className="offerdetails__bigcard--exigences">
-                <SkillTag content="Figma" />
-                <SkillTag content="React Js" />
-                <SkillTag content="Figma" />
-                <SkillTag content="React Js" />
-                <SkillTag content="Figma" />
-                <SkillTag content="React Js" />
-                <SkillTag content="Figma" />
-                <SkillTag content="React Js" />
-                <SkillTag content="Figma" />
-                <SkillTag content="React Js" />
-                <SkillTag content="Figma" />
-                <SkillTag content="React Js" />
+                <SkillTag content="Figma" size="large" />
+                <SkillTag content="React Js" size="large" />
+                <SkillTag content="Figma" size="large" />
+                <SkillTag content="React Js" size="large" />
+                <SkillTag content="Figma" size="large" />
+                <SkillTag content="React Js" size="large" />
+                <SkillTag content="Figma" size="large" />
+                <SkillTag content="React Js" size="large" />
+                <SkillTag content="Figma" size="large" />
+                <SkillTag content="React Js" size="large" />
+                <SkillTag content="Figma" size="large" />
+                <SkillTag content="React Js" size="large" />
               </div>
             </div>
             <div className="offerdetails__bigcard--description">
