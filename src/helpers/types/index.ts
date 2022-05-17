@@ -8,6 +8,15 @@ export interface Example {
   [anyProp: string]: any;
 }
 
+export interface ISummary {
+  items: ISummaryItem[];
+}
+
+export interface ISummaryItem {
+  title: string;
+  content: string;
+}
+
 //  ==============================================================================
 //  State
 //  ==============================================================================
