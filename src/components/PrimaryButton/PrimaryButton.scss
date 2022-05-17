@@ -1,0 +1,27 @@
+.PrimaryButton {
+  width: 46%;
+  height: 3.7rem;
+  text-align: center;
+  display: inline-block;
+  font-size: 1.4rem;
+  line-height: 3.7rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+
+  @media screen and (max-width: 37.5em) {
+    font-size: 1.2rem;
+    height: 3.2rem;
+    line-height: 3.2rem;
+    border-radius: 0.4rem;
+  }
+}
+
+.primaryColor {
+  background-color: #0061ff;
+  color: white;
+}
+
+.Gray-5 {
+  background-color: #e0e0e0;
+  color: #333333;
+}
