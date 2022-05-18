@@ -64,7 +64,7 @@ const OfferDetails: FC = () => {
   const skills = [
     "Figma",
     "ReactJs",
-    "Figma",
+    "Adobe Xd",
     "ReactJs",
     "Figma",
     "ReactJs",
@@ -108,7 +108,7 @@ const OfferDetails: FC = () => {
               <h1>Exigences</h1>
               <div className="offerdetails__bigcard--exigences">
                 {skills.map((skill) => (
-                  <SkillTag key={uuidv4()} content={skill} />
+                  <SkillTag key={uuidv4()} content={skill} size="large" />
                 ))}
               </div>
             </div>

@@ -2,9 +2,15 @@ import { Link } from "react-router-dom";
 
 const Hello = () => {
   return (
-    <Link to="/offerdetails">
-      <span>Offer details</span>
-    </Link>
+    <div>
+      <Link to="/offerdetails">
+        <h1>Offer details</h1>
+      </Link>
+      <span> --- </span>
+      <Link to="/myoffers">
+        <h1>My Offers</h1>
+      </Link>
+    </div>
   );
 };
 
