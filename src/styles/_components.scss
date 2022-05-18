@@ -166,6 +166,170 @@ body {
   }
 }
 
+// AUTH
+.auth {
+  &_side {
+    &-left {
+      position: relative;
+      flex-basis: 55%;
+      border-radius: 1rem;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      max-height: 97vh;
+
+      &--block {
+        position: absolute;
+        background-color: rgba(49, 151, 149, 0.6);
+        border-radius: 1rem;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 2rem;
+      }
+    }
+    &-right {
+      align-items: center;
+      display: flex;
+      flex-basis: 45%;
+      flex-direction: column;
+      padding: 8rem;
+    }
+  }
+
+  &_heading {
+    &-illustration {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+    &-title {
+      font-size: 3rem;
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    &-subtitle {
+      text-transform: uppercase;
+      text-align: center;
+      align-self: center;
+      font-size: 3.5rem;
+
+      &--light {
+        font-weight: lighter;
+      }
+
+      &--bold {
+        font-weight: 600;
+      }
+    }
+
+    &-footer {
+      align-self: center;
+      text-transform: uppercase;
+      font-size: 2rem;
+      font-style: italic;
+    }
+  }
+
+  &_header {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 8rem;
+  }
+
+  &_form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &-group {
+      margin-bottom: 2rem;
+    }
+
+    &-label {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #828282;
+      margin-bottom: 0.5rem;
+    }
+
+    &-input {
+      font-family: inherit;
+      font-size: 1.8rem !important;
+      font-weight: 500 !important;
+      color: #828282;
+      padding: 1.7rem !important;
+      border-radius: 0.8rem !important;
+      border: 0.2rem solid #828282;
+      width: 100%;
+      height: 6rem;
+    }
+
+    &-helper {
+      margin-top: 0.5rem;
+      font-size: 1.8rem;
+    }
+
+    &-button {
+      background-color: #319795 !important;
+      border-radius: 4rem !important;
+      color: white;
+      font-size: 2rem !important;
+      padding: 3rem 6rem;
+      margin-top: 2rem;
+      width: 60% !important;
+      align-self: center;
+    }
+  }
+
+  &_other {
+    margin-top: 5rem;
+    margin-bottom: 6rem;
+
+    &-title {
+      font-size: 2.5rem;
+      color: #868fa0;
+      font-weight: 500;
+    }
+
+    &-group {
+      font-size: 4.5rem;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    &-icon {
+      &--fb {
+        cursor: pointer;
+        color: #4267b2;
+      }
+
+      &--google {
+        cursor: pointer;
+        color: #db4437;
+      }
+    }
+  }
+
+  &_footer {
+    font-size: 2.2rem;
+    text-align: center;
+
+    &-cta {
+      font-weight: 700;
+      color: #319795;
+      cursor: pointer;
+    }
+  }
+}
+
 //HOME PAGE JOB-SEEKER
 .home {
   &__jobOffers {

@@ -1,1 +1,24 @@
 // LAYOUTS STYLE
+.content {
+  display: flex;
+  height: fit-content;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background-color: lightblue;
+  flex-basis: 25%;
+}
+
+.main-view {
+  background-color: orangered;
+  flex-basis: 75%;
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: row;
+  padding: 1.4rem;
+  height: fit-content;
+  min-height: 100vh;
+}

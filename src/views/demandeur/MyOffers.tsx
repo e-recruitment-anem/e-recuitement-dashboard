@@ -1,4 +1,4 @@
-import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
+import { Tab, TabList, Tabs } from "@chakra-ui/react";
 import { FC, useState } from "react";
 import MyOffersBox from "../../components/JobSeeker/MyOffersBox";
 import NavBar from "../../components/NavBar";
