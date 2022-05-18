@@ -119,6 +119,10 @@ body {
       margin-top: 1.8rem;
       display: flex;
       flex-wrap: wrap;
+
+      .skill-tag {
+        margin-bottom: 20px;
+      }
     }
 
     &--description {
@@ -148,6 +152,11 @@ body {
 
   &__similaroffers {
     width: 30%;
+
+    .skill-tag {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
 
     h1 {
       font-size: 2.6rem;
@@ -344,5 +353,28 @@ body {
       justify-content: space-between;
       flex-wrap: wrap;
     }
+  }
+}
+
+//MY OFFERS
+.myoffers {
+  margin: 5rem 8rem;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  &__tabs {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+
+    &-item {
+      margin-left: 2rem;
+    }
+  }
+
+  &__list {
+    margin-top: 2rem;
   }
 }

@@ -77,6 +77,14 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+
+      :first-child {
+        margin-right: 1.5rem;
+      }
+    }
+
+    &--button {
+      width: 47%;
     }
   }
 }

@@ -1,8 +1,8 @@
-import React from 'react';
-import { FormControl, Button } from '@chakra-ui/react';
+import React from "react";
+import { FormControl, Button } from "@chakra-ui/react";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons' 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 const SignIn = () => {
   return (
@@ -48,13 +48,19 @@ const SignIn = () => {
         <div className="auth_other">
           <span className="auth_other-title">Ou connecter avec</span>
           <div className="auth_other-group">
-            <FontAwesomeIcon className="auth_other-icon--fb" icon={faFacebook} />
-            <FontAwesomeIcon className="auth_other-icon--google" icon={faGoogle} />
+            <FontAwesomeIcon
+              className="auth_other-icon--fb"
+              icon={faFacebook}
+            />
+            <FontAwesomeIcon
+              className="auth_other-icon--google"
+              icon={faGoogle}
+            />
           </div>
         </div>
         <div className="auth_footer">
-            <span className="auth_footer-text">Vous n’avez pas de compte?</span>{' '}
-            <span className="auth_footer-cta">s’inscrire</span>
+          <span className="auth_footer-text">Vous n’avez pas de compte?</span>{" "}
+          <span className="auth_footer-cta">s’inscrire</span>
         </div>
       </div>
     </div>
