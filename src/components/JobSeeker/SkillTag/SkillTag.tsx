@@ -2,13 +2,14 @@ import { FC } from "react";
 import "./SkillTag.scss";
 
 interface Props {
-  content?: String;
+  content?: string;
+  size?: string;
 }
 
-const SkillTag: FC<Props> = ({ content }) => {
+const SkillTag: FC<Props> = ({ content, size }) => {
   return (
     <>
-      <div className="tag">
+      <div className={size}>
         <span>{content}</span>
       </div>
     </>

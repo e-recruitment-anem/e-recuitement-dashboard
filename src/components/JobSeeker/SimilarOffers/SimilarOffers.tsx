@@ -32,9 +32,10 @@ const SimilarOffers: FC<Props> = ({
         </div>
       </div>
       <div className="similaroffers--middle">
-        <SkillTag content="Figma" />
-        <SkillTag content="React Js" />
-        <SkillTag content="Figma" />
+        <SkillTag content="Figma" size="medium" />
+        <SkillTag content="React Js" size="medium" />
+        <SkillTag content="Adobe Xd" size="medium" />
+        <SkillTag content="+2" size="medium" />
       </div>
       <div className="similaroffers--bottom">
         <div className="similaroffers--bottom-agence">

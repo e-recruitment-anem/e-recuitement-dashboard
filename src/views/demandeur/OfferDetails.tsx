@@ -1,9 +1,9 @@
-import { Box } from "@chakra-ui/react";
 import React, { FC } from "react";
+import { Box } from "@chakra-ui/react";
 import { v4 as uuidv4 } from "uuid";
-import SimilarOffers from "../../components/demandeur/SimilarOffers/SimilarOffers";
-import SkillTag from "../../components/demandeur/SkillTag/SkillTag";
-import SummaryBox from "../../components/demandeur/SummaryBox/SummaryBox";
+import SimilarOffers from "../../components/JobSeeker/SimilarOffers/SimilarOffers";
+import SkillTag from "../../components/JobSeeker/SkillTag/SkillTag";
+import SummaryBox from "../../components/JobSeeker/SummaryBox/SummaryBox";
 import NavBar from "../../components/NavBar";
 import "../../styles/_components.scss";
 
