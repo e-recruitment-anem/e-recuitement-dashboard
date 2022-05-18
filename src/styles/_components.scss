@@ -157,7 +157,6 @@ body {
   }
 }
 
-<<<<<<< HEAD
 // AUTH
 .auth {
   &_side {
@@ -318,7 +317,10 @@ body {
       font-weight: 700;
       color: #319795;
       cursor: pointer;
-=======
+    }
+  }
+}
+
 //HOME PAGE JOB-SEEKER
 .home {
   &__jobOffers {
@@ -341,7 +343,6 @@ body {
       flex-direction: row;
       justify-content: space-between;
       flex-wrap: wrap;
->>>>>>> 0b226bf13edc2b4920454538b08f827a9c815c65
     }
   }
 }

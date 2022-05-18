@@ -264,3 +264,21 @@ body {
     font-weight: 700;
     color: #319795;
     cursor: pointer; }
+
+.home__jobOffers {
+  padding: 2rem 8rem; }
+  @media screen and (max-width: 37.5em) {
+    .home__jobOffers {
+      padding: 2rem 4rem; } }
+  .home__jobOffers h1 {
+    font-size: 2.7rem;
+    font-weight: 700;
+    margin-bottom: 2.8rem; }
+    @media screen and (max-width: 37.5em) {
+      .home__jobOffers h1 {
+        font-size: 2.4rem; } }
+  .home__jobOffers--container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap; }
