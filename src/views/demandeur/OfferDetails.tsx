@@ -6,6 +6,7 @@ import SkillTag from "../../components/JobSeeker/SkillTag/SkillTag";
 import SummaryBox from "../../components/JobSeeker/SummaryBox/SummaryBox";
 import NavBar from "../../components/NavBar";
 import "../../styles/_components.scss";
+import InterviewDetailsBox from "../../components/JobSeeker/InterviewDetailsBox";
 
 const circle = (
   <svg
@@ -78,6 +79,10 @@ const OfferDetails: FC = () => {
   return (
     <>
       <NavBar />
+      <div className="interviewdetails__header">
+        <h1>Interview details</h1>
+        <InterviewDetailsBox></InterviewDetailsBox>
+      </div>
       <div className="offerdetails">
         <Box className="offerdetails__bigcard">
           <img
