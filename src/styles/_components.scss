@@ -378,3 +378,16 @@ body {
     margin-top: 2rem;
   }
 }
+
+//INTERVIEW DETAILS
+.interviewdetails {
+  &__header {
+    margin: 5rem 8rem;
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+  }
+}
