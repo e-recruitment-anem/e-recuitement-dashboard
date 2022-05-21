@@ -39,12 +39,14 @@ const MyOffersBox: FC<Props> = ({
           <div className="myoffers__content--bottom">
             <div className="myoffers__content--skills">
               <SkillTag content="Figma" size="medium"></SkillTag>
-              <SkillTag content="Figma" size="medium"></SkillTag>
-              <SkillTag content="Figma" size="medium"></SkillTag>
+              <SkillTag content="Adobe Xd" size="medium"></SkillTag>
+              <SkillTag content="Sketch" size="medium"></SkillTag>
+              <SkillTag content="InVision" size="medium"></SkillTag>
             </div>
             <PrimaryButton
               content="See details"
               color="primaryColor"
+              additionalStyle="myoffers__content--bottom-button"
             ></PrimaryButton>
           </div>
         </div>
