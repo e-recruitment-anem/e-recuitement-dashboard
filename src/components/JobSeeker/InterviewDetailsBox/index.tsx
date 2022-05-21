@@ -1,5 +1,4 @@
 import { Box } from "@chakra-ui/react";
-import { title } from "process";
 import { FC } from "react";
 import "./InterviewDetailsBox.scss";
 

@@ -5,8 +5,7 @@ import NavBar from "../../components/NavBar";
 import "../../styles/_components.scss";
 import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit } from "@fortawesome/free-regular-svg-icons";
-import { faAdd } from "@fortawesome/free-solid-svg-icons";
+import { faAdd, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import SkillTag from "../../components/JobSeeker/SkillTag/SkillTag";
 import PrimaryButton from "../../components/PrimaryButton";
 
@@ -134,7 +133,7 @@ const Profile: FC = () => {
               <div className="jsprofile__box--action">
                 <FontAwesomeIcon
                   className="jsprofile__box--action-icon"
-                  icon={faEdit}
+                  icon={faPen}
                 />
                 <span>Edit</span>
               </div>
@@ -157,7 +156,7 @@ const Profile: FC = () => {
               <div className="jsprofile__box--action">
                 <FontAwesomeIcon
                   className="jsprofile__box--action-icon"
-                  icon={faEdit}
+                  icon={faPen}
                 />{" "}
                 <span>Edit</span>
               </div>
@@ -198,7 +197,7 @@ const Profile: FC = () => {
               <div className="jsprofile__box--action">
                 <FontAwesomeIcon
                   className="jsprofile__box--action-icon"
-                  icon={faEdit}
+                  icon={faPen}
                 />{" "}
                 <span>Edit</span>
               </div>
@@ -211,6 +210,132 @@ const Profile: FC = () => {
                 </div>
               ))}
             </div>
+          </Box>
+
+          {/* EDUCATION SECTION */}
+          <Box className="jsprofile__box">
+            <div className="jsprofile__box--header">
+              <h1>Education</h1>
+              <div className="jsprofile__box--action">
+                <FontAwesomeIcon
+                  className="jsprofile__box--action-icon"
+                  icon={faAdd}
+                />
+                <span>Add education</span>
+              </div>
+            </div>
+            <div className="jsprofile__education">
+              <div className="jsprofile__education--content">
+                <h1>Higher National School of Computer Science (Algeria)</h1>
+                <h2>Master of Computer Science (MSCS), Computer science</h2>
+                <span>2018 - 2023</span>
+                <div className="jsprofile__education--content-files">
+                  <img src="img/demandeur/agence_cover.png" alt="" />
+                  <img src="img/demandeur/agence_cover.png" alt="" />
+                </div>
+              </div>
+              <div className="jsprofile__education--actions">
+                <FontAwesomeIcon
+                  className="jsprofile__education--actions-editicon"
+                  icon={faPen}
+                />
+                <FontAwesomeIcon
+                  className="jsprofile__education--actions-deleteicon"
+                  icon={faTrash}
+                />
+              </div>
+            </div>
+            <hr className="jsprofile__education--divider" />
+            <div className="jsprofile__education">
+              <div className="jsprofile__education--content">
+                <h1>Higher National School of Computer Science (Algeria)</h1>
+                <h2>Master of Computer Science (MSCS), Computer science</h2>
+                <span>2018 - 2023</span>
+                <div className="jsprofile__education--content-files">
+                  <img src="img/demandeur/agence_cover.png" alt="" />
+                  <img src="img/demandeur/agence_cover.png" alt="" />
+                </div>
+              </div>
+              <div className="jsprofile__education--actions">
+                <FontAwesomeIcon
+                  className="jsprofile__education--actions-editicon"
+                  icon={faPen}
+                />
+                <FontAwesomeIcon
+                  className="jsprofile__education--actions-deleteicon"
+                  icon={faTrash}
+                />
+              </div>
+            </div>
+          </Box>
+
+          {/* PROFESSIONAL EXPERIENCE SECTION */}
+          <Box className="jsprofile__box">
+            <div className="jsprofile__box--header">
+              <h1>Professional experience</h1>
+              <div className="jsprofile__box--action">
+                <FontAwesomeIcon
+                  className="jsprofile__box--action-icon"
+                  icon={faAdd}
+                />
+                <span>Add experience</span>
+              </div>
+            </div>
+            <div className="jsprofile__education">
+              <div className="jsprofile__education--content">
+                <h1>Higher National School of Computer Science (Algeria)</h1>
+                <span>2018 - 2023</span>
+              </div>
+              <div className="jsprofile__education--actions">
+                <FontAwesomeIcon
+                  className="jsprofile__education--actions-editicon"
+                  icon={faPen}
+                />
+                <FontAwesomeIcon
+                  className="jsprofile__education--actions-deleteicon"
+                  icon={faTrash}
+                />
+              </div>
+            </div>
+            <hr className="jsprofile__education--divider" />
+          </Box>
+
+          {/* CERTIFICATE & DIPLOMAS SECTION */}
+          <Box className="jsprofile__box">
+            <div className="jsprofile__box--header">
+              <h1>Certficates & diplomas</h1>
+              <div className="jsprofile__box--action">
+                <FontAwesomeIcon
+                  className="jsprofile__box--action-icon"
+                  icon={faAdd}
+                />
+                <span>Add experience</span>
+              </div>
+            </div>
+            <div className="jsprofile__education">
+              <div className="jsprofile__education--content">
+                <div className="jsprofile__education--content-certificatesTitle">
+                  <h1>Master in computer science</h1>
+                  <span>January 2022</span>
+                </div>
+                <div className="jsprofile__education--content-certificatesFiles">
+                  <img src="img/demandeur/agence_cover.png" alt="" />
+                  <img src="img/demandeur/agence_cover.png" alt="" />
+                </div>
+              </div>
+
+              <div className="jsprofile__education--actions">
+                <FontAwesomeIcon
+                  className="jsprofile__education--actions-editicon"
+                  icon={faPen}
+                />
+                <FontAwesomeIcon
+                  className="jsprofile__education--actions-deleteicon"
+                  icon={faTrash}
+                />
+              </div>
+            </div>
+            <hr className="jsprofile__education--divider" />
           </Box>
         </div>
 
