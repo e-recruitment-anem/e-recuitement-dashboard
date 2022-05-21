@@ -152,6 +152,7 @@ body {
 
   &__similaroffers {
     width: 30%;
+    font-weight: 600;
 
     .skill-tag {
       margin-top: 1rem;
@@ -370,7 +371,12 @@ body {
     margin-bottom: 2rem;
 
     &-item {
-      margin-left: 2rem;
+      margin-right: 2rem;
+      color: black;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 1.6rem !important;
+      height: 5rem;
     }
   }
 
@@ -388,6 +394,175 @@ body {
       font-size: 2.4rem;
       font-weight: 600;
       margin-bottom: 2rem;
+    }
+  }
+}
+
+//JOB SEEKER PROFILE
+.jsprofile {
+  margin: 5rem 8rem;
+  display: flex;
+  justify-content: space-between;
+
+  &__left {
+    width: 66%;
+
+    & h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__box {
+    padding: 3rem 3.6rem;
+    background-color: white;
+    border-radius: 0.8rem;
+    margin-bottom: 4rem;
+
+    &--header {
+      display: flex;
+      justify-content: space-between;
+      vertical-align: middle;
+      margin-bottom: 2.5rem;
+    }
+
+    &--action {
+      margin-top: auto;
+      margin-bottom: auto;
+      color: #0061ff;
+
+      & span {
+        font-size: 1.8rem;
+        font-weight: 600;
+      }
+
+      &-icon {
+        font-size: 1.6rem;
+        margin-right: 1.2rem;
+      }
+    }
+  }
+
+  &__biography {
+    &--paragraph {
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 2.6rem;
+      color: #828282;
+    }
+  }
+
+  &__languages {
+    display: flex;
+    flex-wrap: wrap;
+
+    &--item {
+      width: 33%;
+      margin-bottom: 2.5rem;
+      & h1 {
+        font-size: 1.5rem;
+        letter-spacing: 0.05rem;
+        font-weight: 600;
+        color: #828282;
+      }
+
+      & p {
+        margin-top: 1.2rem;
+        font-size: 1.9rem;
+        font-weight: 600;
+        color: #333333;
+        display: -webkit-box;
+        max-width: 100%;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      & hr {
+        margin-top: 3.2rem;
+        border-top: 0.15rem dashed #e0e0e0;
+      }
+    }
+  }
+
+  &__tabs {
+    background-color: white;
+    margin-bottom: 4rem;
+    padding: 0.2rem 3.6rem;
+
+    &-item {
+      height: 7rem !important;
+      margin-right: 6.4rem;
+      font-size: 1.8rem !important;
+      color: black;
+      font-weight: 600;
+    }
+  }
+
+  &__heading {
+    border-radius: 0.8rem;
+    overflow: hidden;
+    background-color: white;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+
+    & img {
+      width: 100%;
+      height: 18.5rem;
+      object-fit: cover;
+    }
+
+    &--actions {
+      display: flex;
+      justify-content: space-between;
+      padding: 0rem 4.6rem;
+      margin-top: -6rem;
+      & img {
+        width: 11.5rem;
+        height: 11.5rem;
+        border-radius: 0.6rem;
+      }
+
+      &-buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        :first-child {
+          height: auto;
+          font-size: 1.6rem;
+        }
+
+        :last-child {
+          height: auto;
+          width: 80%;
+          font-size: 1.6rem;
+        }
+      }
+    }
+    &--content {
+      margin-top: 3rem;
+      padding-right: 4.6rem;
+      padding-left: 4.6rem;
+      & h1 {
+        font-size: 2.6rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      & p {
+        font-size: 2rem;
+        color: #4f4f4f;
+        margin-bottom: 1rem;
+      }
+
+      & span {
+        font-size: 1.6rem;
+        color: #828282;
+      }
     }
   }
 }

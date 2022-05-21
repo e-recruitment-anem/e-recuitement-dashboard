@@ -7,6 +7,7 @@ import MyOffers from "./views/demandeur/MyOffers";
 import SignIn from "./views/auth/SignIn";
 import Dashboard from "./views/dashboard/Dashboard";
 import OfferDetails from "./views/demandeur/OfferDetails";
+import Profile from "./views/demandeur/Profile";
 
 const routes = [
   {
@@ -32,6 +33,10 @@ const routes = [
   {
     path: "/myoffers",
     element: <MyOffers />,
+  },
+  {
+    path: "/myprofile",
+    element: <Profile />,
   },
 ];
 

@@ -1,17 +1,19 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import "../styles/_components.scss"
+import "../styles/_components.scss";
 
 const NavBar: FC = () => {
   return (
     <div className="navbar">
-      <img src="/img/demandeur/logo.svg" alt="" className="navbar-logo" />
+      <Link to="/">
+        <img src="/img/demandeur/logo.svg" alt="" className="navbar-logo" />
+      </Link>
       <div className="navbar-center">
-        <Link to="" className="navbar-center--link">
-          <span>Offres d’emplois</span>
+        <Link to="/offers" className="navbar-center--link">
+          <span>Job Offers</span>
         </Link>
-        <Link to="" className="navbar-center--link">
-          <span>Mes candidatures</span>
+        <Link to="/myoffers" className="navbar-center--link">
+          <span>My applications</span>
         </Link>
         <Link to="" className="navbar-center--link">
           <span>Alerts</span>
