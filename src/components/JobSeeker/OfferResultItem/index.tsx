@@ -8,35 +8,23 @@ interface Props extends InputProps {
   role?: string;
   description?: string;
   agence?: string;
-  deadline?: string;
-  cover?: string;
   agenceImage?: string;
-  applicants?: string;
 }
 
 const OfferResultItem: FC<Props> = ({
   role,
   description,
   agence,
-  deadline,
-  applicants,
-  cover,
   agenceImage,
 }) => {
   return (
     <Box className="home__resultItem">
       <div className="home__resultItem--heading">
-        <img src="img/demandeur/agencelogo.png" alt="" />
-        <h1>UI/UX Designer</h1>
-        <span>Yassir algérie</span>
+        <img src={agenceImage} alt="" />
+        <h1>{role}</h1>
+        <span>{agence}</span>
       </div>
-      <p className="home__resultItem--description">
-        Auctor pharetra gravida turpis volutpat porttitor nec commodo laoreet
-        est. Eu feugiat eget suscipit vitae. Ac sit sit ullamcorper sed faucibus
-        facilisi at pulvinar. Sed imperdiet mattis blandit nisl bibendum amet
-        adipiscing. Diam in scelerisque amet, ut turpis ante diam odio. Vitae in
-        augue.
-      </p>
+      <p className="home__resultItem--description">{description}</p>
       <div className="home__resultItem--skills">
         <SkillTag content="Figma" size="small" />
         <SkillTag content="Adobe Xd" size="small" />

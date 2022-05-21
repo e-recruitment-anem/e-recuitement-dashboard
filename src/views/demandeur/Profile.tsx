@@ -126,6 +126,7 @@ const Profile: FC = () => {
               </Tab>
             </TabList>
           </Tabs>
+
           {/* PERSONAL INFORMATION SECTION */}
           <Box className="jsprofile__box">
             <div className="jsprofile__box--header">
@@ -134,7 +135,7 @@ const Profile: FC = () => {
                 <FontAwesomeIcon
                   className="jsprofile__box--action-icon"
                   icon={faEdit}
-                />{" "}
+                />
                 <span>Edit</span>
               </div>
             </div>
