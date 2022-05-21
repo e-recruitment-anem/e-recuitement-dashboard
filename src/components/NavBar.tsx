@@ -1,10 +1,13 @@
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/_components.scss";
 
 const NavBar: FC = () => {
+  const navigate = useNavigate();
   const openInNewTab = (url) => {
-    const newWindow = window.open(url, "noopener,noreferrer");
-    if (newWindow) newWindow.opener = null;
+    // const newWindow = window.open(url, "noopener,noreferrer");
+    // if (newWindow) newWindow.opener = null;
+    navigate(url);
   };
 
   return (
