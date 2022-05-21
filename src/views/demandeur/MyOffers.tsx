@@ -46,7 +46,7 @@ const MyOffers: FC = () => {
       <NavBar />
 
       <div className="myoffers">
-        <h1>Mes candidatures</h1>
+        <h1>My applications</h1>
         <Tabs isLazy className="myoffers__tabs">
           <TabList borderBottom={"none"}>
             <Tab
