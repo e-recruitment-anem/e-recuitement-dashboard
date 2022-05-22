@@ -1,4 +1,5 @@
 import React from 'react';
+// import AuthGuard from './components/guards/AuthGuard';
 
 // Hello components
 import Hello from './components/Hello';
@@ -13,7 +14,7 @@ const routes = [
     element: <Hello />,
   },
   {
-    path: '/signin',
+    path: '/login',
     element: <SignIn />,
   },
   {
@@ -25,7 +26,7 @@ const routes = [
     element: <OfferDetails />,
   },
   {
-    path: "/offers",
+    path: '/offers',
     element: <Home />,
   },
 ];

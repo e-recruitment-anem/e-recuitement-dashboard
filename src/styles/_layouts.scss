@@ -6,13 +6,15 @@
 }
 
 .sidebar {
-  background-color: lightblue;
+  background-color: #f8fafc;
+  padding: 3rem;
   flex-basis: 25%;
 }
 
 .main-view {
-  background-color: orangered;
+  background-color: #f8fafc;
   flex-basis: 75%;
+  padding: 3rem;
 }
 
 .auth-container {

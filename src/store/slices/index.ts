@@ -1,11 +1,13 @@
-import { combineReducers, Reducer } from 'redux'
+import { combineReducers, Reducer } from 'redux';
 
-import { RootState } from '../../helpers/types'
+import { RootState } from '../../helpers/types';
 
-import exampleReducer from './example'
+import exampleReducer from './example';
+import authReducer from './auth'
 
 const rootReducer: Reducer<RootState> = combineReducers<RootState>({
- exampleState: exampleReducer,
-})
+  exampleState: exampleReducer,
+  authState: authReducer,
+});
 
-export default rootReducer
+export default rootReducer;
