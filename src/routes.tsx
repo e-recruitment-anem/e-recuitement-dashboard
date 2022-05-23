@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import React from 'react';
 // import AuthGuard from './components/guards/AuthGuard';
-=======
-import React from "react";
->>>>>>> 2d1d2bdc9f5a8fb6b66d0510deeedab8d54da85c
 
 // Hello components
 import Hello from "./components/Hello";
@@ -20,11 +16,7 @@ const routes = [
     element: <Hello />,
   },
   {
-<<<<<<< HEAD
     path: '/login',
-=======
-    path: "/signin",
->>>>>>> 2d1d2bdc9f5a8fb6b66d0510deeedab8d54da85c
     element: <SignIn />,
   },
   {

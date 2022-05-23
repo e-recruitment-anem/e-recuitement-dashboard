@@ -4,9 +4,6 @@ import SimilarOffers from "../../components/JobSeeker/SimilarOffers/SimilarOffer
 import NavBar from "../../components/NavBar";
 import "../../styles/_components.scss";
 import { v4 as uuidv4 } from "uuid";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAdd, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
-import SkillTag from "../../components/JobSeeker/SkillTag/SkillTag";
 import PrimaryButton from "../../components/PrimaryButton";
 import Biography from "../../components/JobSeeker/Profile/Biography";
 import PersonalInformation from "../../components/JobSeeker/Profile/PersonalInformation";
