@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import { useRoutes } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import { useRoutes } from "react-router-dom";
+import { Provider } from "react-redux";
 
-import routes from './routes';
+import routes from "./routes";
 
-import store from './store';
-import { ChakraProvider } from '@chakra-ui/react';
+import store from "./store";
+import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
   const content = useRoutes(routes);

@@ -1,13 +1,12 @@
-.PrimaryButton {
-  padding: 0.5rem 2rem;
+.StateTag {
   height: 3.7rem;
+  padding: 0rem 1.3rem;
   text-align: center;
   display: inline-block;
-  font-size: 1.4rem;
-  line-height: 2.7rem;
+  font-size: 1.25rem;
+  line-height: 3.7rem;
   font-weight: 500;
   border-radius: 0.5rem;
-  cursor: pointer;
 
   @media screen and (max-width: 37.5em) {
     font-size: 1.2rem;
@@ -17,14 +16,10 @@
   }
 }
 
-.primaryColor {
-  background-color: #0061ff;
-  color: white;
-}
-
-.secondaryColor {
-  background-color: white;
-  color: black;
+.pending {
+  background-color: #f2c94c33;
+  opacity: 0.8;
+  color: #f2c94c;
 }
 
 .Gray-5 {

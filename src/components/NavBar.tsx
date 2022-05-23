@@ -1,21 +1,27 @@
 import { FC } from "react";
-import { Link } from "react-router-dom";
-import "../styles/_components.scss"
+import { useNavigate } from "react-router-dom";
+import "../styles/_components.scss";
 
 const NavBar: FC = () => {
+  const navigate = useNavigate();
+  const openInNewTab = (url) => {
+    // const newWindow = window.open(url, "noopener,noreferrer");
+    // if (newWindow) newWindow.opener = null;
+    navigate(url);
+  };
+
   return (
     <div className="navbar">
-      <img src="/img/demandeur/logo.svg" alt="" className="navbar-logo" />
+      <img
+        src="/img/demandeur/logo.svg"
+        alt=""
+        className="navbar-logo"
+        onClick={() => openInNewTab("/offers")}
+      />
       <div className="navbar-center">
-        <Link to="" className="navbar-center--link">
-          <span>Offres d’emplois</span>
-        </Link>
-        <Link to="" className="navbar-center--link">
-          <span>Mes candidatures</span>
-        </Link>
-        <Link to="" className="navbar-center--link">
-          <span>Alerts</span>
-        </Link>
+        <span onClick={() => openInNewTab("/offers")}>Job Offers</span>
+        <span onClick={() => openInNewTab("/myoffers")}>My applications</span>
+        <span onClick={() => openInNewTab("/")}>Alerts</span>
       </div>
       <div className="navbar-right">
         <img
@@ -27,6 +33,7 @@ const NavBar: FC = () => {
           src="/img/demandeur/profile.png"
           alt=""
           className="navbar-right--profile"
+          onClick={() => openInNewTab("/myprofile")}
         />
       </div>
     </div>

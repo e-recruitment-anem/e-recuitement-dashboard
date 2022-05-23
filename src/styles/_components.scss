@@ -16,6 +16,7 @@ body {
     width: 5.75rem;
     height: 3rem;
     margin: auto 0rem;
+    cursor: pointer;
   }
 
   &-center {
@@ -25,11 +26,12 @@ body {
     justify-content: space-between;
     margin: auto;
 
-    &--link {
+    & span {
       text-decoration: none;
       color: black;
       font-weight: 600;
       font-size: 1.7rem;
+      cursor: pointer;
     }
   }
 
@@ -42,6 +44,7 @@ body {
     &--profile {
       width: 4.5rem;
       height: 4.5rem;
+      cursor: pointer;
     }
 
     &--notification {
@@ -119,6 +122,10 @@ body {
       margin-top: 1.8rem;
       display: flex;
       flex-wrap: wrap;
+
+      .skill-tag {
+        margin-bottom: 20px;
+      }
     }
 
     &--description {
@@ -147,7 +154,15 @@ body {
   }
 
   &__similaroffers {
+    /* position: fixed;
+    right: 5rem; */
     width: 30%;
+    font-weight: 600;
+
+    .skill-tag {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
 
     h1 {
       font-size: 2.6rem;
@@ -324,15 +339,15 @@ body {
 //HOME PAGE JOB-SEEKER
 .home {
   &__jobOffers {
-    padding: 2rem 8rem;
+    padding: 4rem 8rem 2rem 8rem;
     @media screen and (max-width: 37.5em) {
       padding: 2rem 4rem;
     }
 
     h1 {
-      font-size: 2.7rem;
+      font-size: 3rem;
       font-weight: 700;
-      margin-bottom: 2.8rem;
+
       @media screen and (max-width: 37.5em) {
         font-size: 2.4rem;
       }
@@ -537,5 +552,333 @@ body {
     background-color: #0061ff !important;
     color: white;
     padding: 2.5rem 2rem;
+  }
+}
+
+//MY OFFERS
+.myoffers {
+  margin: 5rem 8rem;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  &__tabs {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+
+    &-item {
+      margin-right: 2rem;
+      color: black;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 1.6rem !important;
+      height: 5rem;
+    }
+  }
+
+  &__list {
+    margin-top: 2rem;
+  }
+}
+
+//INTERVIEW DETAILS
+.interviewdetails {
+  &__header {
+    margin: 5rem 8rem;
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+//JOB SEEKER PROFILE
+.jsprofile {
+  margin: 5rem 8rem;
+  display: flex;
+  justify-content: space-between;
+
+  &__left {
+    width: 66%;
+
+    & h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__box {
+    padding: 3rem 3.6rem;
+    background-color: white;
+    border-radius: 0.8rem;
+    margin-bottom: 4rem;
+
+    &-cv {
+      padding: 3rem 3.6rem;
+      background-color: white;
+      border-radius: 0.8rem;
+      margin-bottom: 4rem;
+
+      & > * {
+        margin-bottom: 5.6rem;
+      }
+    }
+
+    &--header {
+      display: flex;
+      justify-content: space-between;
+      vertical-align: middle;
+      margin-bottom: 2.5rem;
+    }
+
+    &--action {
+      margin-top: auto;
+      margin-bottom: auto;
+      color: #0061ff;
+      cursor: pointer;
+
+      & span {
+        font-size: 1.8rem;
+        font-weight: 600;
+      }
+
+      &-icon {
+        font-size: 1.6rem;
+        margin-right: 1.2rem;
+      }
+    }
+  }
+
+  &__biography {
+    &--paragraph {
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 2.6rem;
+      color: #828282;
+    }
+  }
+
+  &__languages {
+    display: flex;
+    flex-wrap: wrap;
+
+    &--item {
+      width: 33%;
+      margin-bottom: 2.5rem;
+      & h1 {
+        font-size: 1.5rem;
+        letter-spacing: 0.05rem;
+        font-weight: 600;
+        color: #828282;
+      }
+
+      & p {
+        margin-top: 1.2rem;
+        font-size: 1.9rem;
+        font-weight: 600;
+        color: #333333;
+        display: -webkit-box;
+        max-width: 100%;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      & hr {
+        margin-top: 3.2rem;
+        border-top: 0.15rem dashed #e0e0e0;
+      }
+    }
+  }
+
+  &__education {
+    display: flex;
+    justify-content: space-between;
+
+    &--divider {
+      margin-top: 3.2rem;
+      margin-bottom: 3.2rem;
+      border-top: 0.15rem dashed #e0e0e0;
+    }
+
+    &--content {
+      & h1 {
+        font-size: 2.3rem;
+        font-weight: 600;
+        margin-bottom: 1.6rem;
+      }
+
+      & h2 {
+        font-size: 1.7rem;
+        font-weight: 600;
+        color: #4f4f4f;
+        margin-bottom: 1.6rem;
+      }
+
+      & span {
+        font-size: 1.7rem;
+        font-weight: 500;
+        color: #828282;
+      }
+
+      &-files {
+        display: flex;
+        margin-top: 1.6rem !important;
+
+        & img {
+          width: 14rem;
+          height: 8.2rem;
+          margin-right: 2rem;
+          border-radius: 0.5rem;
+        }
+      }
+
+      &-certificatesTitle {
+        display: flex;
+
+        & h1 {
+          margin: 0rem;
+        }
+
+        & span {
+          font-size: 1.4rem;
+          margin-top: auto;
+          margin-bottom: auto;
+          margin-left: 1.6rem;
+        }
+      }
+
+      &-certificatesFiles {
+        display: flex;
+        margin-top: 2.6rem !important;
+
+        & img {
+          width: 14rem;
+          height: 8.2rem;
+          margin-right: 2rem;
+          border-radius: 0.5rem;
+        }
+      }
+    }
+
+    &--actions {
+      display: flex;
+
+      &-editicon {
+        width: 1.6rem;
+        height: 1.6rem;
+        padding: 1rem;
+        border: #828282 solid 1px;
+        border-radius: 5rem;
+        margin-top: auto;
+        margin-bottom: auto;
+        color: #828282;
+        margin-right: 1.6rem !important;
+        cursor: pointer;
+      }
+
+      &-deleteicon {
+        width: 1.6rem;
+        height: 1.6rem;
+        padding: 1rem;
+        border: #eb5757 solid 1px;
+        border-radius: 5rem;
+        margin-top: auto;
+        margin-bottom: auto;
+        color: #eb5757;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__tabs {
+    background-color: white;
+    margin-bottom: 4rem;
+    padding: 0.2rem 3.6rem;
+
+    &-item {
+      height: 7rem !important;
+      margin-right: 6.4rem;
+      font-size: 1.8rem !important;
+      color: black;
+      font-weight: 600;
+    }
+  }
+
+  &__heading {
+    border-radius: 0.8rem;
+    overflow: hidden;
+    background-color: white;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+
+    & img {
+      width: 100%;
+      height: 18.5rem;
+      object-fit: cover;
+    }
+
+    &--actions {
+      display: flex;
+      justify-content: space-between;
+      padding: 0rem 4.6rem;
+      margin-top: -6rem;
+      & img {
+        width: 11.5rem;
+        height: 11.5rem;
+        border-radius: 0.6rem;
+      }
+
+      &-buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        :first-child {
+          height: auto;
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+          font-size: 1.6rem;
+        }
+
+        :last-child {
+          height: auto;
+          width: 70%;
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+          font-size: 1.6rem;
+        }
+      }
+    }
+    &--content {
+      margin-top: 3rem;
+      padding-right: 4.6rem;
+      padding-left: 4.6rem;
+      font-weight: 500;
+
+      & h1 {
+        font-size: 2.6rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      & p {
+        font-size: 2rem;
+        color: #4f4f4f;
+        margin-bottom: 1rem;
+      }
+
+      & span {
+        font-size: 1.6rem;
+        color: #828282;
+      }
+    }
   }
 }

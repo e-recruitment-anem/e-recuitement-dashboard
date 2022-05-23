@@ -9,7 +9,7 @@ interface Props {
 const SkillTag: FC<Props> = ({ content, size }) => {
   return (
     <>
-      <div className={size}>
+      <div className={"skill-tag " + size}>
         <span>{content}</span>
       </div>
     </>
