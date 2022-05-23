@@ -510,51 +510,123 @@ body {
 }
 
 // DATATABLE
-.dataTable_nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  &-left {
+.dataTable {
+  font-family: 'Montserrat';
+  &_nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1.6rem;
-  }
+    margin-bottom: 3rem;
 
-  &-title {
-    font-size: 3rem;
-    font-weight: 700;
-  }
+    &-left {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.6rem;
+    }
 
-  &-group {
-    padding: 0.5rem;
-    background-color: white;
-    font-size: 1.6rem;
-    border-radius: 0.8rem;
+    &-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+    }
 
-    &--btn {
-      font-size: 1.6rem !important;
+    &-group {
+      padding: 0.5rem;
+      background-color: white;
+      font-size: 1.6rem;
+      border-radius: 0.8rem;
+
+      &--btn {
+        font-size: 1.8rem !important;
+        font-weight: 600 !important;
+        padding: 2.4rem !important;
+        background-color: white !important;
+      }
+
+      &--active {
+        color: white;
+        background-color: #0061ff !important;
+      }
+    }
+
+    &-cta {
+      font-size: 1.8rem !important;
       font-weight: 600 !important;
-      padding: 2rem;
-      background-color: white !important;
-    }
-
-    &--active {
-      color: white;
       background-color: #0061ff !important;
+      color: white;
+      padding: 2.5rem 2rem !important;
     }
   }
 
-  &-cta {
-    font-size: 1.8rem !important;
-    font-weight: 600 !important;
-    background-color: #0061ff !important;
-    color: white;
-    padding: 2.5rem 2rem;
+  &_head {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #687182;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e9edf5;
+  }
+
+  &_header {
+    &-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    &-icon {
+      height: 0.8rem;
+      color: #464f60;
+      margin-left: 2rem !important;
+    }
+
+    &-id {
+      color: #171c26;
+      font-weight: 600;
+    }
+  }
+
+  &_item {
+    font-size: 1.6rem;
+    font-weight: 400;
+    padding: 2rem 1rem !important;
+    text-align: center;
+
+    &--center {
+      text-align: center !important;
+    }
+
+    &-id {
+      color: #171c26;
+      font-weight: 600;
+    }
+
+    &-bold {
+      font-weight: 500;
+      color: #5e5adb;
+    }
+
+    &-box {
+      padding: 0.3rem 0.7rem;
+      background-color: #e9edf5;
+      border-radius: 0.6rem;
+      color: #464f60;
+    }
+
+    &-status {
+      font-size: 1.2rem;
+      font-weight: 500;
+      padding: 0.8rem;
+      background-color: #e1fcef;
+      width: fit-content;
+      color: #14804a;
+      border-radius: 0.4rem;
+
+      &--icon {
+        font-size: 0.8rem;
+      }
+    }
   }
 }
-
 //MY OFFERS
 .myoffers {
   margin: 5rem 8rem;

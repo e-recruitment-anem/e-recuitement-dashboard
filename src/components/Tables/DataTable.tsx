@@ -1,38 +1,73 @@
-import React, { useState } from 'react';
-import { Button } from '@chakra-ui/react';
+import React from 'react';
+import { Table, Thead, Tbody, Tr, Td } from '@chakra-ui/react';
+import TableNav from './TableNav';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCaretDown,
+  faCaretUp,
+  faCircle,
+} from '@fortawesome/free-solid-svg-icons';
 
 const DataTable = () => {
-  const [active, setActive] = useState('Entreprise');
-  const toggleActive = (payload) => {
-    setActive(payload);
-  };
+  const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   return (
-    <div>
-      <div className="dataTable_nav">
-        <div className="dataTable_nav-left">
-          <h3 className="dataTable_nav-title">Utilisateurs</h3>
-          <div className="dataTable_nav-group">
-            <Button
-              className={`dataTable_nav-group--btn ${
-                active === 'Employeur' ? 'dataTable_nav-group--active' : ''
-              }`}
-              onClick={() => toggleActive('Employeur')}
-            >
-              Employeur
-            </Button>
-            <Button
-              className={`dataTable_nav-group--btn ${
-                active === 'Entreprise' ? 'dataTable_nav-group--active' : ''
-              }`}
-              onClick={() => toggleActive('Entreprise')}
-            >
-              Enterprises
-            </Button>
-          </div>
-        </div>
-        <Button className="dataTable_nav-cta">Créer agence</Button>
-      </div>
-    </div>
+    <>
+      <TableNav />
+      <Table className="dataTable">
+        <Thead className="dataTable_head">
+          <Tr className="dataTable_row">
+            <Td className="dataTable_header dataTable_header-id">
+              #{' '}
+              <FontAwesomeIcon
+                className="dataTbale_header-icon"
+                icon={faCaretDown}
+              />
+            </Td>
+            <Td className="dataTable_header">PM</Td>
+            <Td className="dataTable_header dataTable_header-sortable">
+              Entreprise{' '}
+              <FontAwesomeIcon
+                className="dataTbale_header-icon"
+                icon={faCaretUp}
+              />
+            </Td>
+            <Td className="dataTable_header dataTable_header-sortable">
+              Commune{' '}
+              <FontAwesomeIcon
+                className="dataTbale_header-icon"
+                icon={faCaretDown}
+              />
+            </Td>
+            <Td className="dataTable_header">Email</Td>
+            <Td className="dataTable_header">Telephone</Td>
+            <Td className="dataTable_header">Offres</Td>
+            <Td className="dataTable_header">Status</Td>
+          </Tr>
+        </Thead>
+        <Tbody className="dataTable_body">
+          {data.map((el) => (
+            <Tr className="dataTable_row">
+              <Td className="dataTable_item dataTable_item-id">{el}</Td>
+              <Td className="dataTable_item">Img</Td>
+              <Td className="dataTable_item dataTable_item-bold">
+                Allosaurus web app
+              </Td>
+              <Td className="dataTable_item">Sidi Bel Abbés</Td>
+              <Td className="dataTable_item">contact@ooredoo.dz</Td>
+              <Td className="dataTable_item">(213) 568493290</Td>
+              <Td className="dataTable_item dataTable_item--center">
+                <span className="dataTable_item-box">3</span>
+              </Td>
+              <Td className="dataTable_item">
+                <div className="dataTable_item-status">
+                  <FontAwesomeIcon className="dataTable_item-status--icon" icon={faCircle} /> On Track
+                </div>
+              </Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
+    </>
   );
 };
 
