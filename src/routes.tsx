@@ -9,6 +9,7 @@ import SignIn from "./views/auth/SignIn";
 import Dashboard from "./views/dashboard/Dashboard";
 import OfferDetails from "./views/demandeur/OfferDetails";
 import Profile from "./views/demandeur/Profile";
+import Agence from './views/dashboard/Agence';
 
 const routes = [
   {
@@ -22,6 +23,10 @@ const routes = [
   {
     path: "/dashboard",
     element: <Dashboard />,
+  },
+  {
+    path: "/agences",
+    element: <Agence />,
   },
   {
     path: "/offerdetails",

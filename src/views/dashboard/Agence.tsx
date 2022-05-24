@@ -5,7 +5,7 @@ import AdminLayout from '../layouts/AdminLayout';
 import UserNav from '../../components/UserNav';
 import DataTable from '../../components/Tables/DataTable';
 
-const Dashboard: FC = () => {
+const Agence: FC = () => {
   return (
     <AdminLayout>
       <div className="main-nav">
@@ -14,9 +14,9 @@ const Dashboard: FC = () => {
         </div>
         <UserNav />
       </div>
-      <DataTable title={'Utilisateurs'} cta={'utilisateur'} />
+      <DataTable title={'Agences'} cta={'agence'} />
     </AdminLayout>
   );
 };
 
-export default Dashboard;
+export default Agence;

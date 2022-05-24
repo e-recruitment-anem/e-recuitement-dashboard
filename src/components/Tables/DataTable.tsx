@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Table, Thead, Tbody, Tr, Td } from '@chakra-ui/react';
 import TableNav from './TableNav';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,11 +8,16 @@ import {
   faCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
-const DataTable = () => {
-  const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+interface Props {
+  title: string;
+  cta: string;
+}
+
+const DataTable: FC<Props> = ({ title, cta }) => {
+  const data = [1, 2, 3, 4, 5, 6, 7, 8];
   return (
     <>
-      <TableNav />
+      <TableNav title={title} cta={cta} />
       <Table className="dataTable">
         <Thead className="dataTable_head">
           <Tr className="dataTable_row">
@@ -60,7 +65,11 @@ const DataTable = () => {
               </Td>
               <Td className="dataTable_item">
                 <div className="dataTable_item-status">
-                  <FontAwesomeIcon className="dataTable_item-status--icon" icon={faCircle} /> On Track
+                  <FontAwesomeIcon
+                    className="dataTable_item-status--icon"
+                    icon={faCircle}
+                  />{' '}
+                  On Track
                 </div>
               </Td>
             </Tr>

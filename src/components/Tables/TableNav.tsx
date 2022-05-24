@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Button } from '@chakra-ui/react';
 
-const TableNav = () => {
+interface Props {
+  title: string;
+  cta: string;
+}
+
+const TableNav: FC<Props> = ({ title, cta }) => {
   const [active, setActive] = useState('Entreprise');
   const toggleActive = (payload) => {
     setActive(payload);
@@ -10,7 +15,7 @@ const TableNav = () => {
     <div>
       <div className="dataTable_nav">
         <div className="dataTable_nav-left">
-          <h3 className="dataTable_nav-title">Utilisateurs</h3>
+          <h3 className="dataTable_nav-title">{title}</h3>
           <div className="dataTable_nav-group">
             <Button
               className={`dataTable_nav-group--btn ${
@@ -30,7 +35,7 @@ const TableNav = () => {
             </Button>
           </div>
         </div>
-        <Button className="dataTable_nav-cta">Créer agence</Button>
+        <Button className="dataTable_nav-cta">+ Créer {cta}</Button>
       </div>
     </div>
   );
