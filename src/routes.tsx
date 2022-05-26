@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 // import AuthGuard from './components/guards/AuthGuard';
 
 // Hello components
@@ -9,7 +9,7 @@ import SignIn from "./views/auth/SignIn";
 import Dashboard from "./views/dashboard/Dashboard";
 import OfferDetails from "./views/demandeur/OfferDetails";
 import Profile from "./views/demandeur/Profile";
-import Agence from './views/dashboard/Agence';
+import Agence from "./views/dashboard/Agence";
 
 const routes = [
   {
@@ -17,7 +17,7 @@ const routes = [
     element: <Hello />,
   },
   {
-    path: '/login',
+    path: "/login",
     element: <SignIn />,
   },
   {
@@ -33,7 +33,7 @@ const routes = [
     element: <OfferDetails />,
   },
   {
-    path: '/offers',
+    path: "/offers",
     element: <Home />,
   },
   {
