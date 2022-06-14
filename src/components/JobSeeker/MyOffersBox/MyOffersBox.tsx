@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import PrimaryButton from "../../PrimaryButton";
 import StateTag from "../../StateTag";
 import SkillTag from "../SkillTag/SkillTag";
@@ -11,6 +12,7 @@ interface Props {
   PublicationDate?: string;
   description?: string;
   JobState?: string;
+  applicationURL: string;
 }
 
 const MyOffersBox: FC<Props> = ({
@@ -19,7 +21,12 @@ const MyOffersBox: FC<Props> = ({
   PublicationDate,
   description,
   JobState,
+  applicationURL,
 }) => {
+  const navigate = useNavigate();
+  const openInNewTab = (url) => {
+    navigate(url);
+  };
   return (
     <Box className="myoffers__box">
       <div className="myoffers__left">
@@ -47,6 +54,7 @@ const MyOffersBox: FC<Props> = ({
               content="See details"
               color="primaryColor"
               additionalStyle="myoffers__content--bottom-button"
+              onClick={() => openInNewTab(applicationURL)}
             ></PrimaryButton>
           </div>
         </div>

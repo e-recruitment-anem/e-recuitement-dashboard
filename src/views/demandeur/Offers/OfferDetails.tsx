@@ -1,13 +1,12 @@
 import React, { FC } from "react";
 import { Box } from "@chakra-ui/react";
 import { v4 as uuidv4 } from "uuid";
-import SimilarOffers from "../../components/JobSeeker/SimilarOffers/SimilarOffers";
-import SkillTag from "../../components/JobSeeker/SkillTag/SkillTag";
-import SummaryBox from "../../components/JobSeeker/SummaryBox/SummaryBox";
-import NavBar from "../../components/NavBar";
-import "../../styles/_components.scss";
-import InterviewDetailsBox from "../../components/JobSeeker/InterviewDetailsBox";
-import PrimaryButton from "../../components/PrimaryButton";
+import SimilarOffers from "../../../components/JobSeeker/SimilarOffers/SimilarOffers";
+import SkillTag from "../../../components/JobSeeker/SkillTag/SkillTag";
+import SummaryBox from "../../../components/JobSeeker/SummaryBox/SummaryBox";
+import NavBar from "../../../components/NavBar";
+import "../../../styles/_components.scss";
+import PrimaryButton from "../../../components/PrimaryButton";
 
 const circle = (
   <svg
@@ -80,10 +79,6 @@ const OfferDetails: FC = () => {
   return (
     <>
       <NavBar />
-      <div className="interviewdetails__header">
-        <h1>Interview details</h1>
-        <InterviewDetailsBox></InterviewDetailsBox>
-      </div>
       <div className="offerdetails">
         <Box className="offerdetails__bigcard">
           <img

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, MouseEventHandler } from "react";
 import "./PrimaryButton.scss";
 
 interface Props {
@@ -6,6 +6,7 @@ interface Props {
   color?: String;
   shape?: string;
   additionalStyle?: string;
+  onClick?: MouseEventHandler<HTMLSpanElement>;
 }
 
 const PrimaryButton: FC<Props> = ({
@@ -13,9 +14,14 @@ const PrimaryButton: FC<Props> = ({
   color,
   shape,
   additionalStyle,
+  onClick,
 }) => {
   shape = "PrimaryButton " + color + " " + additionalStyle;
-  return <span className={shape}>{content}</span>;
+  return (
+    <span className={shape} onClick={onClick}>
+      {content}
+    </span>
+  );
 };
 
 export default PrimaryButton;

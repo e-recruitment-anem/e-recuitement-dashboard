@@ -1,25 +1,10 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Box } from "@chakra-ui/react";
 import { v4 as uuidv4 } from "uuid";
-import SimilarOffers from "../../components/JobSeeker/SimilarOffers/SimilarOffers";
-import SkillTag from "../../components/JobSeeker/SkillTag/SkillTag";
-import SummaryBox from "../../components/JobSeeker/SummaryBox/SummaryBox";
-import NavBar from "../../components/NavBar";
-import "../../styles/_components.scss";
-import InterviewDetailsBox from "../../components/JobSeeker/InterviewDetailsBox";
-import PrimaryButton from "../../components/PrimaryButton";
-
-const circle = (
-  <svg
-    width="20"
-    height="21"
-    viewBox="0 0 20 21"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle cx="10" cy="10.5" r="8.7" stroke="#0061FF" stroke-width="2.6" />
-  </svg>
-);
+import SkillTag from "../../../components/JobSeeker/SkillTag/SkillTag";
+import NavBar from "../../../components/NavBar";
+import "../../../styles/_components.scss";
+import PrimaryButton from "../../../components/PrimaryButton";
 
 const OfferApplication: FC = () => {
   const applicationDetails = {
@@ -34,39 +19,6 @@ const OfferApplication: FC = () => {
     { title: "Type de contrat", content: "CDI / CDD" },
     { title: "Salaire annuel", content: "230.000 DA" },
     { title: "Durée", content: "18 mois" },
-  ];
-
-  const similarOffers = [
-    {
-      role: "UI/UX Design",
-      description:
-        "Nisi turpis duis quisque est leo at et fermentum. Pretium nulla libero integer volutpat et odio eu ac neque. Non dolor et aliquet fringilla. Non lacinia commodo quam sed nullam gravida",
-      agence: "Yassir Algérie",
-      deadline: "Il y a 8 jours: ",
-      applicants: "12 applicant",
-      agenceImage: "img/demandeur/agencelogo.png",
-      cover: "img/demandeur/agencelogo.png",
-    },
-    {
-      role: "UI/UX Design",
-      description:
-        "Nisi turpis duis quisque est leo at et fermentum. Pretium nulla libero integer volutpat et odio eu ac neque. Non dolor et aliquet fringilla. Non lacinia commodo quam sed nullam gravida",
-      agence: "Yassir Algérie",
-      deadline: "Il y a 8 jours: ",
-      applicants: "12 applicant",
-      agenceImage: "img/demandeur/agencelogo.png",
-      cover: "img/demandeur/agencelogo.png",
-    },
-    {
-      role: "UI/UX Design",
-      description:
-        "Nisi turpis duis quisque est leo at et fermentum. Pretium nulla libero integer volutpat et odio eu ac neque. Non dolor et aliquet fringilla. Non lacinia commodo quam sed nullam gravida",
-      agence: "Yassir Algérie",
-      deadline: "Il y a 8 jours: ",
-      applicants: "12 applicant",
-      agenceImage: "img/demandeur/agencelogo.png",
-      cover: "img/demandeur/agencelogo.png",
-    },
   ];
 
   const skills = [
@@ -88,7 +40,7 @@ const OfferApplication: FC = () => {
       <NavBar />
 
       <div className="offerdetails">
-        <Box className="offerdetails__bigcard">
+        <Box className="offerdetails__bigcard jobapplication">
           <img
             src="img/demandeur/agence_cover.png"
             alt=""
@@ -101,7 +53,7 @@ const OfferApplication: FC = () => {
               alt=""
               className="offerdetails__bigcard--profilepic"
             />
-            <div className="offerdetails__bigcard--heading">
+            <div className="offerdetails__bigcard--heading jobapplication__heading">
               <div>
                 <h1>UI/UX Designer</h1>
                 <h2>Yassier algérie</h2>
@@ -204,7 +156,7 @@ const OfferApplication: FC = () => {
         </Box>
 
         {/* SIMILAR OFFERS */}
-        <div className="offerdetails__similaroffers">
+        {/* <div className="offerdetails__similaroffers">
           <h1>Offres similaires</h1>
           {similarOffers.map(
             ({
@@ -228,7 +180,7 @@ const OfferApplication: FC = () => {
               />
             )
           )}
-        </div>
+        </div> */}
       </div>
     </>
   );

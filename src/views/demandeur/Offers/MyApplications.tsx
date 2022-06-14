@@ -1,8 +1,8 @@
 import { Tab, TabList, Tabs } from "@chakra-ui/react";
 import { FC, useState } from "react";
-import MyOffersBox from "../../components/JobSeeker/MyOffersBox";
-import NavBar from "../../components/NavBar";
-import "../../styles/_components.scss";
+import MyOffersBox from "../../../components/JobSeeker/MyOffersBox";
+import NavBar from "../../../components/NavBar";
+import "../../../styles/_components.scss";
 
 const MyOffers: FC = () => {
   const [JobState, setJobState] = useState<string | null>(null);
@@ -88,6 +88,7 @@ const MyOffers: FC = () => {
                 PublicationDate={PublicationDate}
                 description={description}
                 JobState={JobState}
+                applicationURL="/offerapplicationreview"
               />
             )
           )}

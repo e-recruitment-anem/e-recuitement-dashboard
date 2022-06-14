@@ -4,13 +4,14 @@ import React from "react";
 // Hello components
 import Hello from "./components/Hello";
 import Home from "./views/demandeur/Home";
-import MyOffers from "./views/demandeur/MyOffers";
 import SignIn from "./views/auth/SignIn";
 import Dashboard from "./views/dashboard/Dashboard";
-import OfferDetails from "./views/demandeur/OfferDetails";
+import OfferDetails from "./views/demandeur/Offers/OfferDetails";
 import Profile from "./views/demandeur/Profile";
 import Agence from "./views/dashboard/Agence";
-import OfferApplication from "./views/demandeur/OfferApplication";
+import OfferApplication from "./views/demandeur/Offers/OfferApplication";
+import OfferApplicationReview from "./views/demandeur/Offers/OfferApplicationReview";
+import MyApplications from "./views/demandeur/Offers/MyApplications";
 
 const routes = [
   {
@@ -38,16 +39,20 @@ const routes = [
     element: <Home />,
   },
   {
-    path: "/myoffers",
-    element: <MyOffers />,
+    path: "/applications",
+    element: <MyApplications />,
   },
   {
     path: "/myprofile",
     element: <Profile />,
   },
   {
-    path: "/jobapplication",
+    path: "/offerapplication",
     element: <OfferApplication />,
+  },
+  {
+    path: "/offerapplicationreview",
+    element: <OfferApplicationReview />,
   },
 ];
 

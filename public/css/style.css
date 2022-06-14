@@ -170,13 +170,32 @@ body {
       margin-bottom: 2rem;
       margin-top: 0rem; }
 
+.offerAppReview__details {
+  display: flex;
+  flex-wrap: wrap; }
+  .offerAppReview__details-item {
+    width: 33%; }
+    .offerAppReview__details-item h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #828282;
+      margin-top: 2rem; }
+    .offerAppReview__details-item p {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: black; }
+
+.offerAppReview__detailstitle {
+  margin-top: 6rem;
+  font-size: 3rem !important; }
+
 .offerapplication__bigcard-uppersection {
   display: flex;
   justify-content: space-between; }
   .offerapplication__bigcard-uppersection--left {
-    width: 70%; }
+    width: 77%; }
   .offerapplication__bigcard-uppersection--right {
-    width: 25%; }
+    width: 17%; }
     .offerapplication__bigcard-uppersection--right h1 {
       font-size: 2.2rem;
       font-weight: 700;
@@ -192,7 +211,8 @@ body {
   .offerapplication__bigcard-applicationDetails--content {
     display: flex !important;
     flex-direction: row;
-    justify-content: space-between; }
+    justify-content: space-between;
+    width: 85%; }
   .offerapplication__bigcard-applicationDetails--item {
     max-width: 25%;
     margin-right: 5rem;
@@ -830,3 +850,12 @@ body {
       .jsprofile__heading--content span {
         font-size: 1.6rem;
         color: #828282; }
+
+.jobapplication {
+  width: 100%; }
+  .jobapplication__heading {
+    margin-bottom: 4rem; }
+
+.hello h1 {
+  font-size: 2.5rem;
+  font-weight: 500; }

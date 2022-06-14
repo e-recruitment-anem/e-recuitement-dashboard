@@ -20,7 +20,9 @@ const NavBar: FC = () => {
       />
       <div className="navbar-center">
         <span onClick={() => openInNewTab("/offers")}>Job Offers</span>
-        <span onClick={() => openInNewTab("/myoffers")}>My applications</span>
+        <span onClick={() => openInNewTab("/applications")}>
+          My applications
+        </span>
         <span onClick={() => openInNewTab("/")}>Alerts</span>
       </div>
       <div className="navbar-right">

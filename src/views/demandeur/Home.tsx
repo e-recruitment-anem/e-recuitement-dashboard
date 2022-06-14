@@ -56,6 +56,8 @@ const Home: FC = () => {
               description={description}
               agence={agence}
               agenceImage={agenceImage}
+              detailsURL="/offerdetails"
+              applicationURL="/offerapplication"
             />
           ))}
         </div>
