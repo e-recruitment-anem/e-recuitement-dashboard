@@ -10,7 +10,6 @@ const SummaryBox: FC<ISummary> = ({ items }) => {
   return (
     <>
       <Box className="Summarybox">
-        {/* ------------ */}
         {items.map(({ title, content }) => (
           <SummaryItem key={uuidv4()} title={title} content={content} />
         ))}

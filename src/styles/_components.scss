@@ -93,6 +93,7 @@ body {
       justify-content: space-between;
 
       h1 {
+        margin-top: 1rem;
         font-size: 2.4rem;
         font-weight: 700;
       }
@@ -101,21 +102,38 @@ body {
         font-size: 1.5rem;
         font-weight: 600;
         color: #0061ff;
-        margin-top: 1rem;
+        margin-top: 0rem;
       }
 
-      span {
-        font-size: 1.5rem;
-        font-weight: 600;
+      &-right {
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
 
-        &:first-child {
-          color: #bdbdbd;
+        &-span {
+          margin-top: 2rem;
+          & span {
+            font-size: 1.5rem;
+            font-weight: 600;
+          }
+
+          & :first-child {
+            color: #bdbdbd;
+          }
+        }
+
+        &-buttons {
+          & > * {
+            margin-left: 2rem;
+          }
         }
       }
     }
 
     h1 {
       font-weight: 700;
+      font-size: 2.4rem;
     }
 
     &--exigences {
@@ -131,10 +149,11 @@ body {
     &--description {
       margin-top: 2rem;
       p {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         color: #828282;
         line-height: 2.5rem;
         margin-top: 1.8rem;
+        font-weight: 600;
       }
     }
 
@@ -146,8 +165,9 @@ body {
         margin-top: 2rem;
 
         p {
-          font-size: 1.5rem;
+          font-size: 1.6rem;
           margin: auto 2rem;
+          font-weight: 600;
         }
       }
     }
@@ -168,6 +188,129 @@ body {
       font-size: 2.6rem;
       margin-bottom: 2rem;
       margin-top: 0rem;
+    }
+  }
+}
+
+// OFFFER APPLICATION
+.offerapplication {
+  &__bigcard {
+    &-uppersection {
+      display: flex;
+      justify-content: space-between;
+
+      &--left {
+        width: 70%;
+      }
+
+      &--right {
+        width: 25%;
+
+        & h1 {
+          font-size: 2.2rem;
+          font-weight: 700;
+          color: #828282;
+          margin-top: 3rem;
+        }
+
+        & p {
+          font-size: 1.6rem;
+          font-weight: 600;
+          color: black;
+        }
+      }
+    }
+
+    &-applicationDetails {
+      margin-top: 4rem;
+
+      &--content {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      &--item {
+        max-width: 25%;
+        margin-right: 5rem;
+        margin-top: 1rem;
+        & h1 {
+          font-size: 1.8rem;
+          font-weight: 700;
+          color: #828282;
+        }
+
+        & p {
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: black;
+        }
+      }
+    }
+  }
+
+  &__motivationletter {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+    & label {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #828282;
+    }
+
+    & textarea {
+      font-size: 1.8rem;
+      padding: 1rem 2rem;
+      border: #828282 solid;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+      font-weight: 500;
+    }
+  }
+
+  &__cv {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+    & label {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #828282;
+    }
+
+    &-content {
+      display: flex;
+      margin-top: 1rem;
+
+      & img {
+        width: 35rem;
+        height: 20rem;
+        object-fit: cover;
+        border-radius: 0.5rem;
+        margin-right: 6rem;
+      }
+
+      &--buttons {
+        margin-top: auto;
+        margin-bottom: auto;
+
+        & > * {
+          margin-right: 2rem;
+          margin-top: auto;
+          margin-bottom: auto;
+        }
+      }
+    }
+  }
+
+  &__actions {
+    margin-top: 5rem;
+    text-align: end;
+    padding-bottom: 3rem;
+
+    & > * {
+      margin-left: 3rem;
     }
   }
 }
@@ -338,6 +481,53 @@ body {
 
 //HOME PAGE JOB-SEEKER
 .home {
+  &__searchbar {
+    display: flex;
+    margin-bottom: 4rem;
+    &-input {
+      width: 30% !important;
+      background-color: white;
+      padding: 2.2rem 3rem;
+      font-size: 2rem;
+      border-right: #f2f2f2 solid 0.2rem;
+
+      &-icon {
+        color: #0061ff;
+      }
+
+      & input {
+        margin-left: 1.5rem;
+        font-weight: 600;
+        width: 90%;
+
+        &:focus {
+          outline: none;
+          color: #828282;
+        }
+      }
+    }
+
+    &-button {
+      width: 12% !important;
+      background-color: #0061ff;
+      font-size: 2rem;
+      font-weight: 600;
+      color: white;
+      margin: auto;
+      text-align: center;
+      padding-top: 2.2rem;
+      padding-bottom: 2.2rem;
+      cursor: pointer;
+    }
+
+    & :first-child {
+      border-radius: 0.8rem 0rem 0rem 0.8rem !important;
+    }
+
+    & :last-child {
+      border-radius: 0rem 0.8rem 0.8rem 0rem !important;
+    }
+  }
   &__jobOffers {
     padding: 4rem 8rem 2rem 8rem;
     @media screen and (max-width: 37.5em) {
@@ -347,6 +537,7 @@ body {
     h1 {
       font-size: 3rem;
       font-weight: 700;
+      margin-bottom: 2rem;
 
       @media screen and (max-width: 37.5em) {
         font-size: 2.4rem;
@@ -511,7 +702,7 @@ body {
 
 // DATATABLE
 .dataTable {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   &_nav {
     display: flex;
     justify-content: space-between;

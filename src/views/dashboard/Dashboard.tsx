@@ -1,8 +1,7 @@
 import React, { FC } from "react";
-import { Avatar, Input, Text } from "@chakra-ui/react";
+import { Avatar } from "@chakra-ui/react";
 
 import AdminLayout from "../layouts/AdminLayout";
-import UserNav from "../../components/UserNav";
 import DataTable from "../../components/Tables/DataTable";
 import ReusableTable from "../../components/ReusableTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -7,6 +7,7 @@ import SummaryBox from "../../components/JobSeeker/SummaryBox/SummaryBox";
 import NavBar from "../../components/NavBar";
 import "../../styles/_components.scss";
 import InterviewDetailsBox from "../../components/JobSeeker/InterviewDetailsBox";
+import PrimaryButton from "../../components/PrimaryButton";
 
 const circle = (
   <svg
@@ -102,9 +103,14 @@ const OfferDetails: FC = () => {
                 <h1>UI/UX Designer</h1>
                 <h2>Yassier algérie</h2>
               </div>
-              <div className="offerdetails__bigcard--heading-span">
-                <span>Il y a 8 jours: </span>
-                <span>12 applicant</span>
+              <div className="offerdetails__bigcard--heading-right">
+                <div className="offerdetails__bigcard--heading-right-buttons">
+                  <PrimaryButton color="primaryColor" content="Apply for job" />
+                </div>
+                <div className="offerdetails__bigcard--heading-right-span">
+                  <span>Il y a 8 jours: </span>
+                  <span>12 applicant</span>
+                </div>
               </div>
             </div>
 

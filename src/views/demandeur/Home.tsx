@@ -1,5 +1,6 @@
 import { FC } from "react";
 import OfferResultItem from "../../components/JobSeeker/OfferResultItem";
+import SearchBar from "../../components/JobSeeker/SearchBar";
 import NavBar from "../../components/NavBar";
 import "../../styles/_components.scss";
 
@@ -46,6 +47,7 @@ const Home: FC = () => {
     <>
       <NavBar />
       <div className="home__jobOffers">
+        <SearchBar />
         <h1>Browse job offers</h1>
         <div className="home__jobOffers--container">
           {offersList.map(({ role, description, agence, agenceImage }) => (

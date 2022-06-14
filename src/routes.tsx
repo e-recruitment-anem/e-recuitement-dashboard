@@ -10,6 +10,7 @@ import Dashboard from "./views/dashboard/Dashboard";
 import OfferDetails from "./views/demandeur/OfferDetails";
 import Profile from "./views/demandeur/Profile";
 import Agence from "./views/dashboard/Agence";
+import OfferApplication from "./views/demandeur/OfferApplication";
 
 const routes = [
   {
@@ -43,6 +44,10 @@ const routes = [
   {
     path: "/myprofile",
     element: <Profile />,
+  },
+  {
+    path: "/jobapplication",
+    element: <OfferApplication />,
   },
 ];
 

@@ -108,20 +108,31 @@ body {
       flex-direction: row;
       justify-content: space-between; }
       .offerdetails__bigcard--heading h1 {
+        margin-top: 1rem;
         font-size: 2.4rem;
         font-weight: 700; }
       .offerdetails__bigcard--heading h2 {
         font-size: 1.5rem;
         font-weight: 600;
         color: #0061ff;
-        margin-top: 1rem; }
-      .offerdetails__bigcard--heading span {
-        font-size: 1.5rem;
-        font-weight: 600; }
-        .offerdetails__bigcard--heading span:first-child {
-          color: #bdbdbd; }
+        margin-top: 0rem; }
+      .offerdetails__bigcard--heading-right {
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; }
+        .offerdetails__bigcard--heading-right-span {
+          margin-top: 2rem; }
+          .offerdetails__bigcard--heading-right-span span {
+            font-size: 1.5rem;
+            font-weight: 600; }
+          .offerdetails__bigcard--heading-right-span :first-child {
+            color: #bdbdbd; }
+        .offerdetails__bigcard--heading-right-buttons > * {
+          margin-left: 2rem; }
     .offerdetails__bigcard h1 {
-      font-weight: 700; }
+      font-weight: 700;
+      font-size: 2.4rem; }
     .offerdetails__bigcard--exigences {
       margin-top: 1.8rem;
       display: flex;
@@ -131,10 +142,11 @@ body {
     .offerdetails__bigcard--description {
       margin-top: 2rem; }
       .offerdetails__bigcard--description p {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         color: #828282;
         line-height: 2.5rem;
-        margin-top: 1.8rem; }
+        margin-top: 1.8rem;
+        font-weight: 600; }
     .offerdetails__bigcard--detailspoints {
       margin: 3rem 0rem 5rem 0rem; }
       .offerdetails__bigcard--detailspoints-item {
@@ -142,8 +154,9 @@ body {
         margin-left: 3rem;
         margin-top: 2rem; }
         .offerdetails__bigcard--detailspoints-item p {
-          font-size: 1.5rem;
-          margin: auto 2rem; }
+          font-size: 1.6rem;
+          margin: auto 2rem;
+          font-weight: 600; }
   .offerdetails__similaroffers {
     /* position: fixed;
     right: 5rem; */
@@ -156,6 +169,90 @@ body {
       font-size: 2.6rem;
       margin-bottom: 2rem;
       margin-top: 0rem; }
+
+.offerapplication__bigcard-uppersection {
+  display: flex;
+  justify-content: space-between; }
+  .offerapplication__bigcard-uppersection--left {
+    width: 70%; }
+  .offerapplication__bigcard-uppersection--right {
+    width: 25%; }
+    .offerapplication__bigcard-uppersection--right h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #828282;
+      margin-top: 3rem; }
+    .offerapplication__bigcard-uppersection--right p {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: black; }
+
+.offerapplication__bigcard-applicationDetails {
+  margin-top: 4rem; }
+  .offerapplication__bigcard-applicationDetails--content {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between; }
+  .offerapplication__bigcard-applicationDetails--item {
+    max-width: 25%;
+    margin-right: 5rem;
+    margin-top: 1rem; }
+    .offerapplication__bigcard-applicationDetails--item h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #828282; }
+    .offerapplication__bigcard-applicationDetails--item p {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: black; }
+
+.offerapplication__motivationletter {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem; }
+  .offerapplication__motivationletter label {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #828282; }
+  .offerapplication__motivationletter textarea {
+    font-size: 1.8rem;
+    padding: 1rem 2rem;
+    border: #828282 solid;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    font-weight: 500; }
+
+.offerapplication__cv {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem; }
+  .offerapplication__cv label {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #828282; }
+  .offerapplication__cv-content {
+    display: flex;
+    margin-top: 1rem; }
+    .offerapplication__cv-content img {
+      width: 35rem;
+      height: 20rem;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      margin-right: 6rem; }
+    .offerapplication__cv-content--buttons {
+      margin-top: auto;
+      margin-bottom: auto; }
+      .offerapplication__cv-content--buttons > * {
+        margin-right: 2rem;
+        margin-top: auto;
+        margin-bottom: auto; }
+
+.offerapplication__actions {
+  margin-top: 5rem;
+  text-align: end;
+  padding-bottom: 3rem; }
+  .offerapplication__actions > * {
+    margin-left: 3rem; }
 
 .auth_side-left {
   position: relative;
@@ -278,6 +375,40 @@ body {
     color: #319795;
     cursor: pointer; }
 
+.home__searchbar {
+  display: flex;
+  margin-bottom: 4rem; }
+  .home__searchbar-input {
+    width: 30% !important;
+    background-color: white;
+    padding: 2.2rem 3rem;
+    font-size: 2rem;
+    border-right: #f2f2f2 solid 0.2rem; }
+    .home__searchbar-input-icon {
+      color: #0061ff; }
+    .home__searchbar-input input {
+      margin-left: 1.5rem;
+      font-weight: 600;
+      width: 90%; }
+      .home__searchbar-input input:focus {
+        outline: none;
+        color: #828282; }
+  .home__searchbar-button {
+    width: 12% !important;
+    background-color: #0061ff;
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    margin: auto;
+    text-align: center;
+    padding-top: 2.2rem;
+    padding-bottom: 2.2rem;
+    cursor: pointer; }
+  .home__searchbar :first-child {
+    border-radius: 0.8rem 0rem 0rem 0.8rem !important; }
+  .home__searchbar :last-child {
+    border-radius: 0rem 0.8rem 0.8rem 0rem !important; }
+
 .home__jobOffers {
   padding: 4rem 8rem 2rem 8rem; }
   @media screen and (max-width: 37.5em) {
@@ -285,7 +416,8 @@ body {
       padding: 2rem 4rem; } }
   .home__jobOffers h1 {
     font-size: 3rem;
-    font-weight: 700; }
+    font-weight: 700;
+    margin-bottom: 2rem; }
     @media screen and (max-width: 37.5em) {
       .home__jobOffers h1 {
         font-size: 2.4rem; } }
@@ -397,7 +529,7 @@ body {
       font-size: 1.4rem; }
 
 .dataTable {
-  font-family: 'Montserrat'; }
+  font-family: "Montserrat"; }
   .dataTable_nav {
     display: flex;
     justify-content: space-between;

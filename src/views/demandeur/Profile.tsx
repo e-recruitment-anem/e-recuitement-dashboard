@@ -12,11 +12,9 @@ import Education from "../../components/JobSeeker/Profile/Education";
 import ProfessionalExperience from "../../components/JobSeeker/Profile/ProfessionalExperience";
 import Certificates from "../../components/JobSeeker/Profile/Certificates";
 import ProfileSkills from "../../components/JobSeeker/Profile/ProfileSkills";
+import React from "react";
 
 const Profile: FC = () => {
-  const biographyParagraph =
-    "Lorem mi eget libero, lacus adipiscing eu amet. Etiam diam vel leo habitasse risus proin. In pulvinar hac malesuada purus erat. Justo, ultrices integer eu et sed arcu sed lorem sed. Orci, sit sit tellus tristique nunc. Sem non proin posuere tellus nisi accumsan sit eros eget. Libero urna, elementum neque placerat tortor.";
-
   const similarOffers = [
     {
       role: "UI/UX Design",
@@ -49,6 +47,8 @@ const Profile: FC = () => {
       cover: "img/demandeur/agencelogo.png",
     },
   ];
+
+  const [visible, setVisible] = React.useState("general");
 
   return (
     <>
@@ -90,54 +90,87 @@ const Profile: FC = () => {
                 _selected={{ color: "#0061FF" }}
                 className="jsprofile__tabs-item"
                 fontSize={"2xl"}
+                onClick={() => setVisible("general")}
               >
                 General
               </Tab>
-              <Tab className="jsprofile__tabs-item" fontSize={"2xl"}>
+              <Tab
+                className="jsprofile__tabs-item"
+                fontSize={"2xl"}
+                onClick={() => setVisible("experience")}
+              >
                 Exeprience
               </Tab>
-              <Tab className="jsprofile__tabs-item" fontSize={"2xl"}>
+              <Tab
+                className="jsprofile__tabs-item"
+                fontSize={"2xl"}
+                onClick={() => setVisible("settings")}
+              >
                 Settings
               </Tab>
-              <Tab className="jsprofile__tabs-item" fontSize={"2xl"}>
+              <Tab
+                className="jsprofile__tabs-item"
+                fontSize={"2xl"}
+                onClick={() => setVisible("cv")}
+              >
                 Generated CV
               </Tab>
             </TabList>
           </Tabs>
 
           {/**PROFILE SECTIONS */}
-          <Box className="jsprofile__box">
-            <PersonalInformation></PersonalInformation>
-          </Box>
 
-          <Box className="jsprofile__box">
-            <Biography paragraph={biographyParagraph}></Biography>
-          </Box>
+          {visible === "general" && (
+            <div>
+              <Box className="jsprofile__box">
+                <PersonalInformation></PersonalInformation>
+              </Box>
+              <Box className="jsprofile__box">
+                <Biography />
+              </Box>
+              <Box className="jsprofile__box">
+                <ProfileSkills />
+              </Box>
+              <Box className="jsprofile__box">
+                <Languages></Languages>
+              </Box>
+            </div>
+          )}
 
-          <Box className="jsprofile__box">
-            <ProfileSkills></ProfileSkills>
-          </Box>
+          {visible === "experience" && (
+            <div>
+              <Box className="jsprofile__box">
+                <Education></Education>
+              </Box>
 
-          <Box className="jsprofile__box">
-            <Languages></Languages>
-          </Box>
+              <Box className="jsprofile__box">
+                <ProfessionalExperience></ProfessionalExperience>
+              </Box>
 
-          <Box className="jsprofile__box">
-            <Education></Education>
-          </Box>
+              <Box className="jsprofile__box">
+                <Certificates></Certificates>
+              </Box>
+            </div>
+          )}
 
-          <Box className="jsprofile__box">
-            <ProfessionalExperience></ProfessionalExperience>
-          </Box>
-
-          <Box className="jsprofile__box">
-            <Certificates></Certificates>
-          </Box>
+          {visible === "cv" && (
+            <div>
+              <Box className="jsprofile__box-cv">
+                <Biography></Biography>
+                <PersonalInformation></PersonalInformation>
+                <ProfileSkills></ProfileSkills>
+                <Languages></Languages>
+                <Education></Education>
+                <ProfessionalExperience></ProfessionalExperience>
+                <Certificates></Certificates>
+              </Box>
+            </div>
+          )}
         </div>
 
         {/** SIMILAR OFFERS */}
         <div className="offerdetails__similaroffers">
-          <h1>Offres similaires</h1>
+          <h1>Offers you may like</h1>
           {similarOffers.map(
             ({
               role,
