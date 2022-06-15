@@ -14,6 +14,7 @@ import OfferApplicationReview from "./views/demandeur/Offers/OfferApplicationRev
 import MyApplications from "./views/demandeur/Offers/MyApplications";
 import EmployerDashboard from "./views/employer/Dashboard";
 import CreateJobOffer from "./views/employer/CreateJobOffer";
+import EmplOfferDetails from "./views/employer/OfferDetails";
 
 const routes = [
   {
@@ -63,6 +64,10 @@ const routes = [
   {
     path: "/createoffer",
     element: <CreateJobOffer />,
+  },
+  {
+    path: "/emplofferdetails",
+    element: <EmplOfferDetails />,
   },
 ];
 
