@@ -14,16 +14,16 @@ interface summaryBox {
 interface Props {
   summaryBoxItems: summaryBox[];
   skills: string[];
-  actionButton?: string;
   onClick?: MouseEventHandler<HTMLSpanElement>;
   additionalStyle?: string;
+  role: number;
 }
 
 const OfferDetailsCard: FC<Props> = ({
   skills,
   summaryBoxItems,
-  actionButton,
   additionalStyle,
+  role,
   onClick,
 }) => {
   const circle = (
@@ -59,9 +59,17 @@ const OfferDetailsCard: FC<Props> = ({
             <h2>Yassier algérie</h2>
           </div>
           <div className="offerdetails__bigcard--heading-right">
-            <div className="offerdetails__bigcard--heading-right-buttons">
-              <PrimaryButton color="primaryColor" content={actionButton} />
-            </div>
+            {role === 1 && (
+              <div className="offerdetails__bigcard--heading-right-buttons">
+                <PrimaryButton color="primaryColor" content="Edit job offer " />
+                <PrimaryButton color="delete" content="Close offer" />
+              </div>
+            )}
+            {role === 0 && (
+              <div className="offerdetails__bigcard--heading-right-buttons">
+                <PrimaryButton color="primaryColor" content="Apply for job" />{" "}
+              </div>
+            )}
             <div className="offerdetails__bigcard--heading-right-span">
               <span>Il y a 8 jours: </span>
               <span>12 applicant</span>

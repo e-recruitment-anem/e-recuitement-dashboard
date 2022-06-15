@@ -8,20 +8,22 @@ import "./MyOffersBox.scss";
 
 interface Props {
   agence?: string;
-  role?: string;
+  job?: string;
   PublicationDate?: string;
   description?: string;
   JobState?: string;
   applicationURL: string;
+  role: number;
 }
 
 const MyOffersBox: FC<Props> = ({
   agence,
-  role,
+  job,
   PublicationDate,
   description,
   JobState,
   applicationURL,
+  role,
 }) => {
   const navigate = useNavigate();
   const openInNewTab = (url) => {
@@ -36,7 +38,7 @@ const MyOffersBox: FC<Props> = ({
             <div className="myoffers__content--header-group">
               <h1>{agence}</h1>
               <div className="myoffers__content--header-titles">
-                <span>{role}</span>
+                <span>{job}</span>
                 <span>{PublicationDate}</span>
               </div>
             </div>
@@ -50,12 +52,30 @@ const MyOffersBox: FC<Props> = ({
               <SkillTag content="Sketch" size="medium"></SkillTag>
               <SkillTag content="InVision" size="medium"></SkillTag>
             </div>
-            <PrimaryButton
-              content="See details"
-              color="primaryColor"
-              additionalStyle="myoffers__content--bottom-button"
-              onClick={() => openInNewTab(applicationURL)}
-            ></PrimaryButton>
+            {role === 0 && (
+              <div className="">
+                <PrimaryButton
+                  content="Offer details"
+                  color="Gray-5"
+                  additionalStyle="myoffers__content--bottom-button"
+                  onClick={() => openInNewTab(applicationURL)}
+                ></PrimaryButton>
+                <PrimaryButton
+                  content="See my application"
+                  color="primaryColor"
+                  additionalStyle="myoffers__content--bottom-button"
+                  onClick={() => openInNewTab(applicationURL)}
+                ></PrimaryButton>
+              </div>
+            )}
+            {role === 1 && (
+              <PrimaryButton
+                content="Offer details"
+                color="primaryColor"
+                additionalStyle="myoffers__content--bottom-button"
+                onClick={() => openInNewTab(applicationURL)}
+              ></PrimaryButton>
+            )}
           </div>
         </div>
       </div>

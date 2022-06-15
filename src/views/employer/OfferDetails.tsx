@@ -3,9 +3,6 @@ import EmployerNavbar from "../../components/Employer/EmployerNavbar";
 import "../../styles/_components.scss";
 import OfferDetailsCard from "../../components/OfferDetailsCard";
 import ApplicantBox from "../../components/Employer/ApplicantBox";
-import { Box } from "@chakra-ui/react";
-import SkillTag from "../../components/JobSeeker/SkillTag/SkillTag";
-import PrimaryButton from "../../components/PrimaryButton";
 import SimilarProfileBox from "../../components/Employer/SimilarProfileBox";
 
 const EmplOfferDetails: FC = () => {
@@ -86,7 +83,7 @@ const EmplOfferDetails: FC = () => {
           <OfferDetailsCard
             summaryBoxItems={summaryBoxItems}
             skills={offerSkills}
-            actionButton="Edit job offer"
+            role={1}
           />
           <div className="emplOfferDetails__left--list">
             <h1>List of applicants</h1>

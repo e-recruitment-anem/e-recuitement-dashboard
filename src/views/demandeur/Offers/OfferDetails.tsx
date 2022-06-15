@@ -68,8 +68,8 @@ const OfferDetails: FC = () => {
         <OfferDetailsCard
           skills={skills}
           summaryBoxItems={summaryBoxItems}
-          actionButton="Apply for the job"
           additionalStyle="Card-size3"
+          role={0}
         />
         <div className="offerdetails__similaroffers">
           <h1>Offres similaires</h1>

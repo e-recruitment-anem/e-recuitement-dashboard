@@ -1,10 +1,10 @@
-import { Tab, TabList, Tabs } from "@chakra-ui/react";
 import { FC, useState } from "react";
-import MyOffersBox from "../../../components/JobSeeker/MyOffersBox";
-import NavBar from "../../../components/NavBar";
-import "../../../styles/_components.scss";
+import EmployerNavbar from "../../components/Employer/EmployerNavbar";
+import "../../styles/_components.scss";
+import { Tabs, TabList, Tab } from "@chakra-ui/react";
+import MyOffersBox from "../../components/JobSeeker/MyOffersBox";
 
-const MyOffers: FC = () => {
+const Offers: FC = () => {
   const [JobState, setJobState] = useState<string | null>(null);
   const myOffers = [
     {
@@ -13,7 +13,7 @@ const MyOffers: FC = () => {
       PublicationDate: "Postulé le 04 Janvier 2022",
       description:
         "Tempus duis dui quam consectetur sit turpis vitae. Nisl volutpat non tellus at rhoncus, cursus diam mauris. Elit est velit, metus, suspendisse iaculis ultrices proin vulputate augue. Ut id a faucibus tempus nisl. At at vitae condimentum cursus. Porta amet, dignissim vulputate.",
-      JobState: "pending",
+      JobState: "open",
     },
     {
       agence: "Yassir algérie",
@@ -21,7 +21,7 @@ const MyOffers: FC = () => {
       PublicationDate: "Postulé le 04 Janvier 2022",
       description:
         "Tempus duis dui quam consectetur sit turpis vitae. Nisl volutpat non tellus at rhoncus, cursus diam mauris. Elit est velit, metus, suspendisse iaculis ultrices proin vulputate augue. Ut id a faucibus tempus nisl. At at vitae condimentum cursus. Porta amet, dignissim vulputate.",
-      JobState: "interview",
+      JobState: "close",
     },
     {
       agence: "Yassir algérie",
@@ -29,7 +29,7 @@ const MyOffers: FC = () => {
       PublicationDate: "Postulé le 04 Janvier 2022",
       description:
         "Tempus duis dui quam consectetur sit turpis vitae. Nisl volutpat non tellus at rhoncus, cursus diam mauris. Elit est velit, metus, suspendisse iaculis ultrices proin vulputate augue. Ut id a faucibus tempus nisl. At at vitae condimentum cursus. Porta amet, dignissim vulputate.",
-      JobState: "pending",
+      JobState: "open",
     },
   ];
 
@@ -40,13 +40,11 @@ const MyOffers: FC = () => {
         )
       : myOffers;
   };
-
   return (
     <>
-      <NavBar />
-
+      <EmployerNavbar />
       <div className="myoffers">
-        <h1>My applications</h1>
+        <h1>My offers</h1>
         <Tabs isLazy className="myoffers__tabs">
           <TabList borderBottom={"none"}>
             <Tab
@@ -59,23 +57,16 @@ const MyOffers: FC = () => {
             <Tab
               className="myoffers__tabs-item"
               fontSize={"2xl"}
-              onClick={() => setJobState("pending")}
+              onClick={() => setJobState("open")}
             >
-              Pending
+              Currently open
             </Tab>
             <Tab
               className="myoffers__tabs-item"
               fontSize={"2xl"}
-              onClick={() => setJobState("interview")}
+              onClick={() => setJobState("close")}
             >
-              Interviews
-            </Tab>
-            <Tab
-              className="myoffers__tabs-item"
-              fontSize={"2xl"}
-              onClick={() => setJobState("rejected")}
-            >
-              Rejected
+              Closed
             </Tab>
           </TabList>
         </Tabs>
@@ -88,8 +79,8 @@ const MyOffers: FC = () => {
                 PublicationDate={PublicationDate}
                 description={description}
                 JobState={JobState}
-                applicationURL="/offerapplicationreview"
-                role={0}
+                applicationURL="/emplofferdetails"
+                role={1}
               />
             )
           )}
@@ -99,4 +90,4 @@ const MyOffers: FC = () => {
   );
 };
 
-export default MyOffers;
+export default Offers;

@@ -79,7 +79,7 @@ const OfferApplicationReview: FC = () => {
         <InterviewDetailsBox></InterviewDetailsBox>
       </div>
       <div className="offerdetails">
-        <Box className="offerdetails__bigcard">
+        <Box className="offerdetails__bigcard Card-size3">
           <img
             src="img/demandeur/agence_cover.png"
             alt=""
