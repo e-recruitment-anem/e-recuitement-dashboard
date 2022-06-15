@@ -1191,3 +1191,238 @@ body {
     font-weight: 500;
   }
 }
+
+// EMPLOYER DASHBOARD
+.empDashboard {
+  margin: 5rem 8rem;
+  height: fit-content;
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+
+    &-titles {
+      & h1 {
+        font-weight: 600;
+        font-size: 3rem;
+      }
+
+      & p {
+        font-weight: 600;
+        font-size: 1.8rem;
+      }
+    }
+
+    &-actions {
+      margin-top: auto;
+      margin-bottom: auto;
+
+      & > * {
+        margin-left: 2rem;
+      }
+    }
+  }
+
+  &__body {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+
+    &-left {
+      width: 68%;
+      &--header {
+        background-color: white;
+        padding: 2rem 3.2rem;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 0.8rem;
+
+        & h1 {
+          font-weight: 600;
+          font-size: 2.4rem;
+        }
+
+        & p {
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: #0061ff;
+          margin-top: auto;
+          margin-bottom: auto;
+          cursor: pointer;
+        }
+      }
+
+      &--item {
+        margin-top: 2rem;
+        background-color: white;
+        padding: 2.4rem 3.2rem;
+        border-radius: 0.8rem;
+        display: flex;
+        justify-content: space-between;
+
+        &titles {
+          display: flex;
+          flex-direction: column;
+
+          & h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #0061ff;
+          }
+
+          & p,
+          span {
+            font-size: 2rem;
+            font-weight: 500;
+            color: #333333;
+          }
+        }
+
+        &stats {
+          display: flex;
+          justify-content: space-between;
+          margin-top: auto;
+          margin-bottom: auto;
+          & > * {
+            margin-left: 8rem;
+            & p,
+            span {
+              font-size: 2.2rem;
+              font-weight: 500;
+            }
+          }
+        }
+
+        & img {
+          cursor: pointer;
+        }
+      }
+    }
+
+    &-right {
+      width: 30%;
+
+      &--upper {
+        margin-bottom: 2rem;
+        padding: 2rem 3.2rem 3rem 3.2rem;
+        background-color: white;
+        border-radius: 0.8rem;
+
+        &Box {
+          border-radius: 0.4rem;
+          border: #bdbdbd solid 0.15rem;
+          padding: 1.7rem 3rem;
+          display: flex;
+          margin-top: 3rem;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #f2f2f2;
+          }
+
+          & img {
+            width: 5rem;
+          }
+
+          & p {
+            margin-left: 2.5rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-top: auto;
+            margin-bottom: auto;
+          }
+        }
+
+        & h1 {
+          font-size: 2.4rem;
+          font-weight: 600;
+        }
+      }
+
+      &--lower {
+        padding: 2rem 3.2rem;
+        background-color: white;
+        display: flex;
+        border-radius: 0.8rem;
+
+        & img {
+          width: 8rem;
+        }
+
+        &Content {
+          margin-left: 2rem;
+          margin-top: auto;
+          margin-bottom: auto;
+
+          & h1 {
+            font-size: 1.6rem;
+            font-weight: 600;
+          }
+
+          & p {
+            font-size: 1.2rem;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+
+// EMPLOYER DASHBOARD
+.createOffer {
+  margin: 5rem 8rem;
+  background-color: white;
+  border-radius: 0.8rem;
+  padding: 2rem 4rem;
+
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+
+    & h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+    }
+  }
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+
+    & label {
+      color: #4f4f4f;
+      font-size: 1.6rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    & input,
+    select {
+      font-size: 1.5rem;
+      padding: 1.3rem 2rem;
+      border-radius: 0.6rem;
+      border: #e2e8f0 solid;
+    }
+  }
+
+  &__general {
+    & h1 {
+      font-weight: 600;
+      font-size: 2.8rem;
+    }
+    &-inputs {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+//INPUT SIZES
+.size3 {
+  width: 30% !important;
+}
+.size2 {
+  width: 47% !important;
+}

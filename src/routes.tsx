@@ -12,6 +12,8 @@ import Agence from "./views/dashboard/Agence";
 import OfferApplication from "./views/demandeur/Offers/OfferApplication";
 import OfferApplicationReview from "./views/demandeur/Offers/OfferApplicationReview";
 import MyApplications from "./views/demandeur/Offers/MyApplications";
+import EmployerDashboard from "./views/employer/Dashboard";
+import CreateJobOffer from "./views/employer/CreateJobOffer";
 
 const routes = [
   {
@@ -53,6 +55,14 @@ const routes = [
   {
     path: "/offerapplicationreview",
     element: <OfferApplicationReview />,
+  },
+  {
+    path: "/employerdashboard",
+    element: <EmployerDashboard />,
+  },
+  {
+    path: "/createoffer",
+    element: <CreateJobOffer />,
   },
 ];
 
