@@ -10,6 +10,7 @@ import Dashboard from "./views/dashboard/Dashboard";
 import OfferDetails from "./views/demandeur/OfferDetails";
 import Profile from "./views/demandeur/Profile";
 import Agence from './views/dashboard/Agence';
+import Forgetpass from './views/auth/Forgetpass';
 
 const routes = [
   {
@@ -19,6 +20,10 @@ const routes = [
   {
     path: '/login',
     element: <SignIn />,
+  },
+  {
+    path: '/Forgetpass',
+    element: <Forgetpass/>,
   },
   {
     path: "/dashboard",

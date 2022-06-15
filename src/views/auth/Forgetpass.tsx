@@ -2,9 +2,9 @@ import React from "react";
 import { FormControl, Button } from "@chakra-ui/react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 
-const SignIn = () => {
+
+const Forgetpass = () => {
   return (
     <div className="auth-container">
       <div className="auth_side-left">
@@ -23,48 +23,38 @@ const SignIn = () => {
         </div>
       </div>
       <div className="auth_side-right">
-        <h2 className="auth_header">Login</h2>
+        <h2 className="auth_header">Forget password</h2>
         <form action="post" className="auth_form">
           <FormControl className="auth_form-group">
+            <label htmlFor="text" className="auth_form-label">
+              Enter your full name 
+            </label>
+           
+            <input id="text" type="text" className="auth_form-input" />
+            <span className="auth_form-helper">
+              We'll never share your name.
+            </span>
+            
+          </FormControl>
+          <FormControl className="auth_form-group">
             <label htmlFor="email" className="auth_form-label">
-              Email address
+              Enter your email address
             </label>
             <input id="email" type="email" className="auth_form-input" />
             <span className="auth_form-helper">
               We'll never share your email.
             </span>
           </FormControl>
-          <FormControl className="auth_form-group">
-            <label htmlFor="password" className="auth_form-label">
-              Password
-            </label>
-            <input id="password" type="password" className="auth_form-input" />
-            <span className="auth_form-helper">
-              We'll never share your email.
-            </span>
-          </FormControl>
-          <Button className="auth_form-button">Log In</Button>
+          <Button className="auth_form-button">Confirm</Button>
         </form>
-        <div className="auth_other">
-          <span className="auth_other-title">Ou connecter avec</span>
-          <div className="auth_other-group">
-            <FontAwesomeIcon
-              className="auth_other-icon--fb"
-              icon={faFacebook}
-            />
-            <FontAwesomeIcon
-              className="auth_other-icon--google"
-              icon={faGoogle}
-            />
-          </div>
-        </div>
-        <div className="auth_footer">
-          <span className="auth_footer-text">Vous n’avez pas de compte?</span>{" "}
-          <span className="auth_footer-cta">s’inscrire</span>
+        <br/><br/>
+        <div className="auth_footer ">
+          <span className="auth_footer-text">Already have an account ?</span>{" "}
+          <span className="auth_footer-cta"> back to login</span>
         </div>
       </div>
     </div>
   );
 };
 
-export default SignIn;
+export default Forgetpass;
