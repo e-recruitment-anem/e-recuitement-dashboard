@@ -1,5 +1,6 @@
-import React, { FC, useState } from 'react';
-import { Button } from '@chakra-ui/react';
+import React, { FC, useState } from "react";
+import { Button } from "@chakra-ui/react";
+import AddAdminAgency from "../Dashboard/AddAdminAgency";
 
 interface Props {
   title: string;
@@ -7,7 +8,14 @@ interface Props {
 }
 
 const TableNav: FC<Props> = ({ title, cta }) => {
-  const [active, setActive] = useState('Entreprise');
+  // ADD MODAL STATE
+  const [open, setOpen] = React.useState(false);
+
+  const onToggle = () => {
+    setOpen(!open);
+  };
+
+  const [active, setActive] = useState("Entreprise");
   const toggleActive = (payload) => {
     setActive(payload);
   };
@@ -19,24 +27,27 @@ const TableNav: FC<Props> = ({ title, cta }) => {
           <div className="dataTable_nav-group">
             <Button
               className={`dataTable_nav-group--btn ${
-                active === 'Employeur' ? 'dataTable_nav-group--active' : ''
+                active === "Employeur" ? "dataTable_nav-group--active" : ""
               }`}
-              onClick={() => toggleActive('Employeur')}
+              onClick={() => toggleActive("Employeur")}
             >
               Employeur
             </Button>
             <Button
               className={`dataTable_nav-group--btn ${
-                active === 'Entreprise' ? 'dataTable_nav-group--active' : ''
+                active === "Entreprise" ? "dataTable_nav-group--active" : ""
               }`}
-              onClick={() => toggleActive('Entreprise')}
+              onClick={() => toggleActive("Entreprise")}
             >
               Enterprises
             </Button>
           </div>
         </div>
-        <Button className="dataTable_nav-cta">+ Créer {cta}</Button>
+        <Button className="dataTable_nav-cta" onClick={() => onToggle()}>
+          + Créer {cta}
+        </Button>
       </div>
+      <AddAdminAgency open={open} onToggle={onToggle} className="modal" />
     </div>
   );
 };

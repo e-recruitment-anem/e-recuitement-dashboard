@@ -30,7 +30,7 @@ const routes = [
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: <Dashboard title="Dashboard" cta="agency admin" />,
   },
   {
     path: "/agences",
@@ -65,7 +65,7 @@ const routes = [
     element: <EmployerDashboard />,
   },
   {
-    path: "/createoffer",
+    path: "/employer/offers/create",
     element: <CreateJobOffer />,
   },
   {

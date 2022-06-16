@@ -4,7 +4,7 @@ import { setSession } from '../../helpers/api';
 import { getAuth, getExample } from '../selectors';
 import { login, loginError, loginSuccess } from '../slices/auth';
 
-import { exampleAction } from '../slices/example';
+import { exampleAction } from "../slices/example";
 
 function* runExample() {
   try {
