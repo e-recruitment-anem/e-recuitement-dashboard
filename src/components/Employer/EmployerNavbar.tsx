@@ -14,13 +14,13 @@ const EmployerNavbar: FC = () => {
         src="/img/demandeur/logo.svg"
         alt=""
         className="navbar-logo"
-        onClick={() => openInNewTab("/employerdashboard")}
+        onClick={() => openInNewTab("/employer/dashboard")}
       />
       <div className="navbar-center">
-        <span onClick={() => openInNewTab("/employerdashboard")}>
+        <span onClick={() => openInNewTab("/employer/dashboard")}>
           Dashboard
         </span>
-        <span onClick={() => openInNewTab("/myoffers")}>My offers</span>
+        <span onClick={() => openInNewTab("/employer/offers")}>My offers</span>
         <span onClick={() => openInNewTab("/myinterviews")}>Interviews</span>
         <span onClick={() => openInNewTab("/favorite")}>Favorite</span>
       </div>

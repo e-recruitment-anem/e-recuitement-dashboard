@@ -59,7 +59,7 @@ const routes = [
     element: <OfferApplicationReview />,
   },
   {
-    path: "/employerdashboard",
+    path: "/employer/dashboard",
     element: <EmployerDashboard />,
   },
   {
@@ -67,11 +67,11 @@ const routes = [
     element: <CreateJobOffer />,
   },
   {
-    path: "/emplofferdetails",
+    path: "/employer/offer/details",
     element: <EmplOfferDetails />,
   },
   {
-    path: "/myoffers",
+    path: "/employer/offers",
     element: <Offers />,
   },
 ];
