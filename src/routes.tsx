@@ -18,6 +18,9 @@ import EmplOfferDetails from "./views/employer/OfferDetails";
 import Offers from "./views/employer/Offers";
 import Interviews from "./views/employer/Interviews";
 import InterviewDetails from "./views/employer/InterviewDetails";
+import Forgetpass from './views/auth/Forgetpass';
+import Signup from './views/auth/Signup';
+import Resetpass from './views/auth/Resetpass';
 
 const routes = [
   {
@@ -27,6 +30,18 @@ const routes = [
   {
     path: "/login",
     element: <SignIn />,
+  },
+  {
+    path: '/SignUp',
+    element: <Signup />,
+  },
+  {
+    path: '/Resetpass',
+    element: <Resetpass/>,
+  },
+  {
+    path: '/Forgetpass',
+    element: <Forgetpass/>,
   },
   {
     path: "/dashboard",
