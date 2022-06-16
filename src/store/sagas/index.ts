@@ -1,7 +1,7 @@
-import { all, takeLatest, select} from 'redux-saga/effects';
-import { getExample } from '../selectors';
+import { all, takeLatest, select } from "redux-saga/effects";
+import { getExample } from "../selectors";
 
-import { exampleAction } from '../slices/example';
+import { exampleAction } from "../slices/example";
 
 function* runExample() {
   try {

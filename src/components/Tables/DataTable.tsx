@@ -1,12 +1,11 @@
-import React, { FC } from 'react';
-import { Table, Thead, Tbody, Tr, Td } from '@chakra-ui/react';
-import TableNav from './TableNav';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { FC } from "react";
+import { Table, Thead, Tbody, Tr, Td } from "@chakra-ui/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCaretDown,
   faCaretUp,
   faCircle,
-} from '@fortawesome/free-solid-svg-icons';
+} from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   title: string;
@@ -17,12 +16,10 @@ const DataTable: FC<Props> = ({ title, cta }) => {
   const data = [1, 2, 3, 4, 5, 6, 7, 8];
   return (
     <>
-      <TableNav title={title} cta={cta} />
       <Table className="dataTable">
         <Thead className="dataTable_head">
           <Tr className="dataTable_row">
             <Td className="dataTable_header dataTable_header-id">
-              #{' '}
               <FontAwesomeIcon
                 className="dataTbale_header-icon"
                 icon={faCaretDown}
@@ -30,14 +27,14 @@ const DataTable: FC<Props> = ({ title, cta }) => {
             </Td>
             <Td className="dataTable_header">PM</Td>
             <Td className="dataTable_header dataTable_header-sortable">
-              Entreprise{' '}
+              Entreprise{" "}
               <FontAwesomeIcon
                 className="dataTbale_header-icon"
                 icon={faCaretUp}
               />
             </Td>
             <Td className="dataTable_header dataTable_header-sortable">
-              Commune{' '}
+              Commune{" "}
               <FontAwesomeIcon
                 className="dataTbale_header-icon"
                 icon={faCaretDown}
@@ -68,7 +65,7 @@ const DataTable: FC<Props> = ({ title, cta }) => {
                   <FontAwesomeIcon
                     className="dataTable_item-status--icon"
                     icon={faCircle}
-                  />{' '}
+                  />{" "}
                   On Track
                 </div>
               </Td>
