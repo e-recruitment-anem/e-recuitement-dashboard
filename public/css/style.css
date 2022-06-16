@@ -80,13 +80,15 @@ body {
       height: 3rem;
       margin: auto 0rem; }
 
+.Card-size3 {
+  width: 66%; }
+
 .offerdetails {
   margin: 5rem 8rem;
   height: fit-content;
   display: flex;
   justify-content: space-between; }
   .offerdetails__bigcard {
-    width: 66%;
     background-color: white;
     border-radius: 1rem !important;
     border: none !important;
@@ -108,20 +110,31 @@ body {
       flex-direction: row;
       justify-content: space-between; }
       .offerdetails__bigcard--heading h1 {
+        margin-top: 1rem;
         font-size: 2.4rem;
         font-weight: 700; }
       .offerdetails__bigcard--heading h2 {
         font-size: 1.5rem;
         font-weight: 600;
         color: #0061ff;
-        margin-top: 1rem; }
-      .offerdetails__bigcard--heading span {
-        font-size: 1.5rem;
-        font-weight: 600; }
-        .offerdetails__bigcard--heading span:first-child {
-          color: #bdbdbd; }
+        margin-top: 0rem; }
+      .offerdetails__bigcard--heading-right {
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; }
+        .offerdetails__bigcard--heading-right-span {
+          margin-top: 2rem; }
+          .offerdetails__bigcard--heading-right-span span {
+            font-size: 1.5rem;
+            font-weight: 600; }
+          .offerdetails__bigcard--heading-right-span :first-child {
+            color: #bdbdbd; }
+        .offerdetails__bigcard--heading-right-buttons > * {
+          margin-left: 2rem; }
     .offerdetails__bigcard h1 {
-      font-weight: 700; }
+      font-weight: 700;
+      font-size: 2.4rem; }
     .offerdetails__bigcard--exigences {
       margin-top: 1.8rem;
       display: flex;
@@ -131,10 +144,11 @@ body {
     .offerdetails__bigcard--description {
       margin-top: 2rem; }
       .offerdetails__bigcard--description p {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         color: #828282;
         line-height: 2.5rem;
-        margin-top: 1.8rem; }
+        margin-top: 1.8rem;
+        font-weight: 600; }
     .offerdetails__bigcard--detailspoints {
       margin: 3rem 0rem 5rem 0rem; }
       .offerdetails__bigcard--detailspoints-item {
@@ -142,8 +156,9 @@ body {
         margin-left: 3rem;
         margin-top: 2rem; }
         .offerdetails__bigcard--detailspoints-item p {
-          font-size: 1.5rem;
-          margin: auto 2rem; }
+          font-size: 1.6rem;
+          margin: auto 2rem;
+          font-weight: 600; }
   .offerdetails__similaroffers {
     /* position: fixed;
     right: 5rem; */
@@ -156,6 +171,110 @@ body {
       font-size: 2.6rem;
       margin-bottom: 2rem;
       margin-top: 0rem; }
+
+.offerAppReview__details {
+  display: flex;
+  flex-wrap: wrap; }
+  .offerAppReview__details-item {
+    width: 33%; }
+    .offerAppReview__details-item h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #828282;
+      margin-top: 2rem; }
+    .offerAppReview__details-item p {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: black; }
+
+.offerAppReview__detailstitle {
+  margin-top: 6rem;
+  font-size: 3rem !important; }
+
+.offerapplication__bigcard-uppersection {
+  display: flex;
+  justify-content: space-between; }
+  .offerapplication__bigcard-uppersection--left {
+    width: 77%; }
+  .offerapplication__bigcard-uppersection--right {
+    width: 17%; }
+    .offerapplication__bigcard-uppersection--right h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #828282;
+      margin-top: 3rem; }
+    .offerapplication__bigcard-uppersection--right p {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: black; }
+
+.offerapplication__bigcard-applicationDetails {
+  margin-top: 4rem; }
+  .offerapplication__bigcard-applicationDetails--content {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 85%; }
+  .offerapplication__bigcard-applicationDetails--item {
+    max-width: 25%;
+    margin-right: 5rem;
+    margin-top: 1rem; }
+    .offerapplication__bigcard-applicationDetails--item h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #828282; }
+    .offerapplication__bigcard-applicationDetails--item p {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: black; }
+
+.offerapplication__motivationletter {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem; }
+  .offerapplication__motivationletter label {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #828282; }
+  .offerapplication__motivationletter textarea {
+    font-size: 1.8rem;
+    padding: 1rem 2rem;
+    border: #828282 solid;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    font-weight: 500; }
+
+.offerapplication__cv {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem; }
+  .offerapplication__cv label {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #828282; }
+  .offerapplication__cv-content {
+    display: flex;
+    margin-top: 1rem; }
+    .offerapplication__cv-content img {
+      width: 35rem;
+      height: 20rem;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      margin-right: 6rem; }
+    .offerapplication__cv-content--buttons {
+      margin-top: auto;
+      margin-bottom: auto; }
+      .offerapplication__cv-content--buttons > * {
+        margin-right: 2rem;
+        margin-top: auto;
+        margin-bottom: auto; }
+
+.offerapplication__actions {
+  margin-top: 5rem;
+  text-align: end;
+  padding-bottom: 3rem; }
+  .offerapplication__actions > * {
+    margin-left: 3rem; }
 
 .auth_side-left {
   position: relative;
@@ -278,6 +397,40 @@ body {
     color: #319795;
     cursor: pointer; }
 
+.home__searchbar {
+  display: flex;
+  margin-bottom: 4rem; }
+  .home__searchbar-input {
+    width: 30% !important;
+    background-color: white;
+    padding: 2.2rem 3rem;
+    font-size: 2rem;
+    border-right: #f2f2f2 solid 0.2rem; }
+    .home__searchbar-input-icon {
+      color: #0061ff; }
+    .home__searchbar-input input {
+      margin-left: 1.5rem;
+      font-weight: 600;
+      width: 90%; }
+      .home__searchbar-input input:focus {
+        outline: none;
+        color: #828282; }
+  .home__searchbar-button {
+    width: 12% !important;
+    background-color: #0061ff;
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    margin: auto;
+    text-align: center;
+    padding-top: 2.2rem;
+    padding-bottom: 2.2rem;
+    cursor: pointer; }
+  .home__searchbar :first-child {
+    border-radius: 0.8rem 0rem 0rem 0.8rem !important; }
+  .home__searchbar :last-child {
+    border-radius: 0rem 0.8rem 0.8rem 0rem !important; }
+
 .home__jobOffers {
   padding: 4rem 8rem 2rem 8rem; }
   @media screen and (max-width: 37.5em) {
@@ -285,7 +438,8 @@ body {
       padding: 2rem 4rem; } }
   .home__jobOffers h1 {
     font-size: 3rem;
-    font-weight: 700; }
+    font-weight: 700;
+    margin-bottom: 2rem; }
     @media screen and (max-width: 37.5em) {
       .home__jobOffers h1 {
         font-size: 2.4rem; } }
@@ -397,7 +551,7 @@ body {
       font-size: 1.4rem; }
 
 .dataTable {
-  font-family: 'Montserrat'; }
+  font-family: "Montserrat"; }
   .dataTable_nav {
     display: flex;
     justify-content: space-between;
@@ -698,3 +852,306 @@ body {
       .jsprofile__heading--content span {
         font-size: 1.6rem;
         color: #828282; }
+
+.jobapplication {
+  width: 100%; }
+  .jobapplication__heading {
+    margin-bottom: 4rem; }
+
+.hello h1 {
+  font-size: 2.5rem;
+  font-weight: 500; }
+
+.empDashboard {
+  margin: 5rem 8rem;
+  height: fit-content; }
+  .empDashboard__heading {
+    display: flex;
+    justify-content: space-between; }
+    .empDashboard__heading-titles h1 {
+      font-weight: 600;
+      font-size: 3rem; }
+    .empDashboard__heading-titles p {
+      font-weight: 600;
+      font-size: 1.8rem; }
+    .empDashboard__heading-actions {
+      margin-top: auto;
+      margin-bottom: auto; }
+      .empDashboard__heading-actions > * {
+        margin-left: 2rem; }
+  .empDashboard__body {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between; }
+    .empDashboard__body-left {
+      width: 68%; }
+      .empDashboard__body-left--header {
+        background-color: white;
+        padding: 2rem 3.2rem;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 0.8rem; }
+        .empDashboard__body-left--header h1 {
+          font-weight: 600;
+          font-size: 2.4rem; }
+        .empDashboard__body-left--header p {
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: #0061ff;
+          margin-top: auto;
+          margin-bottom: auto;
+          cursor: pointer; }
+      .empDashboard__body-left--item {
+        margin-top: 2rem;
+        background-color: white;
+        padding: 2.4rem 3.2rem;
+        border-radius: 0.8rem;
+        display: flex;
+        justify-content: space-between; }
+        .empDashboard__body-left--itemtitles {
+          display: flex;
+          flex-direction: column; }
+          .empDashboard__body-left--itemtitles h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #0061ff; }
+          .empDashboard__body-left--itemtitles p,
+          .empDashboard__body-left--itemtitles span {
+            font-size: 2rem;
+            font-weight: 500;
+            color: #333333; }
+        .empDashboard__body-left--itemstats {
+          display: flex;
+          justify-content: space-between;
+          margin-top: auto;
+          margin-bottom: auto; }
+          .empDashboard__body-left--itemstats > * {
+            margin-left: 8rem; }
+            .empDashboard__body-left--itemstats > * p,
+            .empDashboard__body-left--itemstats > * span {
+              font-size: 2.2rem;
+              font-weight: 500; }
+        .empDashboard__body-left--item img {
+          cursor: pointer; }
+    .empDashboard__body-right {
+      width: 30%; }
+      .empDashboard__body-right--upper {
+        margin-bottom: 2rem;
+        padding: 2rem 3.2rem 3rem 3.2rem;
+        background-color: white;
+        border-radius: 0.8rem; }
+        .empDashboard__body-right--upperBox {
+          border-radius: 0.4rem;
+          border: #bdbdbd solid 0.15rem;
+          padding: 1.7rem 3rem;
+          display: flex;
+          margin-top: 3rem;
+          cursor: pointer; }
+          .empDashboard__body-right--upperBox:hover {
+            background-color: #f2f2f2; }
+          .empDashboard__body-right--upperBox img {
+            width: 5rem; }
+          .empDashboard__body-right--upperBox p {
+            margin-left: 2.5rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-top: auto;
+            margin-bottom: auto; }
+        .empDashboard__body-right--upper h1 {
+          font-size: 2.4rem;
+          font-weight: 600; }
+      .empDashboard__body-right--lower {
+        padding: 2rem 3.2rem;
+        background-color: white;
+        display: flex;
+        border-radius: 0.8rem; }
+        .empDashboard__body-right--lower img {
+          width: 8rem; }
+        .empDashboard__body-right--lowerContent {
+          margin-left: 2rem;
+          margin-top: auto;
+          margin-bottom: auto; }
+          .empDashboard__body-right--lowerContent h1 {
+            font-size: 1.6rem;
+            font-weight: 600; }
+          .empDashboard__body-right--lowerContent p {
+            font-size: 1.2rem;
+            font-weight: 500; }
+
+.createOffer {
+  margin: 5rem 8rem;
+  background-color: white;
+  border-radius: 0.8rem;
+  padding: 2rem 4rem; }
+  .createOffer__heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem; }
+    .createOffer__heading h1 {
+      font-size: 2.8rem;
+      font-weight: 600; }
+  .createOffer__input {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem; }
+    .createOffer__input label {
+      color: #4f4f4f;
+      font-size: 1.6rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem; }
+    .createOffer__input input,
+    .createOffer__input select,
+    .createOffer__input textarea {
+      font-size: 1.5rem;
+      padding: 1.3rem 2rem;
+      border-radius: 0.6rem;
+      border: #e2e8f0 solid; }
+  .createOffer__general {
+    margin-top: 4rem;
+    margin-bottom: 4rem; }
+    .createOffer__general h1 {
+      font-weight: 600;
+      font-size: 2.8rem; }
+    .createOffer__general-inputs {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap; }
+  .createOffer__exigences {
+    margin-top: 4rem;
+    margin-bottom: 2rem; }
+    .createOffer__exigences h1 {
+      font-weight: 600;
+      font-size: 2.8rem; }
+    .createOffer__exigences-list {
+      margin-top: 1.8rem;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap; }
+    .createOffer__exigences-heading {
+      display: flex;
+      justify-content: space-between; }
+    .createOffer__exigences-action {
+      margin-top: auto;
+      margin-bottom: auto; }
+  .createOffer__specInfo {
+    margin-top: 4rem; }
+    .createOffer__specInfo h1 {
+      font-weight: 600;
+      font-size: 2.8rem; }
+    .createOffer__specInfo p {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      font-weight: 500; }
+    .createOffer__specInfo-inputs {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 4rem; }
+
+.emplOfferDetails {
+  padding: 5rem 8rem;
+  display: flex;
+  justify-content: space-between; }
+  .emplOfferDetails__left {
+    width: 66%; }
+    .emplOfferDetails__left--list h1 {
+      font-size: 3.2rem;
+      font-weight: 600;
+      margin-top: 5rem;
+      margin-bottom: 2rem; }
+    .emplOfferDetails__left--list-item {
+      background-color: white;
+      border-radius: 0.8rem;
+      padding: 2rem 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 3rem; }
+      .emplOfferDetails__left--list-item > img {
+        width: 10rem;
+        height: 10rem;
+        margin-right: 3rem;
+        margin-top: auto;
+        margin-bottom: auto; }
+      .emplOfferDetails__left--list-itemContent {
+        display: flex;
+        flex-direction: column; }
+        .emplOfferDetails__left--list-itemContent p {
+          font-size: 1.3rem;
+          font-weight: 500;
+          display: -webkit-box;
+          max-width: 100%;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          margin-top: 0.4rem; }
+      .emplOfferDetails__left--list-itemHeading {
+        display: flex;
+        justify-content: space-between;
+        margin-top: auto;
+        margin-bottom: auto; }
+        .emplOfferDetails__left--list-itemHeading p {
+          font-size: 2.4rem;
+          color: #0061ff;
+          font-weight: 600; }
+        .emplOfferDetails__left--list-itemHeading img {
+          cursor: pointer; }
+      .emplOfferDetails__left--list-itemTrailing {
+        display: flex;
+        margin-top: 1rem; }
+        .emplOfferDetails__left--list-itemTrailing span {
+          font-size: 1.6rem;
+          font-weight: 600; }
+        .emplOfferDetails__left--list-itemTrailing > div :first-child {
+          margin-right: 1rem;
+          color: #333333; }
+        .emplOfferDetails__left--list-itemTrailing > div :last-child {
+          color: #828282; }
+        .emplOfferDetails__left--list-itemTrailing > div {
+          margin-right: 5rem; }
+
+.similarProfiles {
+  width: 30%; }
+  .similarProfiles h1 {
+    font-size: 2.6rem;
+    font-weight: 600;
+    margin-bottom: 2rem; }
+  .similarProfiles__item {
+    background-color: white;
+    border-radius: 0.4rem;
+    padding: 1.6rem 2.2rem;
+    margin-bottom: 3rem; }
+    .similarProfiles__item-heading {
+      display: flex; }
+      .similarProfiles__item-heading img {
+        width: 7rem;
+        height: 7rem;
+        margin-right: 2rem; }
+      .similarProfiles__item-heading h1 {
+        font-weight: 600;
+        font-size: 1.9rem; }
+      .similarProfiles__item-heading p {
+        font-weight: 500;
+        font-size: 1.2rem;
+        display: -webkit-box;
+        max-width: 100%;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+    .similarProfiles__item-skills {
+      margin-top: 2rem;
+      display: flex; }
+    .similarProfiles__item-actions {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: space-between; }
+      .similarProfiles__item-actions > * {
+        width: 47%; }
+
+.size3 {
+  width: 30% !important; }
+
+.size2 {
+  width: 47% !important; }

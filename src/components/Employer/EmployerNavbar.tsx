@@ -1,12 +1,10 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/_components.scss";
+import "../../styles/_components.scss";
 
-const NavBar: FC = () => {
+const EmployerNavbar: FC = () => {
   const navigate = useNavigate();
   const openInNewTab = (url) => {
-    // const newWindow = window.open(url, "noopener,noreferrer");
-    // if (newWindow) newWindow.opener = null;
     navigate(url);
   };
 
@@ -16,14 +14,17 @@ const NavBar: FC = () => {
         src="/img/demandeur/logo.svg"
         alt=""
         className="navbar-logo"
-        onClick={() => openInNewTab("/offers")}
+        onClick={() => openInNewTab("/employer/dashboard")}
       />
       <div className="navbar-center">
-        <span onClick={() => openInNewTab("/offers")}>Job Offers</span>
-        <span onClick={() => openInNewTab("/applications")}>
-          My applications
+        <span onClick={() => openInNewTab("/employer/dashboard")}>
+          Dashboard
         </span>
-        <span onClick={() => openInNewTab("/")}>Alerts</span>
+        <span onClick={() => openInNewTab("/employer/offers")}>My offers</span>
+        <span onClick={() => openInNewTab("/employer/interviews")}>
+          Interviews
+        </span>
+        <span onClick={() => openInNewTab("/favorite")}>Favorite</span>
       </div>
       <div className="navbar-right">
         <img
@@ -42,4 +43,4 @@ const NavBar: FC = () => {
   );
 };
 
-export default NavBar;
+export default EmployerNavbar;

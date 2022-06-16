@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import "../styles/_components.scss";
 
 const Hello = () => {
   return (
-    <div>
+    <div className="hello">
       <Link to="/offers">
         <h1>Offers</h1>
       </Link>

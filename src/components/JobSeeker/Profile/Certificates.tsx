@@ -8,16 +8,16 @@ interface Props extends InputProps {
 }
 
 const Certificates: FC<Props> = ({ paragraph }) => {
-  const professionalExperienceItems = [
+  const certificates = [
     {
-      certificateTitle: "Higher National School of Computer Science (Algeria)",
-      certificateDate: "January 2020",
-      certificateImages: ["img/demandeur/agence_cover.png"],
+      title: "Higher National School of Computer Science (Algeria)",
+      date: "January 2020",
+      images: ["img/demandeur/agence_cover.png"],
     },
     {
       title: "Higher National School of Computer Science (Algeria)",
-      certificateDate: "January 2020",
-      certificateImages: ["img/demandeur/agence_cover.png"],
+      date: "January 2020",
+      images: ["img/demandeur/agence_cover.png"],
     },
   ];
 
@@ -30,20 +30,20 @@ const Certificates: FC<Props> = ({ paragraph }) => {
             className="jsprofile__box--action-icon"
             icon={faAdd}
           />
-          <span>Add experience</span>
+          <span>Add certificate</span>
         </div>
       </div>
-      {professionalExperienceItems.map((data) => {
+      {certificates.map((data) => {
         return (
           <div>
             <div className="jsprofile__education">
               <div className="jsprofile__education--content">
                 <div className="jsprofile__education--content-certificatesTitle">
-                  <h1>{data.certificateTitle}</h1>
-                  <span>{data.certificateDate}</span>
+                  <h1>{data.title}</h1>
+                  <span>{data.date}</span>
                 </div>
                 <div className="jsprofile__education--content-certificatesFiles">
-                  {data.certificateImages.map((myImage) => (
+                  {data.images.map((myImage) => (
                     <img src={myImage} alt="" />
                   ))}
                 </div>

@@ -1,35 +1,36 @@
-import { Tab, TabList, Tabs } from "@chakra-ui/react";
 import { FC, useState } from "react";
-import MyOffersBox from "../../components/JobSeeker/MyOffersBox";
-import NavBar from "../../components/NavBar";
+import EmployerNavbar from "../../components/Employer/EmployerNavbar";
 import "../../styles/_components.scss";
+import { Tabs, TabList, Tab } from "@chakra-ui/react";
+import MyOffersBox from "../../components/JobSeeker/MyOffersBox";
+import PrimaryButton from "../../components/PrimaryButton";
 
-const MyOffers: FC = () => {
+const Offers: FC = () => {
   const [JobState, setJobState] = useState<string | null>(null);
   const myOffers = [
     {
       agence: "Yassir algérie",
-      role: "UI/UX Designer",
+      job: "UI/UX Designer",
       PublicationDate: "Postulé le 04 Janvier 2022",
       description:
         "Tempus duis dui quam consectetur sit turpis vitae. Nisl volutpat non tellus at rhoncus, cursus diam mauris. Elit est velit, metus, suspendisse iaculis ultrices proin vulputate augue. Ut id a faucibus tempus nisl. At at vitae condimentum cursus. Porta amet, dignissim vulputate.",
-      JobState: "pending",
+      JobState: "open",
     },
     {
       agence: "Yassir algérie",
-      role: "UI/UX Designer",
+      job: "UI/UX Designer",
       PublicationDate: "Postulé le 04 Janvier 2022",
       description:
         "Tempus duis dui quam consectetur sit turpis vitae. Nisl volutpat non tellus at rhoncus, cursus diam mauris. Elit est velit, metus, suspendisse iaculis ultrices proin vulputate augue. Ut id a faucibus tempus nisl. At at vitae condimentum cursus. Porta amet, dignissim vulputate.",
-      JobState: "interview",
+      JobState: "close",
     },
     {
       agence: "Yassir algérie",
-      role: "UI/UX Designer",
+      job: "UI/UX Designer",
       PublicationDate: "Postulé le 04 Janvier 2022",
       description:
         "Tempus duis dui quam consectetur sit turpis vitae. Nisl volutpat non tellus at rhoncus, cursus diam mauris. Elit est velit, metus, suspendisse iaculis ultrices proin vulputate augue. Ut id a faucibus tempus nisl. At at vitae condimentum cursus. Porta amet, dignissim vulputate.",
-      JobState: "pending",
+      JobState: "open",
     },
   ];
 
@@ -40,13 +41,14 @@ const MyOffers: FC = () => {
         )
       : myOffers;
   };
-
   return (
     <>
-      <NavBar />
-
+      <EmployerNavbar />
       <div className="myoffers">
-        <h1>My applications</h1>
+        <div className="myoffers__heading">
+          <h1>My offers</h1>
+          <PrimaryButton content="Create job offer" color="primaryColor" />
+        </div>
         <Tabs isLazy className="myoffers__tabs">
           <TabList borderBottom={"none"}>
             <Tab
@@ -59,35 +61,30 @@ const MyOffers: FC = () => {
             <Tab
               className="myoffers__tabs-item"
               fontSize={"2xl"}
-              onClick={() => setJobState("pending")}
+              onClick={() => setJobState("open")}
             >
-              Pending
+              Currently open
             </Tab>
             <Tab
               className="myoffers__tabs-item"
               fontSize={"2xl"}
-              onClick={() => setJobState("interview")}
+              onClick={() => setJobState("close")}
             >
-              Interviews
-            </Tab>
-            <Tab
-              className="myoffers__tabs-item"
-              fontSize={"2xl"}
-              onClick={() => setJobState("rejected")}
-            >
-              Rejected
+              Closed
             </Tab>
           </TabList>
         </Tabs>
         <div className="myoffers__list">
           {filterData().map(
-            ({ agence, role, PublicationDate, description, JobState }) => (
+            ({ agence, job, PublicationDate, description, JobState }) => (
               <MyOffersBox
                 agence={agence}
-                role={role}
+                job={job}
                 PublicationDate={PublicationDate}
                 description={description}
                 JobState={JobState}
+                applicationURL="/employer/offer/details"
+                role={1}
               />
             )
           )}
@@ -97,4 +94,4 @@ const MyOffers: FC = () => {
   );
 };
 
-export default MyOffers;
+export default Offers;

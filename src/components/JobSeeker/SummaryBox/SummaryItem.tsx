@@ -1,15 +1,16 @@
 import { FC } from "react";
 import { ISummaryItem } from "../../../helpers/types";
+import "./SummaryBox.scss";
 
 const Divider: FC = () => (
   <svg
-    width="1"
+    width="2"
     height="90"
     viewBox="0 0 1 79"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect width="1" height="79" fill="#E0E0E0" />
+    <rect width="2" height="79" fill="#E0E0E0" />
   </svg>
 );
 const SummaryItem: FC<ISummaryItem> = ({ title, content }) => (

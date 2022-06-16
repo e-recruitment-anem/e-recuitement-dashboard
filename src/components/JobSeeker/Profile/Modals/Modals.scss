@@ -1,0 +1,14 @@
+// BIOGRAPHY MODAL
+.personalInfoModal {
+  &_inputs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &-item {
+      width: 48% !important;
+      margin-bottom: 1rem !important;
+    }
+  }
+}
