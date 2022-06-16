@@ -12,9 +12,6 @@ export const initialState: AuthState = {
   token: "",
   newPassword: "",
   confirmNewPassword: "",
-  redirect: false,
-  synched: false,
-  activated: false,
 };
 
 const authSlice = createSlice({
@@ -28,7 +25,6 @@ const authSlice = createSlice({
     verifySuccess: (state, { payload }: PayloadAction<any>) => {
       state.isAuthenticated = payload.isValid;
       state.user = payload.user;
-      state.synched = true;
       state.loading = false;
     },
     // eslint-disable-next-line
@@ -43,7 +39,6 @@ const authSlice = createSlice({
       state.currentUser = {};
       state.isAuthenticated = true;
       state.loading = false;
-      state.synched = true;
       state.error = false;
     },
 
@@ -51,7 +46,6 @@ const authSlice = createSlice({
       state.msg = payload;
       state.error = true;
       state.isAuthenticated = false;
-      state.synched = true;
       state.loading = false;
     },
 
@@ -64,7 +58,6 @@ const authSlice = createSlice({
       state.currentUser = {};
       state.error = false;
       state.msg = "";
-      state.synched = true;
       state.loading = false;
     },
   },

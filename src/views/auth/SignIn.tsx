@@ -1,10 +1,60 @@
-import React from "react";
-import { FormControl, Button } from "@chakra-ui/react";
+import React, { useState } from 'react';
+import { FormControl, Button, Alert } from '@chakra-ui/react';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { useDispatch, useSelector } from 'react-redux';
+import { getAuth } from '../../store/selectors';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { login, loginError } from '../../store/slices/auth';
+import { authData, ReactChangeEvent, ReactSubmitEvent } from '../../helpers/types';
 
 const SignIn = () => {
+  // ===========================================================================
+  // Selectors
+  // ===========================================================================
+  const { currentUser, error, msg, loading } = useSelector(getAuth);
+
+  // ===========================================================================
+  // Dispatch
+  // ==========================================================================
+  const dispatch = useDispatch();
+
+  const _login = (payload: authData) => {
+    dispatch(login(payload));
+  };
+
+  const _loginError = (payload: string) => {
+    dispatch(loginError(payload));
+  };
+
+  // ===========================================================================
+  // State
+  // ===========================================================================
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  });
+
+  // ===========================================================================
+  // Handlers
+  // ===========================================================================
+  const handleChange = (event: ReactChangeEvent) => {
+    setUser({ ...user, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = (event: ReactSubmitEvent): void => {
+    event.preventDefault();
+
+    const payload = { email: user.email.trim(), password: user.password };
+
+    if (payload.email && payload.password) {
+      _login(payload);
+    } else {
+      _loginError('Empty email or password !');
+    }
+  };
+
   return (
     <div className="auth-container">
       <div className="auth_side-left">
@@ -24,26 +74,47 @@ const SignIn = () => {
       </div>
       <div className="auth_side-right">
         <h2 className="auth_header">Se connecter</h2>
-        <form action="post" className="auth_form">
+        {error && (
+          <Alert className="auth_alert-error">{msg}</Alert>
+        )}
+        <form action="post" className="auth_form" onSubmit={handleSubmit}>
           <FormControl className="auth_form-group">
             <label htmlFor="email" className="auth_form-label">
               Email address
             </label>
-            <input id="email" type="email" className="auth_form-input" />
-            <span className="auth_form-helper">
-              We'll never share your email.
-            </span>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              className="auth_form-input"
+              defaultValue={currentUser.email}
+              onChange={handleChange}
+            />
+            {error && (
+              <span className="auth_form-helper">
+                Please enter a valid email.
+              </span>
+            )}
           </FormControl>
           <FormControl className="auth_form-group">
             <label htmlFor="password" className="auth_form-label">
               Password
             </label>
-            <input id="password" type="password" className="auth_form-input" />
-            <span className="auth_form-helper">
-              We'll never share your email.
-            </span>
+            <input
+              id="password"
+              type="password"
+              className="auth_form-input"
+              name="password"
+              defaultValue={currentUser.password}
+              onChange={handleChange}
+            />
+            {error && (
+              <span className="auth_form-helper">
+                Please enter a valid password.
+              </span>
+            )}
           </FormControl>
-          <Button className="auth_form-button">Log In</Button>
+          <Button className="auth_form-button" type='submit' disabled={loading}>Log In</Button>
         </form>
         <div className="auth_other">
           <span className="auth_other-title">Ou connecter avec</span>
@@ -59,7 +130,7 @@ const SignIn = () => {
           </div>
         </div>
         <div className="auth_footer">
-          <span className="auth_footer-text">Vous n’avez pas de compte?</span>{" "}
+          <span className="auth_footer-text">Vous n’avez pas de compte?</span>{' '}
           <span className="auth_footer-cta">s’inscrire</span>
         </div>
       </div>

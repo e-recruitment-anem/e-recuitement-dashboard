@@ -14,7 +14,7 @@ function AuthGuard({ children }: AuthGuardType) {
   // ===========================================================================
   // Selectors
   // ===========================================================================
-    const { isAuthenticated, synched } = useSelector(getAuth);
+    const { isAuthenticated } = useSelector(getAuth);
 
   // ===========================================================================
   // Dispatch

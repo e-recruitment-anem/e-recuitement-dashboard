@@ -39,14 +39,16 @@ export interface AuthState {
   token: string;
   newPassword: string;
   confirmNewPassword: string;
-  redirect: boolean;
-  synched: boolean;
-  activated: boolean;
 }
 
 export interface RootState {
   exampleState: ExampleState;
   authState: AuthState;
+}
+
+export interface authData {
+  email: string;
+  password: string;
 }
 
 // ==============================================================================

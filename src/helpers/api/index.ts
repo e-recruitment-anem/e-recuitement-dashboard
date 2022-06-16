@@ -1,5 +1,5 @@
 // API
-import axios from "axios";
+import axios from 'axios';
 
 export const setSession = (accessToken: string | null) => {
   if (accessToken) {
