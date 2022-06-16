@@ -11,6 +11,8 @@ import OfferDetails from "./views/demandeur/OfferDetails";
 import Profile from "./views/demandeur/Profile";
 import Agence from './views/dashboard/Agence';
 import Forgetpass from './views/auth/Forgetpass';
+import Signup from './views/auth/Signup';
+import Resetpass from './views/auth/Resetpass';
 
 const routes = [
   {
@@ -20,6 +22,14 @@ const routes = [
   {
     path: '/login',
     element: <SignIn />,
+  },
+  {
+    path: '/SignUp',
+    element: <Signup />,
+  },
+  {
+    path: '/Resetpass',
+    element: <Resetpass/>,
   },
   {
     path: '/Forgetpass',
