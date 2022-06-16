@@ -32,7 +32,7 @@ const MyOffersBox: FC<Props> = ({
   return (
     <Box className="myoffers__box">
       <div className="myoffers__left">
-        <img src="img/demandeur/agencelogo.png" alt="" />
+        <img src="/img/demandeur/agencelogo.png" alt="" />
         <div className="myoffers__content">
           <div className="myoffers__content--header">
             <div className="myoffers__content--header-group">

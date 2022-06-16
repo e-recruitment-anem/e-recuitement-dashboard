@@ -856,6 +856,16 @@ body {
 .myoffers {
   margin: 5rem 8rem;
 
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+
+    & :last-child {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+  }
+
   h1 {
     font-size: 3rem;
     font-weight: 700;
@@ -1624,6 +1634,23 @@ body {
         width: 47%;
       }
     }
+  }
+}
+
+//INTERVIEW DETAILS - EMPLOYER
+.emplInterviewDetails {
+  margin: 5rem 8rem;
+
+  & h1 {
+    font-size: 3.2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+
+  & h2 {
+    font-size: 3.2rem;
+    font-weight: 600;
+    margin-top: 3rem;
   }
 }
 

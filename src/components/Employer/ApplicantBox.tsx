@@ -6,6 +6,7 @@ interface Information {
   title: string;
   content: string;
 }
+
 interface Props {
   name?: String;
   biography?: String;

@@ -3,6 +3,7 @@ import EmployerNavbar from "../../components/Employer/EmployerNavbar";
 import "../../styles/_components.scss";
 import { Tabs, TabList, Tab } from "@chakra-ui/react";
 import MyOffersBox from "../../components/JobSeeker/MyOffersBox";
+import PrimaryButton from "../../components/PrimaryButton";
 
 const Offers: FC = () => {
   const [JobState, setJobState] = useState<string | null>(null);
@@ -44,7 +45,10 @@ const Offers: FC = () => {
     <>
       <EmployerNavbar />
       <div className="myoffers">
-        <h1>My offers</h1>
+        <div className="myoffers__heading">
+          <h1>My offers</h1>
+          <PrimaryButton content="Create job offer" color="primaryColor" />
+        </div>
         <Tabs isLazy className="myoffers__tabs">
           <TabList borderBottom={"none"}>
             <Tab

@@ -21,7 +21,9 @@ const EmployerNavbar: FC = () => {
           Dashboard
         </span>
         <span onClick={() => openInNewTab("/employer/offers")}>My offers</span>
-        <span onClick={() => openInNewTab("/myinterviews")}>Interviews</span>
+        <span onClick={() => openInNewTab("/employer/interviews")}>
+          Interviews
+        </span>
         <span onClick={() => openInNewTab("/favorite")}>Favorite</span>
       </div>
       <div className="navbar-right">

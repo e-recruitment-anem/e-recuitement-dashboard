@@ -16,6 +16,8 @@ import EmployerDashboard from "./views/employer/Dashboard";
 import CreateJobOffer from "./views/employer/CreateJobOffer";
 import EmplOfferDetails from "./views/employer/OfferDetails";
 import Offers from "./views/employer/Offers";
+import Interviews from "./views/employer/Interviews";
+import InterviewDetails from "./views/employer/InterviewDetails";
 
 const routes = [
   {
@@ -73,6 +75,14 @@ const routes = [
   {
     path: "/employer/offers",
     element: <Offers />,
+  },
+  {
+    path: "/employer/interviews",
+    element: <Interviews />,
+  },
+  {
+    path: "/employer/interview/details",
+    element: <InterviewDetails />,
   },
 ];
 
