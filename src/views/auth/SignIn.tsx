@@ -60,7 +60,7 @@ const SignIn = () => {
       <div className="auth_side-left">
         <img
           className="auth_heading-illustration"
-          src="/img/welcome.jpg"
+          src="/img/image.jpg"
           alt="background_illustrattion"
         />
         <div className="auth_side-left--block">
