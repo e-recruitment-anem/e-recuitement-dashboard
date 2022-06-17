@@ -340,6 +340,10 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column; }
+  .auth_form-collection {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem; }
   .auth_form-group {
     margin-bottom: 2rem; }
   .auth_form-label {

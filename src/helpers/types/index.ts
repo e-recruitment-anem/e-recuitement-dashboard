@@ -13,6 +13,11 @@ export interface User {
   [anyProp: string]: any;
 }
 
+export interface Agence {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [anyProp: string]: any;
+}
+
 export interface ISummary {
   items: ISummaryItem[];
 }
@@ -42,9 +47,28 @@ export interface AuthState {
   confirmNewPassword: string;
 }
 
+export interface ManageAccountsState {
+  loading: boolean;
+  currentAdmin: User;
+  admin: User;
+  error: boolean;
+  msg: string;
+  admins: User[];
+}
+
+export interface AgenceState {
+  loading: boolean;
+  error: boolean;
+  success: boolean;
+  msg: string;
+  agences: Agence[];
+  agence: Agence;
+}
+
 export interface RootState {
-  exampleState: ExampleState;
   authState: AuthState;
+  agenceState: AgenceState;
+  manageAccountsState: ManageAccountsState;
 }
 
 export interface authData {

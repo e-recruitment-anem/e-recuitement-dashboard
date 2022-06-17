@@ -2,12 +2,14 @@ import { combineReducers, Reducer } from 'redux';
 
 import { RootState } from '../../helpers/types';
 
-import exampleReducer from './example';
-import authReducer from './auth'
+import authReducer from './auth';
+import agenceReducer from './agence';
+import manageAccountsReducer from './manageAccounts';
 
 const rootReducer: Reducer<RootState> = combineReducers<RootState>({
-  exampleState: exampleReducer,
   authState: authReducer,
+  agenceState: agenceReducer,
+  manageAccountsState: manageAccountsReducer
 });
 
 export default rootReducer;

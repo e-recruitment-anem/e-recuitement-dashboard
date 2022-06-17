@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { all, takeLatest, select, put } from 'redux-saga/effects';
 import { setSession } from '../../helpers/api';
-import { getAuth, getExample } from '../selectors';
+import { getAgence, getAuth, getManageAccounts } from '../selectors';
 import {
   login,
   loginError,
@@ -10,18 +10,25 @@ import {
   signupError,
   signupSuccess,
 } from '../slices/auth';
-
-import { exampleAction } from '../slices/example';
-
-function* runExample() {
-  try {
-    // DO YOUR HTTP CALL USING REDUX SAGA
-    const { example } = yield select(getExample);
-    console.log(example);
-  } catch (error) {
-    console.log(error);
-  }
-}
+import {
+  createAgence,
+  createAgenceError,
+  createAgenceSuccess,
+  deleteAgence,
+  deleteAgenceError,
+  deleteAgenceSuccess,
+  fetchAgences,
+  fetchAgencesError,
+  fetchAgencesSuccess,
+} from '../slices/agence';
+import {
+  deleteAdmin,
+  deleteAdminError,
+  deleteAdminSuccess,
+  fetchAdmins,
+  fetchAdminsError,
+  fetchAdminsSuccess,
+} from '../slices/manageAccounts';
 
 function* authenticate() {
   try {
@@ -32,7 +39,6 @@ function* authenticate() {
     });
 
     if (data) {
-      console.log(data);
       setSession(data);
       yield put(loginSuccess(data));
     } else {
@@ -68,10 +74,98 @@ function* registerSeeker() {
   }
 }
 
+function* loadAgences() {
+  try {
+    const { data } = yield axios.get(
+      'http://localhost:5000/api/agencies?page=1&itemsPerPage=10'
+    );
+
+    if (data.message === 'agencies list') {
+      console.log(data);
+      yield put(fetchAgencesSuccess(data.body));
+    } else {
+      yield put(fetchAgencesError('Something went wrong !'));
+    }
+  } catch (error) {
+    yield put(fetchAgencesError('Something went wrong !'));
+  }
+}
+
+function* addAgence() {
+  try {
+    const { agence } = yield select(getAgence);
+    const { data } = yield axios.post('http://localhost:5000/api/agencies', {
+      name: agence.name,
+      email: agence.email,
+      phoneNumber: agence.phoneNumber,
+    });
+
+    if (data.message === 'agency created successfully.') {
+      yield put(createAgenceSuccess(data.message));
+    } else {
+      yield put(createAgenceError('Something went wrong !'));
+    }
+  } catch (error) {
+    yield put(createAgenceError('Something went wrong !'));
+  }
+}
+
+function* removeAgence() {
+  try {
+    const { agence } = yield select(getAgence);
+    const { data } = yield axios.delete(
+      `http://localhost:5000/api/agencies/${agence.id}`
+    );
+
+    if (data.message === 'agency deleted successfully.') {
+      yield put(deleteAgenceSuccess(data.message));
+    } else {
+      yield put(deleteAgenceError('Something went wrong !'));
+    }
+  } catch (error) {
+    yield put(deleteAgenceError('Something went wrong !'));
+  }
+}
+
+function* loadAdmins() {
+  try {
+    const { data } = yield axios.get(`localhost:5000/api/users/admins`);
+
+    if (data.message === 'admins list') {
+      yield put(fetchAdminsSuccess(data.body));
+    } else {
+      yield put(fetchAdminsError('Something went wrong !'));
+    }
+  } catch (error) {
+    yield put(fetchAdminsError('Something went wrong !'));
+  }
+}
+
+function* removeAdmin() {
+  try {
+    const { admin } = yield select(getManageAccounts);
+    const { data } = yield axios.delete(
+      `http://localhost:5000/api/users/${admin.id}`
+    );
+
+    if (data.message === 'agency deleted successfully.') {
+      yield put(deleteAdminSuccess(data.message));
+    } else {
+      yield put(deleteAdminError('Something went wrong !'));
+    }
+  } catch (error) {
+    yield put(deleteAdminError('Something went wrong !'));
+  }
+}
+
 // If any of these functions are dispatched, invoke the appropriate saga
 function* rootSaga() {
   yield all([
-    takeLatest(exampleAction.type, runExample),
+    takeLatest(fetchAgences.type, loadAgences),
+    takeLatest(createAgence.type, addAgence),
+    takeLatest(deleteAgence.type, removeAgence),
+    takeLatest(fetchAdmins.type, loadAdmins),
+    takeLatest(deleteAdmin.type, removeAdmin),
     takeLatest(login.type, authenticate),
     takeLatest(signup.type, registerSeeker),
   ]);

@@ -1,13 +1,15 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 // import { Avatar } from "@chakra-ui/react";
 
-import AdminLayout from "../layouts/AdminLayout";
-import DataTable from "../../components/Tables/DataTable";
+import AdminLayout from '../layouts/AdminLayout';
+import DataTable from '../../components/Tables/DataTable';
 // import ReusableTable from "../../components/ReusableTable";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faCircle } from "@fortawesome/free-solid-svg-icons";
 // import TableMenu from "../../components/TableMenu";
-import TableNav from "../../components/Tables/TableNav";
+import TableNav from '../../components/Tables/TableNav';
+import { Input } from '@chakra-ui/react';
+import UserNav from '../../components/UserNav';
 
 interface Props {
   title: string;
@@ -192,18 +194,19 @@ const Dashboard: FC<Props> = ({ title, cta }) => {
   return (
     <AdminLayout>
       <div className="main-nav">
-        {/* <div className="main-nav__search">
+        <div className="main-nav__search">
           <Input type="text" placeholder="Rechercher..." />
         </div>
-        <UserNav /> */}
+        <UserNav />
         {/* <ReusableTable
           data={data}
           columns={columns}
           handlePagination={() => {}}
         /> */}
       </div>
+
       <TableNav title={title} cta={cta} />
-      <DataTable title={"Utilisateurs"} cta={"utilisateur"} />
+      <DataTable title={'Utilisateurs'} cta={'utilisateur'} />
     </AdminLayout>
   );
 };
