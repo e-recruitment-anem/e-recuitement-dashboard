@@ -25,30 +25,51 @@ interface Props extends InputProps {
 
 const AddExperienceModal: FC<Props> = ({ open, onToggle, actionButton }) => {
   return (
-    <Modal size="4xl" isOpen={open} onClose={() => onToggle}>
+    <Modal size="6xl" isOpen={open} onClose={() => onToggle}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Edit biography</ModalHeader>
+        <ModalHeader className="personalInfoModal_inputs-item--title">
+          Edit biography
+        </ModalHeader>
         <ModalCloseButton onClick={onToggle} />
         <ModalBody pb={6}>
           <div className="personalInfoModal_inputs">
             <FormControl>
-              <FormLabel htmlFor="title">
+              <FormLabel
+                className="personalInfoModal_inputs-item--label"
+                htmlFor="title"
+              >
                 Professional experience title
               </FormLabel>
-              <Input id="title" placeholder="Enter a title" />
+              <Input
+                id="title"
+                placeholder="Enter a title"
+                className="personalInfoModal_inputs-item--input"
+              />
             </FormControl>
             <FormControl className="personalInfoModal_inputs-item">
-              <FormLabel htmlFor="start-date">Starting date</FormLabel>
+              <FormLabel
+                htmlFor="start-date"
+                className="personalInfoModal_inputs-item--label"
+              >
+                Starting date
+              </FormLabel>
               <DatePicker
+                className="personalInfoModal_inputs-item--input"
                 placeholder="Select a date"
                 name="start-date"
                 onChange={(date: string) => console.log(date)}
               />
             </FormControl>
             <FormControl className="personalInfoModal_inputs-item">
-              <FormLabel htmlFor="end-date">Ending date</FormLabel>
+              <FormLabel
+                htmlFor="end-date"
+                className="personalInfoModal_inputs-item--label"
+              >
+                Ending date
+              </FormLabel>
               <DatePicker
+                className="personalInfoModal_inputs-item--input"
                 placeholder="Select a date"
                 name="end-date"
                 onChange={(date: string) => console.log(date)}
@@ -63,10 +84,16 @@ const AddExperienceModal: FC<Props> = ({ open, onToggle, actionButton }) => {
             background="#828282"
             mr={3}
             onClick={onToggle}
+            className="personalInfoModal_inputs-item--input"
           >
             Close
           </Button>
-          <Button variant="ghost" color={"white"} background="#0061FF">
+          <Button
+            variant="ghost"
+            color={"white"}
+            background="#0061FF"
+            className="personalInfoModal_inputs-item--input"
+          >
             {actionButton}
           </Button>
         </ModalFooter>

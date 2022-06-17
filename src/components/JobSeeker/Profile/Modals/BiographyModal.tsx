@@ -22,14 +22,18 @@ interface Props extends InputProps {
 
 const Biography: FC<Props> = ({ open, onToggle, biography }) => {
   return (
-    <Modal size="xl" isOpen={open} onClose={() => onToggle}>
+    <Modal size="4xl" isOpen={open} onClose={() => onToggle}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Edit biography</ModalHeader>
+        <ModalHeader className="personalInfoModal_inputs-item--title">
+          Edit biography
+        </ModalHeader>
         <ModalCloseButton onClick={onToggle} />
         <ModalBody pb={6}>
           <FormControl>
-            <FormLabel>Biography</FormLabel>
+            <FormLabel className="personalInfoModal_inputs-item--label">
+              Biography
+            </FormLabel>
             <Textarea placeholder="Biography...">{biography}</Textarea>
           </FormControl>
         </ModalBody>
@@ -40,10 +44,16 @@ const Biography: FC<Props> = ({ open, onToggle, biography }) => {
             background="#828282"
             mr={3}
             onClick={onToggle}
+            className="personalInfoModal_inputs-item--input"
           >
             Close
           </Button>
-          <Button variant="ghost" color={"white"} background="#0061FF">
+          <Button
+            variant="ghost"
+            color={"white"}
+            background="#0061FF"
+            className="personalInfoModal_inputs-item--input"
+          >
             Save changes
           </Button>
         </ModalFooter>
