@@ -247,7 +247,8 @@ body {
 .offerapplication__cv {
   display: flex;
   flex-direction: column;
-  margin-top: 4rem; }
+  margin-top: 4rem;
+  margin-bottom: 4rem; }
   .offerapplication__cv label {
     font-size: 1.8rem;
     font-weight: 600;
@@ -436,10 +437,16 @@ body {
   @media screen and (max-width: 37.5em) {
     .home__jobOffers {
       padding: 2rem 4rem; } }
+  .home__jobOffers--heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4rem; }
+    .home__jobOffers--heading :last-child {
+      margin-top: auto;
+      margin-bottom: auto; }
   .home__jobOffers h1 {
     font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 2rem; }
+    font-weight: 700; }
     @media screen and (max-width: 37.5em) {
       .home__jobOffers h1 {
         font-size: 2.4rem; } }
@@ -632,6 +639,12 @@ body {
 
 .myoffers {
   margin: 5rem 8rem; }
+  .myoffers__heading {
+    display: flex;
+    justify-content: space-between; }
+    .myoffers__heading :last-child {
+      margin-top: auto;
+      margin-bottom: auto; }
   .myoffers h1 {
     font-size: 3rem;
     font-weight: 700; }
@@ -1149,6 +1162,17 @@ body {
       justify-content: space-between; }
       .similarProfiles__item-actions > * {
         width: 47%; }
+
+.emplInterviewDetails {
+  margin: 5rem 8rem; }
+  .emplInterviewDetails h1 {
+    font-size: 3.2rem;
+    font-weight: 600;
+    margin-bottom: 2rem; }
+  .emplInterviewDetails h2 {
+    font-size: 3.2rem;
+    font-weight: 600;
+    margin-top: 3rem; }
 
 .size3 {
   width: 30% !important; }

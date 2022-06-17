@@ -9,6 +9,24 @@
     &-item {
       width: 48% !important;
       margin-bottom: 1rem !important;
+
+      &--title {
+        font-size: 2.4rem !important;
+      }
+
+      &--label {
+        font-size: 1.7rem !important;
+      }
+
+      &--input {
+        font-size: 1.5rem !important;
+        height: 4rem !important;
+        margin-bottom: 1rem;
+      }
     }
   }
+}
+
+.modal {
+  font-size: 44rem;
 }

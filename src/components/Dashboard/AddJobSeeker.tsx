@@ -11,143 +11,110 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
   Select,
 } from "@chakra-ui/react";
 import { DatePicker } from "chakra-ui-date-input";
 
 import { FC } from "react";
-import "./Modals.scss";
 
 interface Props extends InputProps {
   open: boolean;
   onToggle?: () => void;
 }
 
-const PersonalInformationModal: FC<Props> = ({ open, onToggle }) => {
-  const familialSituation = ["Single", "Divorced", "Married"];
-  const countries = ["Algeria", "Egypt", "Tunisia"];
-  const sexe = ["Man", "Woman"];
-
+const AddJobSeeker: FC<Props> = ({ open, onToggle }) => {
+  const agencies = ["Yassir", "FoodBeeper", "SweetOclock"];
   return (
     <Modal size="6xl" isOpen={open} onClose={() => onToggle}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader className="personalInfoModal_inputs-item--title">
-          Edit biography
+          Add agency admin
         </ModalHeader>
         <ModalCloseButton onClick={onToggle} />
         <ModalBody pb={6}>
           <div className="personalInfoModal_inputs">
             <FormControl className="personalInfoModal_inputs-item">
               <FormLabel
-                htmlFor="full-name"
+                htmlFor="first-name"
                 className="personalInfoModal_inputs-item--label"
               >
-                Fullname
+                Firstname
               </FormLabel>
               <Input
-                id="full-name"
-                placeholder="Full name"
+                id="first-name"
+                placeholder="ex. John"
                 className="personalInfoModal_inputs-item--input"
               />
             </FormControl>
             <FormControl className="personalInfoModal_inputs-item">
               <FormLabel
-                htmlFor="address"
+                htmlFor="last-name"
                 className="personalInfoModal_inputs-item--label"
               >
-                Address
+                Lastname
               </FormLabel>
               <Input
-                id="address"
-                placeholder="Address"
+                id="last"
+                placeholder="ex. Smith"
                 className="personalInfoModal_inputs-item--input"
               />
             </FormControl>
             <FormControl className="personalInfoModal_inputs-item">
               <FormLabel
-                htmlFor="birthday"
+                htmlFor="email"
                 className="personalInfoModal_inputs-item--label"
               >
-                Birthday
+                Email
+              </FormLabel>
+              <Input
+                id="email"
+                placeholder="ex. example@gmail.com"
+                className="personalInfoModal_inputs-item--input"
+              />
+            </FormControl>
+            <FormControl className="personalInfoModal_inputs-item">
+              <FormLabel
+                htmlFor="password"
+                className="personalInfoModal_inputs-item--label"
+              >
+                Password
+              </FormLabel>
+              <Select
+                id="password"
+                className="personalInfoModal_inputs-item--input"
+              >
+                {agencies.map((el) => (
+                  <option>{el}</option>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl className="personalInfoModal_inputs-item">
+              <FormLabel
+                htmlFor="birthdate"
+                className="personalInfoModal_inputs-item--label"
+              >
+                Birthdate
               </FormLabel>
               <DatePicker
                 className="personalInfoModal_inputs-item--input"
                 placeholder="Select a date"
-                name="birthday"
+                name="birthdate"
                 onChange={(date: string) => console.log(date)}
               />
             </FormControl>
             <FormControl className="personalInfoModal_inputs-item">
               <FormLabel
-                htmlFor="familial-situation"
+                htmlFor="phone-number"
                 className="personalInfoModal_inputs-item--label"
               >
-                Sexe
+                Phone number
               </FormLabel>
-              <Select
-                id="familial-situation"
+              <Input
+                id="phone-number"
+                placeholder="ex. 0560000000"
                 className="personalInfoModal_inputs-item--input"
-              >
-                {sexe.map((el) => (
-                  <option>{el}</option>
-                ))}
-              </Select>
-            </FormControl>
-            <FormControl className="personalInfoModal_inputs-item">
-              <FormLabel
-                htmlFor="familial-situation"
-                className="personalInfoModal_inputs-item--label"
-              >
-                Country
-              </FormLabel>
-              <Select
-                id="familial-situation"
-                className="personalInfoModal_inputs-item--input"
-              >
-                {countries.map((el) => (
-                  <option>{el}</option>
-                ))}
-              </Select>
-            </FormControl>
-            <FormControl className="personalInfoModal_inputs-item">
-              <FormLabel
-                htmlFor="postal-code"
-                className="personalInfoModal_inputs-item--label"
-              >
-                Postal code
-              </FormLabel>
-              <NumberInput className="personalInfoModal_inputs-item--input">
-                <NumberInputField
-                  className="personalInfoModal_inputs-item--input"
-                  id="postal-code"
-                />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-            </FormControl>
-            <FormControl className="personalInfoModal_inputs-item">
-              <FormLabel
-                htmlFor="familial-situation"
-                className="personalInfoModal_inputs-item--label"
-              >
-                Familial Situation
-              </FormLabel>
-              <Select
-                id="familial-situation"
-                className="personalInfoModal_inputs-item--input"
-              >
-                {familialSituation.map((el) => (
-                  <option>{el}</option>
-                ))}
-              </Select>
+              />
             </FormControl>
           </div>
         </ModalBody>
@@ -168,7 +135,7 @@ const PersonalInformationModal: FC<Props> = ({ open, onToggle }) => {
             background="#0061FF"
             className="personalInfoModal_inputs-item--input"
           >
-            Save changes
+            Create agency admin
           </Button>
         </ModalFooter>
       </ModalContent>
@@ -176,4 +143,4 @@ const PersonalInformationModal: FC<Props> = ({ open, onToggle }) => {
   );
 };
 
-export default PersonalInformationModal;
+export default AddJobSeeker;
