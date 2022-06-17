@@ -1,35 +1,42 @@
-import React from "react";
+import React from 'react';
 // import AuthGuard from './components/guards/AuthGuard';
 
 // Hello components
-import Hello from "./components/Hello";
-import Home from "./views/demandeur/Home";
-import SignIn from "./views/auth/SignIn";
-import Dashboard from "./views/dashboard/Dashboard";
-import OfferDetails from "./views/demandeur/Offers/OfferDetails";
-import Profile from "./views/demandeur/Profile";
-import Agence from "./views/dashboard/Agence";
-import OfferApplication from "./views/demandeur/Offers/OfferApplication";
-import OfferApplicationReview from "./views/demandeur/Offers/OfferApplicationReview";
-import MyApplications from "./views/demandeur/Offers/MyApplications";
-import EmployerDashboard from "./views/employer/Dashboard";
-import CreateJobOffer from "./views/employer/CreateJobOffer";
-import EmplOfferDetails from "./views/employer/OfferDetails";
-import Offers from "./views/employer/Offers";
-import Interviews from "./views/employer/Interviews";
-import InterviewDetails from "./views/employer/InterviewDetails";
+import Hello from './components/Hello';
+import Home from './views/demandeur/Home';
+import SignIn from './views/auth/SignIn';
+import Dashboard from './views/dashboard/Dashboard';
+import OfferDetails from './views/demandeur/Offers/OfferDetails';
+import Profile from './views/demandeur/Profile';
+import Agence from './views/dashboard/Agence';
+import OfferApplication from './views/demandeur/Offers/OfferApplication';
+import OfferApplicationReview from './views/demandeur/Offers/OfferApplicationReview';
+import MyApplications from './views/demandeur/Offers/MyApplications';
+import EmployerDashboard from './views/employer/Dashboard';
+import CreateJobOffer from './views/employer/CreateJobOffer';
+import EmplOfferDetails from './views/employer/OfferDetails';
+import Offers from './views/employer/Offers';
+import Interviews from './views/employer/Interviews';
+import InterviewDetails from './views/employer/InterviewDetails';
 import Forgetpass from './views/auth/Forgetpass';
 import Signup from './views/auth/Signup';
 import Resetpass from './views/auth/Resetpass';
+import AdminGuard from './components/guards/AdminGuard';
+import SeekerGuard from './components/guards/SeekerGuard';
+import GuestGuard from './components/guards/GuestGuard';
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     element: <Hello />,
   },
   {
-    path: "/login",
-    element: <SignIn />,
+    path: '/login',
+    element: (
+      <GuestGuard>
+        <SignIn />
+      </GuestGuard>
+    ),
   },
   {
     path: '/SignUp',
@@ -37,66 +44,98 @@ const routes = [
   },
   {
     path: '/Resetpass',
-    element: <Resetpass/>,
+    element: <Resetpass />,
   },
   {
     path: '/Forgetpass',
-    element: <Forgetpass/>,
+    element: <Forgetpass />,
   },
   {
-    path: "/dashboard",
-    element: <Dashboard title="Dashboard" cta="agency admin" />,
+    path: '/dashboard',
+    element: (
+      <AdminGuard>
+        <Dashboard title="Dashboard" cta="agency admin" />
+      </AdminGuard>
+    ),
   },
   {
-    path: "/agences",
-    element: <Agence />,
+    path: '/agences',
+    element: (
+      <AdminGuard>
+        <Agence />
+      </AdminGuard>
+    ),
+  },
+  // Offers
+  {
+    path: '/offers',
+    element: (
+      <SeekerGuard>
+        <Home />
+      </SeekerGuard>
+    ),
   },
   {
-    path: "/offerdetails",
-    element: <OfferDetails />,
+    path: '/offers/detail',
+    element: (
+      <SeekerGuard>
+        <OfferDetails />
+      </SeekerGuard>
+    ),
   },
   {
-    path: "/offers",
-    element: <Home />,
+    path: '/offers/apply',
+    element: (
+      <SeekerGuard>
+        <OfferApplication />
+      </SeekerGuard>
+    ),
   },
   {
-    path: "/applications",
-    element: <MyApplications />,
-  },
-  {
-    path: "/myprofile",
-    element: <Profile />,
-  },
-  {
-    path: "/offerapplication",
-    element: <OfferApplication />,
-  },
-  {
-    path: "/offerapplicationreview",
+    path: '/offers/application',
     element: <OfferApplicationReview />,
   },
+
   {
-    path: "/employer/dashboard",
+    path: '/seeker/profile',
+    element: (
+      <SeekerGuard>
+        <Profile />
+      </SeekerGuard>
+    ),
+  },
+  {
+    path: '/seeker/applications',
+    element: (
+      <SeekerGuard>
+        <MyApplications />
+      </SeekerGuard>
+    ),
+  },
+
+  // Employer
+  {
+    path: '/employer',
     element: <EmployerDashboard />,
   },
   {
-    path: "/employer/offers/create",
+    path: '/employer/offers/create',
     element: <CreateJobOffer />,
   },
   {
-    path: "/employer/offer/details",
+    path: '/employer/offer/details',
     element: <EmplOfferDetails />,
   },
   {
-    path: "/employer/offers",
+    path: '/employer/offers',
     element: <Offers />,
   },
   {
-    path: "/employer/interviews",
+    path: '/employer/interviews',
     element: <Interviews />,
   },
   {
-    path: "/employer/interview/details",
+    path: '/employer/interview/details',
     element: <InterviewDetails />,
   },
 ];

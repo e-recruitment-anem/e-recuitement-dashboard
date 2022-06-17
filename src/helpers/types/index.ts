@@ -35,6 +35,7 @@ export interface AuthState {
   user: User;
   isAuthenticated: boolean | undefined;
   error: boolean;
+  success: boolean;
   msg: string;
   token: string;
   newPassword: string;
@@ -49,6 +50,13 @@ export interface RootState {
 export interface authData {
   email: string;
   password: string;
+}
+
+export interface signupData {
+  email: string;
+  password: string;
+  firstname: string;
+  lastname: string;
 }
 
 // ==============================================================================

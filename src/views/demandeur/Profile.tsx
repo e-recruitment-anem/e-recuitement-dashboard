@@ -24,7 +24,7 @@ const Profile: FC = () => {
       deadline: "Il y a 8 jours: ",
       applicants: "12 applicant",
       agenceImage: "img/demandeur/agencelogo.png",
-      cover: "img/demandeur/agencelogo.png",
+      cover: "/img/demandeur/agencelogo.png",
     },
     {
       role: "UI/UX Design",
@@ -34,7 +34,7 @@ const Profile: FC = () => {
       deadline: "Il y a 8 jours: ",
       applicants: "12 applicant",
       agenceImage: "img/demandeur/agencelogo.png",
-      cover: "img/demandeur/agencelogo.png",
+      cover: "/img/demandeur/agencelogo.png",
     },
     {
       role: "UI/UX Design",
@@ -44,7 +44,7 @@ const Profile: FC = () => {
       deadline: "Il y a 8 jours: ",
       applicants: "12 applicant",
       agenceImage: "img/demandeur/agencelogo.png",
-      cover: "img/demandeur/agencelogo.png",
+      cover: "/img/demandeur/agencelogo.png",
     },
   ];
 
@@ -59,9 +59,9 @@ const Profile: FC = () => {
 
           {/**PROFILE HEADER */}
           <Box className="jsprofile__heading">
-            <img src="img/demandeur/agence_cover.png" alt="" />
+            <img src="/img/demandeur/agence_cover.png" alt="" />
             <div className="jsprofile__heading--actions">
-              <img src="img/profileDefault.png" alt="" />
+              <img src="/img/profileDefault.png" alt="" />
               <div className="jsprofile__heading--actions-buttons">
                 <PrimaryButton
                   content="Change cover picture"

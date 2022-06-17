@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { login, loginError } from '../../store/slices/auth';
 import { authData, ReactChangeEvent, ReactSubmitEvent } from '../../helpers/types';
+import { Link } from 'react-router-dom';
 
 const SignIn = () => {
   // ===========================================================================
@@ -131,7 +132,9 @@ const SignIn = () => {
         </div>
         <div className="auth_footer">
           <span className="auth_footer-text">Vous n’avez pas de compte?</span>{' '}
-          <span className="auth_footer-cta">s’inscrire</span>
+          <Link to="/signup">
+            <span className="auth_footer-cta"> s’inscrire</span>
+          </Link>
         </div>
       </div>
     </div>

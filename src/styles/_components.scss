@@ -430,6 +430,12 @@ body {
     display: flex;
     flex-direction: column;
 
+    &-collection {
+        display: flex;
+        flex-direction: row;
+        gap: 4rem;
+    }
+
     &-group {
       margin-bottom: 2rem;
     }

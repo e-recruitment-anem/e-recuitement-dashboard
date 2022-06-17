@@ -1,21 +1,22 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { AuthState } from "../../helpers/types";
+import { AuthState } from '../../helpers/types';
 
 export const initialState: AuthState = {
   currentUser: {},
   user: {},
   isAuthenticated: undefined,
   error: false,
-  msg: "",
+  success: false,
+  msg: '',
   loading: false,
-  token: "",
-  newPassword: "",
-  confirmNewPassword: "",
+  token: '',
+  newPassword: '',
+  confirmNewPassword: '',
 };
 
 const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
     verify: (state) => {
@@ -49,6 +50,29 @@ const authSlice = createSlice({
       state.loading = false;
     },
 
+    // eslint-disable-next-line
+    signup: (state, { payload }: PayloadAction<any>) => {
+      state.loading = true;
+      state.success = false;
+      state.currentUser = payload;
+    },
+
+    // eslint-disable-next-line
+    signupSuccess: (state, { payload }: PayloadAction<any>) => {
+      state.currentUser = {};
+      state.loading = false;
+      state.msg = payload;
+      state.success = true;
+      state.error = false;
+    },
+
+    signupError: (state, { payload }: PayloadAction<string>) => {
+      state.msg = payload;
+      state.error = true;
+      state.success = false;
+      state.loading = false;
+    },
+
     logout: (state) => {
       state.loading = true;
     },
@@ -57,7 +81,7 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.currentUser = {};
       state.error = false;
-      state.msg = "";
+      state.msg = '';
       state.loading = false;
     },
   },
@@ -71,6 +95,9 @@ export const {
   loginError,
   logout,
   logoutSuccess,
+  signup,
+  signupSuccess,
+  signupError,
 } = authSlice.actions;
 
 export default authSlice.reducer;
