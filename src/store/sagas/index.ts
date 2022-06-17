@@ -1,7 +1,13 @@
-import axios from "axios";
 import { all, takeLatest, select, put } from "redux-saga/effects";
 import { setSession } from "../../helpers/api";
-import { getAgence, getAuth, getManageAccounts } from "../selectors";
+
+import axios from "axios";
+import {
+  getAgence,
+  getAuth,
+  getManageAccounts,
+  getManageSeeker,
+} from "../selectors";
 import {
   login,
   loginError,
@@ -29,6 +35,18 @@ import {
   fetchAdminsError,
   fetchAdminsSuccess,
 } from "../slices/manageAccounts";
+import {
+  deleteSeeker,
+  fetchSeeker,
+  fetchSeekerError,
+  fetchSeekers,
+  fetchSeekersError,
+  fetchSeekersSuccess,
+  fetchSeekerSuccess,
+  updateSeeker,
+  updateSeekerError,
+  updateSeekerSuccess,
+} from "../slices/seeker";
 
 function* authenticate() {
   try {
@@ -158,6 +176,78 @@ function* removeAdmin() {
   }
 }
 
+function* loadSeekers() {
+  try {
+    const { data } = yield axios.get(
+      `localhost:8090/api/job-seekers/search?page=0&size=10`,
+      {}
+    );
+
+    if (data.message === "Get JobSeekers List.") {
+      yield put(fetchSeekersSuccess(data.body));
+    } else {
+      yield put(fetchSeekersError("Something went wrong !"));
+    }
+  } catch (error) {
+    yield put(fetchSeekersError("Something went wrong !"));
+  }
+}
+
+function* removeSeeker() {
+  try {
+    const { tempSeeker } = yield select(getManageSeeker);
+    const { data } = yield axios.delete(
+      `http://localhost:5000/api/job-seekers/${tempSeeker.id}`
+    );
+
+    if (data.message === "agency deleted successfully.") {
+      yield put(deleteAgenceSuccess(data.message));
+    } else {
+      yield put(deleteAgenceError("Something went wrong !"));
+    }
+  } catch (error) {
+    yield put(deleteAgenceError("Something went wrong !"));
+  }
+}
+
+function* loadSeeker() {
+  try {
+    const { tempSeeker } = yield select(getManageSeeker);
+    const { data } = yield axios.get(
+      `http://localhost:8090/api/job-seekers/${tempSeeker.id}`
+    );
+
+    if (data.message === "job seeker found.") {
+      yield put(fetchSeekerSuccess(data.body));
+    } else {
+      yield put(fetchSeekerError("Job seeker not found !"));
+    }
+  } catch (error) {
+    yield put(fetchSeekerError("Job seeker not found !"));
+  }
+}
+
+function* putSeeker() {
+  try {
+    const { tempSeeker, seeker } = yield select(getManageSeeker);
+    const { data } = yield axios.put(
+      `http://localhost:5000/api/job-seekers/${tempSeeker.idJobSeeker}`,
+      {
+        ...seeker,
+        ...tempSeeker,
+      }
+    );
+
+    if (data.message === "item updated successfully.") {
+      yield put(updateSeekerSuccess(data.body));
+    } else {
+      yield put(updateSeekerError("Something went wrong !"));
+    }
+  } catch (error) {
+    yield put(updateSeekerError("Something went wrong !"));
+  }
+}
+
 // If any of these functions are dispatched, invoke the appropriate saga
 function* rootSaga() {
   yield all([
@@ -166,6 +256,10 @@ function* rootSaga() {
     takeLatest(deleteAgence.type, removeAgence),
     takeLatest(fetchAdmins.type, loadAdmins),
     takeLatest(deleteAdmin.type, removeAdmin),
+    takeLatest(fetchSeekers.type, loadSeekers),
+    takeLatest(fetchSeeker.type, loadSeeker),
+    takeLatest(deleteSeeker.type, removeSeeker),
+    takeLatest(updateSeeker.type, putSeeker),
     takeLatest(login.type, authenticate),
     takeLatest(signup.type, registerSeeker),
   ]);
