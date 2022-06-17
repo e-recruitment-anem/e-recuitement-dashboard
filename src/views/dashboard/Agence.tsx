@@ -5,17 +5,17 @@ import { Input } from '@chakra-ui/react';
 
 import AdminLayout from '../layouts/AdminLayout';
 import UserNav from '../../components/UserNav';
-import DataTable from '../../components/Tables/DataTable';
 import TableNav from '../../components/Tables/TableNav';
 
-// import { getAgence } from '../../store/selectors';
+import { getAgence } from '../../store/selectors';
 import { fetchAgences } from '../../store/slices/agence';
+import AgenceTable from '../../components/Tables/AgenceTable';
 
 const Agence: FC = () => {
   // ===========================================================================
   // Selectors
   // ===========================================================================
-  // const { agences } = useSelector(getAgence);
+  const { agences } = useSelector(getAgence);
 
   // ===========================================================================
   // Dispatch
@@ -47,7 +47,7 @@ const Agence: FC = () => {
         <UserNav />
       </div>
       <TableNav title={'Agences'} cta={'agence'} />
-      <DataTable title={'Agences'} cta={'agence'} />
+      <AgenceTable agences={agences} />
     </AdminLayout>
   );
 };
