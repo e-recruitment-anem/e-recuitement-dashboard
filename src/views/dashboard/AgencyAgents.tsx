@@ -7,23 +7,23 @@ import AdminLayout from "../layouts/AdminLayout";
 import UserNav from "../../components/UserNav";
 import TableNav from "../../components/Tables/TableNav";
 
-import { getAgence } from "../../store/selectors";
-import { fetchAgences } from "../../store/slices/agence";
-import AgenceTable from "../../components/Tables/AgenceTable";
+import { getManageAccounts } from "../../store/selectors";
+import { fetchAdmins } from "../../store/slices/manageAccounts";
+import AgencyAgentTable from "../../components/Tables/AgencyAgentTable";
 
-const Agence: FC = () => {
+const AgencyAgents: FC = () => {
   // ===========================================================================
   // Selectors
   // ===========================================================================
-  const { agences } = useSelector(getAgence);
+  const { admins } = useSelector(getManageAccounts);
 
   // ===========================================================================
   // Dispatch
   // ==========================================================================
   const dispatch = useDispatch();
 
-  const _fetchAgences = () => {
-    dispatch(fetchAgences());
+  const _fetchAgencyAgents = () => {
+    dispatch(fetchAdmins());
   };
 
   // ===========================================================================
@@ -34,22 +34,26 @@ const Agence: FC = () => {
   // Hooks
   // ===========================================================================
   useEffect(() => {
-    _fetchAgences();
+    _fetchAgencyAgents();
     // eslint-disable-next-line
   }, []);
+
+  const showAgent = () => {
+    console.log(admins);
+  };
 
   return (
     <AdminLayout>
       <div className="main-nav">
         <div className="main-nav__search">
-          <Input type="text" placeholder="Rechercher..." />
+          <Input type="text" placeholder="Rechercher..." onClick={showAgent} />
         </div>
         <UserNav />
       </div>
-      <TableNav title={"Agences"} cta={"Agency admin"} cta2={"Agency"} />
-      <AgenceTable agences={agences} />
+      <TableNav title={"Agents"} cta={"Agency admin"} cta2={"Agency"} />
+      <AgencyAgentTable agents={admins} />
     </AdminLayout>
   );
 };
 
-export default Agence;
+export default AgencyAgents;

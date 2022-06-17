@@ -12,14 +12,21 @@ const Home: FC = () => {
       description:
         "Auctor pharetra gravida turpis volutpat porttitor nec commodo laoreet est. Eu feugiat eget suscipit vitae. Ac sit sit ullamcorper sed faucibus facilisi at pulvinar. Sed imperdiet mattis blandit nisl bibendum amet adipiscing. Diam in scelerisque amet, ut turpis ante diam odio. Vitae in augue.",
       agence: "Yassir algérie",
-      agenceImage: "img/demandeur/agencelogo.png",
+      agenceImage: "/img/demandeur/agencelogo.png",
     },
     {
       role: "UI/UX Designer",
       description:
         "Auctor pharetra gravida tur pulvinar. Sed mattis blandit nisl bibendum amet adipiscing. Diam in scelerisque amet, ut turpis ante diam odio. Vitae in .",
       agence: "Yassir algérie",
-      agenceImage: "img/demandeur/agencelogo.png",
+      agenceImage: "/img/demandeur/agencelogo.png",
+    },
+    {
+      role: "UI/UX Designer",
+      description:
+        "Auctor pharetra gravida turpis volutpat porttitor nec commodo laoreet est. Eu feugiat eget suscipit vitae. Ac sit sit ullamcorper sed faucibus facilisi at pulvinar. Sed imperdiet mattis blandit nisl bibendum amet adipiscing. Diam in scelerisque amet, ut turpis ante diam odio. Vitae in augue.",
+      agence: "Yassir algérie",
+      agenceImage: "/img/demandeur/agencelogo.png",
     },
     {
       role: "UI/UX Designer",
@@ -33,14 +40,7 @@ const Home: FC = () => {
       description:
         "Auctor pharetra gravida turpis volutpat porttitor nec commodo laoreet est. Eu feugiat eget suscipit vitae. Ac sit sit ullamcorper sed faucibus facilisi at pulvinar. Sed imperdiet mattis blandit nisl bibendum amet adipiscing. Diam in scelerisque amet, ut turpis ante diam odio. Vitae in augue.",
       agence: "Yassir algérie",
-      agenceImage: "img/demandeur/agencelogo.png",
-    },
-    {
-      role: "UI/UX Designer",
-      description:
-        "Auctor pharetra gravida turpis volutpat porttitor nec commodo laoreet est. Eu feugiat eget suscipit vitae. Ac sit sit ullamcorper sed faucibus facilisi at pulvinar. Sed imperdiet mattis blandit nisl bibendum amet adipiscing. Diam in scelerisque amet, ut turpis ante diam odio. Vitae in augue.",
-      agence: "Yassir algérie",
-      agenceImage: "img/demandeur/agencelogo.png",
+      agenceImage: "/img/demandeur/agencelogo.png",
     },
   ];
 
@@ -63,7 +63,7 @@ const Home: FC = () => {
               description={description}
               agence={agence}
               agenceImage={agenceImage}
-              detailsURL="/offerdetails"
+              detailsURL="/offers/detail"
               applicationURL="/offerapplication"
             />
           ))}

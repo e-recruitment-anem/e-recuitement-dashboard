@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
-import { FormControl, Button, Alert } from '@chakra-ui/react';
+import React, { useState } from "react";
+import { FormControl, Button, Alert } from "@chakra-ui/react";
 
-import { useDispatch, useSelector } from 'react-redux';
-import { getAuth } from '../../store/selectors';
+import { useDispatch, useSelector } from "react-redux";
+import { getAuth } from "../../store/selectors";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { login, loginError } from '../../store/slices/auth';
-import { authData, ReactChangeEvent, ReactSubmitEvent } from '../../helpers/types';
-import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { login, loginError } from "../../store/slices/auth";
+import {
+  authData,
+  ReactChangeEvent,
+  ReactSubmitEvent,
+} from "../../helpers/types";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   // ===========================================================================
@@ -33,8 +37,8 @@ const SignIn = () => {
   // State
   // ===========================================================================
   const [user, setUser] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   // ===========================================================================
@@ -52,7 +56,7 @@ const SignIn = () => {
     if (payload.email && payload.password) {
       _login(payload);
     } else {
-      _loginError('Empty email or password !');
+      _loginError("Empty email or password !");
     }
   };
 
@@ -75,9 +79,7 @@ const SignIn = () => {
       </div>
       <div className="auth_side-right">
         <h2 className="auth_header">Se connecter</h2>
-        {error && (
-          <Alert className="auth_alert-error">{msg}</Alert>
-        )}
+        {error && <Alert className="auth_alert-error">{msg}</Alert>}
         <form action="post" className="auth_form" onSubmit={handleSubmit}>
           <FormControl className="auth_form-group">
             <label htmlFor="email" className="auth_form-label">
@@ -115,7 +117,9 @@ const SignIn = () => {
               </span>
             )}
           </FormControl>
-          <Button className="auth_form-button" type='submit' disabled={loading}>Log In</Button>
+          <Button className="auth_form-button" type="submit" disabled={loading}>
+            Log In
+          </Button>
         </form>
         <div className="auth_other">
           <span className="auth_other-title">Ou connecter avec</span>
@@ -131,7 +135,7 @@ const SignIn = () => {
           </div>
         </div>
         <div className="auth_footer">
-          <span className="auth_footer-text">Vous n’avez pas de compte?</span>{' '}
+          <span className="auth_footer-text">Vous n’avez pas de compte?</span>{" "}
           <Link to="/signup">
             <span className="auth_footer-cta"> s’inscrire</span>
           </Link>

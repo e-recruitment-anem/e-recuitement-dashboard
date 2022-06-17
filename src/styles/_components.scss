@@ -431,9 +431,9 @@ body {
     flex-direction: column;
 
     &-collection {
-        display: flex;
-        flex-direction: row;
-        gap: 4rem;
+      display: flex;
+      flex-direction: row;
+      gap: 4rem;
     }
 
     &-group {
@@ -515,6 +515,24 @@ body {
       font-weight: 700;
       color: #319795;
       cursor: pointer;
+    }
+  }
+
+  &_alert {
+    &-error {
+      font-size: 1.4rem !important;
+      margin-bottom: 2rem;
+      font-weight: 500;
+      color: red;
+      background-color: lightpink !important;
+    }
+
+    &-success {
+      font-size: 1.4rem !important;
+      margin-bottom: 2rem;
+      font-weight: 500;
+      color: green;
+      background-color: lightgreen !important;
     }
   }
 }
@@ -790,13 +808,13 @@ body {
         background-color: #0061ff !important;
       }
     }
-
     &-cta {
       font-size: 1.8rem !important;
       font-weight: 600 !important;
       background-color: #0061ff !important;
       color: white;
       padding: 2.5rem 2rem !important;
+      margin-left: 4rem;
     }
   }
 

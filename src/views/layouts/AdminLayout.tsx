@@ -48,7 +48,7 @@ const Layout: FC<PropsWithChildren<Props>> = ({ children }) => {
           </li>
 
           <li className={`side-nav__item ${active === 'users' ? 'side-nav__item--active' : ''}`} onClick={() => updateActive('users')}>
-            <Link to="/users" className="side-nav__link">
+            <Link to="/agents" className="side-nav__link">
               <FontAwesomeIcon className="side-nav__icon" icon={faUser} />
               <span>Utilisateurs</span>
             </Link>

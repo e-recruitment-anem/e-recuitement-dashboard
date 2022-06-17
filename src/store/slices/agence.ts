@@ -1,18 +1,18 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { AgenceState } from '../../helpers/types';
+import { AgenceState } from "../../helpers/types";
 
 export const initialState: AgenceState = {
   error: false,
   success: false,
-  msg: '',
+  msg: "",
   loading: false,
   agences: [],
   agence: {},
 };
 
 const agenceSlice = createSlice({
-  name: 'agence',
+  name: "agence",
   initialState,
   reducers: {
     // eslint-disable-next-line
@@ -34,14 +34,19 @@ const agenceSlice = createSlice({
       state.loading = false;
     },
 
-    createAgence: (state, { payload }: PayloadAction<string>) => {
+    createAgence: (state, { payload }: PayloadAction<any>) => {
       state.loading = true;
-      state.msg = payload;
+      state.agence = {
+        name: payload.name,
+        email: payload.email,
+        phoneNumber: payload.phoneNumber,
+      };
     },
 
     // eslint-disable-next-line
     createAgenceSuccess: (state, { payload }: PayloadAction<string>) => {
       state.agence = {};
+      state.success = true; 
       state.msg = payload;
       state.loading = false;
       state.error = false;
@@ -50,6 +55,7 @@ const agenceSlice = createSlice({
     createAgenceError: (state, { payload }: PayloadAction<string>) => {
       state.msg = payload;
       state.error = true;
+      state.success = false;
       state.agence = {};
       state.loading = false;
     },
