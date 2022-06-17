@@ -56,6 +56,16 @@ export interface ManageAccountsState {
   admins: User[];
 }
 
+export interface ManageSeekerState {
+  loading: boolean;
+  seeker: User;
+  tempSeeker: User;
+  seekers: User[];
+  error: boolean;
+  updated: boolean;
+  msg: string;
+}
+
 export interface AgenceState {
   loading: boolean;
   error: boolean;
@@ -69,6 +79,7 @@ export interface RootState {
   authState: AuthState;
   agenceState: AgenceState;
   manageAccountsState: ManageAccountsState;
+  manageSeekerState: ManageSeekerState;
 }
 
 export interface authData {
