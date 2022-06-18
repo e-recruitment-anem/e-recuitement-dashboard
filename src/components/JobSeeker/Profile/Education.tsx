@@ -1,13 +1,13 @@
-import { SkeletonText } from '@chakra-ui/react';
-import { faAdd, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import moment from 'moment';
-import React, { useEffect } from 'react';
-import { FC } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getManageSeeker } from '../../../store/selectors';
-import { fetchSeeker, initMessages } from '../../../store/slices/seeker';
-import AddEducationModal from './Modals/AddEducationModal';
+import { SkeletonText } from "@chakra-ui/react";
+import { faAdd, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import moment from "moment";
+import React, { useEffect } from "react";
+import { FC } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getManageSeeker } from "../../../store/selectors";
+import { fetchSeeker, initMessages } from "../../../store/slices/seeker";
+import AddEducationModal from "./Modals/AddEducationModal";
 
 const Education: FC = () => {
   // ===========================================================================
@@ -27,10 +27,6 @@ const Education: FC = () => {
   const _initMessages = () => {
     dispatch(initMessages());
   };
-
-  // ===========================================================================
-  // State
-  // ===========================================================================
 
   // ===========================================================================
   // Hooks
@@ -77,7 +73,7 @@ const Education: FC = () => {
                 <h2>{education.title}</h2>
                 <span>
                   {moment(education.startDate).year() +
-                    ' - ' +
+                    " - " +
                     moment(education.endDate).year()}
                 </span>
                 <div className="jsprofile__education--content-files">
