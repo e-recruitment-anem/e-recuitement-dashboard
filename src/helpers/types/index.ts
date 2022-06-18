@@ -13,6 +13,21 @@ export interface User {
   [anyProp: string]: any;
 }
 
+export interface Diplome {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [anyProp: string]: any;
+}
+
+export interface Experience {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [anyProp: string]: any;
+}
+
+export interface Education {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [anyProp: string]: any;
+}
+
 export interface Agence {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [anyProp: string]: any;
@@ -61,6 +76,10 @@ export interface ManageSeekerState {
   seeker: User;
   tempSeeker: User;
   seekers: User[];
+  diplomes: Diplome[];
+  experience: Experience[];
+  educations: Education[];
+  success: boolean;
   error: boolean;
   updated: boolean;
   msg: string;
