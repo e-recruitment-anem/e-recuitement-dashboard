@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import { Table, Thead, Tbody, Tr, Td } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,26 +6,13 @@ import {
   faCaretUp,
   faCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import { Agence, User } from "../../helpers/types";
-import { useSelector, useDispatch } from "react-redux";
-import { getAgence } from "../../store/selectors";
-import { fetchAgences } from "../../store/slices/agence";
+import { User } from "../../helpers/types";
 
 interface Props {
-  agents: User[];
-  agencies?: Agence[];
+  seekers: User[];
 }
 
-const AgenceTable: FC<Props> = ({ agents, agencies }) => {
-  // TETSING
-  const showAgent = () => {
-    console.log(agents);
-  };
-
-  const showAgencies = () => {
-    console.log(agencies);
-  };
-
+const AgenceTable: FC<Props> = ({ seekers }) => {
   return (
     <>
       <Table className="dataTable">
@@ -37,49 +24,40 @@ const AgenceTable: FC<Props> = ({ agents, agencies }) => {
                 icon={faCaretDown}
               />
             </Td>
-            <Td className="dataTable_header" onClick={showAgencies}>
-              PM
-            </Td>
+            <Td className="dataTable_header">PM</Td>
             <Td className="dataTable_header dataTable_header-sortable">
-              Agent
+              User{" "}
               <FontAwesomeIcon
                 className="dataTbale_header-icon"
                 icon={faCaretUp}
               />
             </Td>
             <Td className="dataTable_header dataTable_header-sortable">
-              Agency{" "}
+              Commune{" "}
               <FontAwesomeIcon
                 className="dataTbale_header-icon"
                 icon={faCaretDown}
               />
             </Td>
             <Td className="dataTable_header">Email</Td>
-            <Td className="dataTable_header">Telephone</Td>
-            <Td className="dataTable_header">Offres</Td>
-            <Td className="dataTable_header">Status</Td>
+            <Td className="dataTable_header">Phone number</Td>
+            <Td className="dataTable_header">Nationality</Td>
+            <Td className="dataTable_header">Birthdate</Td>
           </Tr>
         </Thead>
         <Tbody className="dataTable_body">
-          {agents.map((agent) => (
+          {seekers.map((jobSeeker) => (
             <Tr className="dataTable_row">
               <Td className="dataTable_item dataTable_item-id">
-                {agent.admin.accountId}
+                {jobSeeker.id}
               </Td>
               <Td className="dataTable_item">Img</Td>
               <Td className="dataTable_item dataTable_item-bold">
-                {agent.admin.firstname + " " + agent.admin.lastname}
+                {jobSeeker.name}
               </Td>
-              {agencies?.map(
-                (agency) =>
-                  agency.id === agent.agencyId && (
-                    <Td className="dataTable_item">{agency.name}</Td>
-                  )
-              )}
-              <Td className="dataTable_item">{agent.email}</Td>
-              <Td className="dataTable_item">
-                (213) {agent.admin.phoneNumber}
-              </Td>
+              <Td className="dataTable_item">Sidi Bel Abbés</Td>
+              <Td className="dataTable_item">{jobSeeker.email}</Td>
+              <Td className="dataTable_item">+213 {jobSeeker.phoneNumber}</Td>
               <Td className="dataTable_item dataTable_item--center">
                 <span className="dataTable_item-box">3</span>
               </Td>

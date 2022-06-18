@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { AuthState } from '../../helpers/types';
+import { AuthState } from "../../helpers/types";
 
 export const initialState: AuthState = {
   currentUser: {},
@@ -8,15 +8,15 @@ export const initialState: AuthState = {
   isAuthenticated: undefined,
   error: false,
   success: false,
-  msg: '',
+  msg: "",
   loading: false,
-  token: '',
-  newPassword: '',
-  confirmNewPassword: '',
+  token: "",
+  newPassword: "",
+  confirmNewPassword: "",
 };
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     verify: (state) => {
@@ -81,7 +81,7 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.currentUser = {};
       state.error = false;
-      state.msg = '';
+      state.msg = "";
       state.loading = false;
     },
   },

@@ -1,19 +1,19 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { ManageSeekerState } from '../../helpers/types';
+import { ManageSeekerState } from "../../helpers/types";
 
 export const initialState: ManageSeekerState = {
   error: false,
-  msg: '',
+  msg: "",
   loading: false,
   updated: false,
   seekers: [],
   seeker: {},
-  tempSeeker: {}
+  tempSeeker: {},
 };
 
 const manageSeekerSlice = createSlice({
-  name: 'seeker',
+  name: "seeker",
   initialState,
   reducers: {
     fetchSeekers: (state) => {
@@ -109,7 +109,7 @@ export const {
   fetchSeekerError,
   updateSeeker,
   updateSeekerSuccess,
-  updateSeekerError
+  updateSeekerError,
 } = manageSeekerSlice.actions;
 
 export default manageSeekerSlice.reducer;

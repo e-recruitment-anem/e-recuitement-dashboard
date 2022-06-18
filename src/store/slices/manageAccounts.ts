@@ -1,10 +1,10 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { ManageAccountsState } from '../../helpers/types';
+import { ManageAccountsState } from "../../helpers/types";
 
 export const initialState: ManageAccountsState = {
   error: false,
-  msg: '',
+  msg: "",
   loading: false,
   admins: [],
   admin: {},
@@ -12,7 +12,7 @@ export const initialState: ManageAccountsState = {
 };
 
 const manageAccountsSlice = createSlice({
-  name: 'manageAccounts',
+  name: "manageAccounts",
   initialState,
   reducers: {
     fetchAdmins: (state) => {
@@ -81,7 +81,7 @@ export const {
   deleteAdminSuccess,
   createAdmin,
   createAdminSuccess,
-  createAdminError
+  createAdminError,
 } = manageAccountsSlice.actions;
 
 export default manageAccountsSlice.reducer;

@@ -1,4 +1,5 @@
 import {
+  Alert,
   Button,
   FormControl,
   FormLabel,
@@ -13,9 +14,17 @@ import {
   ModalOverlay,
   Select,
 } from "@chakra-ui/react";
-import { DatePicker } from "chakra-ui-date-input";
+import moment from "moment";
 
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { ReactChangeEvent, ReactClickEvent, User } from "../../helpers/types";
+import { getAgence, getManageAccounts } from "../../store/selectors";
+import { fetchAgences } from "../../store/slices/agence";
+import {
+  createAdmin,
+  createAdminError,
+} from "../../store/slices/manageAccounts";
 
 interface Props extends InputProps {
   open: boolean;
@@ -23,7 +32,88 @@ interface Props extends InputProps {
 }
 
 const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
-  const agencies = ["Yassir", "FoodBeeper", "SweetOclock"];
+  // ===========================================================================
+  // Selectors
+  // ===========================================================================
+  const { admin, error, msg, loading } = useSelector(getManageAccounts);
+  const { agences } = useSelector(getAgence);
+
+  // ===========================================================================
+  // Dispatch
+  // ==========================================================================
+  const dispatch = useDispatch();
+
+  const _createAgencyAdmin = (payload: User) => {
+    dispatch(createAdmin(payload));
+  };
+
+  const _createAgencyAdminError = (payload: string) => {
+    dispatch(createAdminError(payload));
+  };
+
+  const _fetchAgences = () => {
+    dispatch(fetchAgences());
+  };
+
+  // ===========================================================================
+  // State
+  // ===========================================================================
+  const [agencyAdmin, setAgencyAdmin] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    birthday: "",
+    phoneNumber: "",
+    agency: "",
+  });
+
+  // ===========================================================================
+  // Handlers
+  // ===========================================================================
+  const handleChange = (event: ReactChangeEvent) => {
+    setAgencyAdmin({
+      ...agencyAdmin,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (event: ReactClickEvent): void => {
+    event.preventDefault();
+
+    const payload = {
+      firstname: agencyAdmin.firstname,
+      lastname: agencyAdmin.lastname,
+      email: agencyAdmin.email.trim(),
+      birthday: moment(agencyAdmin.birthday).toISOString(),
+      phoneNumber: agencyAdmin.phoneNumber,
+      agency: 10,
+    };
+    console.log(payload);
+
+    if (
+      payload.firstname &&
+      payload.lastname &&
+      payload.email &&
+      payload.phoneNumber &&
+      payload.birthday
+      // && payload.agency
+    ) {
+      _createAgencyAdmin(payload);
+    } else {
+      _createAgencyAdminError(
+        "Please, make sure all inputs are filled correctly"
+      );
+    }
+  };
+
+  // ===========================================================================
+  // Hooks
+  // ===========================================================================
+  useEffect(() => {
+    _fetchAgences();
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <Modal size="6xl" isOpen={open} onClose={() => onToggle}>
       <ModalOverlay />
@@ -33,6 +123,8 @@ const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
         </ModalHeader>
         <ModalCloseButton onClick={onToggle} />
         <ModalBody pb={6}>
+          {error && <Alert className="auth_alert-error">{msg}</Alert>}
+          {/* {success && <Alert className="auth_alert-success">{msg}</Alert>} */}
           <div className="personalInfoModal_inputs">
             <FormControl className="personalInfoModal_inputs-item">
               <FormLabel
@@ -42,6 +134,8 @@ const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
                 Firstname
               </FormLabel>
               <Input
+                onChange={handleChange}
+                name="firstname"
                 type="text"
                 id="first-name"
                 placeholder="ex. John"
@@ -56,6 +150,8 @@ const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
                 Lastname
               </FormLabel>
               <Input
+                onChange={handleChange}
+                name="lastname"
                 type="text"
                 id="last"
                 placeholder="ex. Smith"
@@ -70,6 +166,8 @@ const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
                 Email
               </FormLabel>
               <Input
+                onChange={handleChange}
+                name="email"
                 type="email"
                 id="email"
                 placeholder="ex. example@gmail.com"
@@ -84,11 +182,12 @@ const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
                 Agency
               </FormLabel>
               <Select
+                name="agency"
                 id="agency"
                 className="personalInfoModal_inputs-item--input"
               >
-                {agencies.map((el) => (
-                  <option>{el}</option>
+                {agences.map((el) => (
+                  <option value={el.id}>{el.name}</option>
                 ))}
               </Select>
             </FormControl>
@@ -99,11 +198,12 @@ const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
               >
                 Birthdate
               </FormLabel>
-              <DatePicker
+              <Input
+                onChange={handleChange}
+                name="birthday"
+                type="date"
                 className="personalInfoModal_inputs-item--input"
                 placeholder="Select a date"
-                name="birthdate"
-                onChange={(date: string) => console.log(date)}
               />
             </FormControl>
             <FormControl className="personalInfoModal_inputs-item">
@@ -114,6 +214,8 @@ const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
                 Phone number
               </FormLabel>
               <Input
+                onChange={handleChange}
+                name="phoneNumber"
                 type="number"
                 id="phone-number"
                 placeholder="ex. 0560000000"
@@ -138,6 +240,7 @@ const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
             color={"white"}
             background="#0061FF"
             className="personalInfoModal_inputs-item--input"
+            onClick={handleSubmit}
           >
             Create agency admin
           </Button>

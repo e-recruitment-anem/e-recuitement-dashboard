@@ -1,10 +1,11 @@
 import React, { FC, useState } from "react";
 import { Button } from "@chakra-ui/react";
 import AddAgency from "../Dashboard/AddAgency";
+import AddAdminAgency from "../Dashboard/AddAdminAgency";
 
 interface Props {
   title: string;
-  cta: string;
+  cta?: string;
   cta2?: string;
 }
 
@@ -48,17 +49,25 @@ const TableNav: FC<Props> = ({ title, cta, cta2 }) => {
         {title === "Agences" && (
           <div className="dataTable_nav-actions">
             <Button className="dataTable_nav-cta" onClick={() => onToggle()}>
-              + Créer {cta}
-            </Button>
-            <Button className="dataTable_nav-cta" onClick={() => onToggle()}>
               + Créer {cta2}
+            </Button>
+          </div>
+        )}
+        {title === "Agents" && (
+          <div className="dataTable_nav-actions">
+            <Button className="dataTable_nav-cta" onClick={() => onToggle()}>
+              + Créer {cta}
             </Button>
           </div>
         )}
         {}
       </div>
-      {/* <AddAdminAgency open={open} onToggle={onToggle} className="modal" /> */}
-      <AddAgency open={open} onToggle={onToggle} className="modal" />
+      {title === "Agences" && (
+        <AddAgency open={open} onToggle={onToggle} className="modal" />
+      )}
+      {title === "Agents" && (
+        <AddAdminAgency open={open} onToggle={onToggle} className="modal" />
+      )}
     </div>
   );
 };

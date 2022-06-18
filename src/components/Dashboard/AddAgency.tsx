@@ -79,8 +79,6 @@ const AddAgency: FC<Props> = ({ open, onToggle }) => {
     }
   };
 
-  const showSuccess = false;
-
   return (
     <Modal size="3xl" isOpen={open} onClose={() => onToggle}>
       <ModalOverlay />

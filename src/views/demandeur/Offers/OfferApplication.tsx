@@ -13,6 +13,7 @@ const OfferApplication: FC = () => {
     Email: "a.mahdaoui@esi-sba.dz",
     PhoneNumber: "0560000000",
   };
+
   const summaryBoxItems = [
     { title: "Experience", content: "Minimum 3 ans" },
     { title: "Type de travail", content: "À distance" },

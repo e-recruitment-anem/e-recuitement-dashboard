@@ -25,6 +25,7 @@ import AdminGuard from "./components/guards/AdminGuard";
 import SeekerGuard from "./components/guards/SeekerGuard";
 import GuestGuard from "./components/guards/GuestGuard";
 import AgencyAgents from "./views/dashboard/AgencyAgents";
+import Users from "./views/dashboard/Users";
 
 const routes = [
   {
@@ -72,6 +73,14 @@ const routes = [
     element: (
       <AdminGuard>
         <AgencyAgents />
+      </AdminGuard>
+    ),
+  },
+  {
+    path: "/seekers",
+    element: (
+      <AdminGuard>
+        <Users />
       </AdminGuard>
     ),
   },

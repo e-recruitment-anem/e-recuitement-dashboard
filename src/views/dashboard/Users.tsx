@@ -7,29 +7,23 @@ import AdminLayout from "../layouts/AdminLayout";
 import UserNav from "../../components/UserNav";
 import TableNav from "../../components/Tables/TableNav";
 
-import { getAgence, getManageAccounts } from "../../store/selectors";
-import { fetchAdmins } from "../../store/slices/manageAccounts";
-import AgencyAgentTable from "../../components/Tables/AgencyAgentTable";
-import { fetchAgences } from "../../store/slices/agence";
+import { getManageSeeker } from "../../store/selectors";
+import UsersTable from "../../components/Tables/UsersTable";
+import { fetchSeekers } from "../../store/slices/seeker";
 
-const AgencyAgents: FC = () => {
+const Agence: FC = () => {
   // ===========================================================================
   // Selectors
   // ===========================================================================
-  const { admins } = useSelector(getManageAccounts);
-  const { agences } = useSelector(getAgence);
+  const { seekers } = useSelector(getManageSeeker);
 
   // ===========================================================================
   // Dispatch
   // ==========================================================================
   const dispatch = useDispatch();
 
-  const _fetchAgencyAgents = () => {
-    dispatch(fetchAdmins());
-  };
-
-  const _fetchAgences = () => {
-    dispatch(fetchAgences());
+  const _fetchSeekers = () => {
+    dispatch(fetchSeekers());
   };
 
   // ===========================================================================
@@ -40,27 +34,26 @@ const AgencyAgents: FC = () => {
   // Hooks
   // ===========================================================================
   useEffect(() => {
-    _fetchAgencyAgents();
-    _fetchAgences();
+    _fetchSeekers();
     // eslint-disable-next-line
   }, []);
 
-  const showAgent = () => {
-    console.log(agences);
+  const test = () => {
+    console.log(seekers);
   };
 
   return (
     <AdminLayout>
       <div className="main-nav">
         <div className="main-nav__search">
-          <Input type="text" placeholder="Rechercher..." onClick={showAgent} />
+          <Input type="text" placeholder="Rechercher..." onClick={test} />
         </div>
         <UserNav />
       </div>
-      <TableNav title={"Agents"} cta={"Agency admin"} />
-      <AgencyAgentTable agents={admins} agencies={agences} />
+      <TableNav title={"Job Seekers"} />
+      <UsersTable seekers={seekers} />
     </AdminLayout>
   );
 };
 
-export default AgencyAgents;
+export default Agence;
