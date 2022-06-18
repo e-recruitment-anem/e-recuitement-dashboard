@@ -65,7 +65,7 @@ const Profile: FC = () => {
       agence: "Yassir Algérie",
       deadline: "Il y a 8 jours: ",
       applicants: "12 applicant",
-      agenceImage: "img/demandeur/agencelogo.png",
+      agenceImage: "/img/demandeur/agencelogo.png",
       cover: "/img/demandeur/agencelogo.png",
     },
     {
@@ -75,7 +75,7 @@ const Profile: FC = () => {
       agence: "Yassir Algérie",
       deadline: "Il y a 8 jours: ",
       applicants: "12 applicant",
-      agenceImage: "img/demandeur/agencelogo.png",
+      agenceImage: "/img/demandeur/agencelogo.png",
       cover: "/img/demandeur/agencelogo.png",
     },
     {
@@ -85,7 +85,7 @@ const Profile: FC = () => {
       agence: "Yassir Algérie",
       deadline: "Il y a 8 jours: ",
       applicants: "12 applicant",
-      agenceImage: "img/demandeur/agencelogo.png",
+      agenceImage: "/img/demandeur/agencelogo.png",
       cover: "/img/demandeur/agencelogo.png",
     },
   ];

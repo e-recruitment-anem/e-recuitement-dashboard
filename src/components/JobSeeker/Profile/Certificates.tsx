@@ -1,23 +1,33 @@
 import { InputProps } from "@chakra-ui/react";
 import { faAdd, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
 import { FC } from "react";
+import AddDiplomeModal from "./Modals/AddDiplomeModal";
 
 interface Props extends InputProps {
   paragraph?: string;
 }
 
 const Certificates: FC<Props> = ({ paragraph }) => {
+  //Modal state management
+  const [open, setOpen] = React.useState(false);
+
+  const onToggle = () => {
+    setOpen(!open);
+    console.log(open);
+  };
+
   const certificates = [
     {
       title: "Higher National School of Computer Science (Algeria)",
       date: "January 2020",
-      images: ["img/demandeur/agence_cover.png"],
+      images: ["/img/demandeur/agence_cover.png"],
     },
     {
       title: "Higher National School of Computer Science (Algeria)",
       date: "January 2020",
-      images: ["img/demandeur/agence_cover.png"],
+      images: ["/img/demandeur/agence_cover.png"],
     },
   ];
 
@@ -25,7 +35,7 @@ const Certificates: FC<Props> = ({ paragraph }) => {
     <div>
       <div className="jsprofile__box--header">
         <h1>Certficates & diplomas</h1>
-        <div className="jsprofile__box--action">
+        <div className="jsprofile__box--action" onClick={() => onToggle()}>
           <FontAwesomeIcon
             className="jsprofile__box--action-icon"
             icon={faAdd}
@@ -63,6 +73,12 @@ const Certificates: FC<Props> = ({ paragraph }) => {
           </div>
         );
       })}
+      <AddDiplomeModal
+        open={open}
+        onToggle={onToggle}
+        className="modal"
+        actionButton="Save changes"
+      />
     </div>
   );
 };

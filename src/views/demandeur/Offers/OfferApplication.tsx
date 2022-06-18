@@ -43,14 +43,14 @@ const OfferApplication: FC = () => {
       <div className="offerdetails">
         <Box className="offerdetails__bigcard jobapplication">
           <img
-            src="img/demandeur/agence_cover.png"
+            src="/img/demandeur/agence_cover.png"
             alt=""
             className="offerdetails__bigcard--cover"
           />
 
           <div className="offerdetails__bigcard-content">
             <img
-              src="img/demandeur/agencelogo.png"
+              src="/img/demandeur/agencelogo.png"
               alt=""
               className="offerdetails__bigcard--profilepic"
             />
