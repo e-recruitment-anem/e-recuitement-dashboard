@@ -17,13 +17,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getManageSeeker } from '../../store/selectors';
 import { fetchSeeker } from '../../store/slices/seeker';
 import { useParams } from 'react-router-dom';
+import { useToast } from '@chakra-ui/react';
 
 const Profile: FC = () => {
   // ===========================================================================
   // Selectors
   // ===========================================================================
   const { seeker, msg, error } = useSelector(getManageSeeker);
-  const { id } = useParams()
+  const toast = useToast();
+  const { id } = useParams();
 
   // ===========================================================================
   // Dispatch
@@ -37,7 +39,7 @@ const Profile: FC = () => {
   // ===========================================================================
   // State
   // ===========================================================================
-  const [general, setGeneral] = useState(seeker)
+  const [general, setGeneral] = useState(seeker);
 
   // ===========================================================================
   // Hooks
@@ -46,6 +48,18 @@ const Profile: FC = () => {
     _fetchSeeker();
     // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    toast({
+      position: 'bottom-left',
+      render: () => (
+        <Box color="white" p={3} bg="red.500">
+          {msg}
+        </Box>
+      ),
+    });
+    // eslint-disable-next-line
+  }, [error]);
 
   const similarOffers = [
     {

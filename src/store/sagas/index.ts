@@ -1,5 +1,4 @@
 import { all, takeLatest, select, put } from 'redux-saga/effects';
-import { setSession } from '../../helpers/api';
 
 import axios from 'axios';
 import {
@@ -39,7 +38,15 @@ import {
   fetchAdminsSuccess,
 } from '../slices/manageAccounts';
 import {
+    attachEducation,
+  attachEducationError,
+  createDiplome,
+  createDiplomeError,
   deleteSeeker,
+  fetchDiplomesError,
+  fetchDiplomesSuccess,
+  fetchEducationError,
+  fetchEducationSuccess,
   fetchSeeker,
   fetchSeekerError,
   fetchSeekers,
@@ -59,9 +66,8 @@ function* authenticate() {
       password: currentUser.password,
     });
 
-    if (data) {
-      setSession(data);
-      yield put(loginSuccess(data));
+    if (data.message === 'logged in successfully') {
+      yield put(loginSuccess(data.body));
     } else {
       yield put(loginError('Something went wrong !'));
     }
@@ -102,7 +108,6 @@ function* loadAgences() {
     );
 
     if (data.message === 'agencies list') {
-      console.log(data);
       yield put(fetchAgencesSuccess(data.body));
     } else {
       yield put(fetchAgencesError('Something went wrong !'));
@@ -182,15 +187,6 @@ function* removeAdmin() {
 function* addAdmin() {
   try {
     const { admin } = yield select(getManageAccounts);
-    console.log({
-      firstname: admin.firstname,
-      lastname: admin.lastname,
-      email: admin.email,
-      phoneNumber: admin.phoneNumber,
-      type: 'SUPER_ADMIN',
-      agencyId: admin.agency,
-      birthDate: admin.birthday,
-    });
 
     const { data } = yield axios.post(
       'http://localhost:5000/api/auth/register-admin',
@@ -204,7 +200,6 @@ function* addAdmin() {
         birthDate: admin.birthday,
       }
     );
-    console.log(data);
 
     if (data.message === 'admin created successfuly;') {
       yield put(createAdminSuccess(data.message));
@@ -254,15 +249,104 @@ function* loadSeeker() {
   try {
     // const { user } = yield select(getAuth);
     const { data } = yield axios.get(`http://localhost:8090/api/job-seekers/1`);
-    console.log(data);
 
     if (data.message === 'job seeker found.') {
-      yield put(fetchSeekerSuccess(data.body));
+      yield put(
+        fetchSeekerSuccess({
+          seeker: data.body,
+        })
+      );
     } else {
       yield put(fetchSeekerError('Job seeker not found !'));
     }
   } catch (error) {
     yield put(fetchSeekerError('Job seeker not found !'));
+  }
+}
+
+function* addDiplome() {
+  try {
+    const { tempSeeker, seeker } = yield select(getManageSeeker);
+    const { data } = yield axios.put(
+      `http://localhost:5000/api/diplome/${seeker.idJobSeeker}`,
+      {
+        title: tempSeeker.title,
+        storagePath: tempSeeker.storagePath,
+      }
+    );
+
+    if (data.message === 'Diplome attached.') {
+      yield put(createDiplome(data.message));
+    } else {
+      yield put(createDiplomeError('Something went wrong !'));
+    }
+  } catch (error) {
+    yield put(createDiplomeError('Something went wrong !'));
+  }
+}
+
+function* loadDiplomes() {
+  try {
+    // const { user } = yield select(getAuth);
+    const { data } = yield axios.get(
+      `http://localhost:8090/api/job-seekers/diplome/b/1`
+    );
+
+    if (data.message === 'Diplomes List found.') {
+      yield put(
+        fetchDiplomesSuccess({
+          diplomes: data.body,
+        })
+      );
+    } else {
+      yield put(fetchDiplomesError('Something went wrong!'));
+    }
+  } catch (error) {
+    yield put(fetchDiplomesError('Something went wrong!'));
+  }
+}
+
+function* loadEducation() {
+  try {
+    // const { user } = yield select(getAuth);
+    const { data } = yield axios.get(
+      `http://localhost:8090/api/job-seekers/educations/1`
+    );
+
+    if (data.message === 'Education List found.') {
+      yield put(
+        fetchEducationSuccess({
+          educations: data.body,
+        })
+      );
+    } else {
+      yield put(fetchEducationError('Something went wrong!'));
+    }
+  } catch (error) {
+    yield put(fetchEducationError('Something went wrong!'));
+  }
+}
+
+function* addEducation() {
+  try {
+    const { tempSeeker, seeker } = yield select(getManageSeeker);
+    const { data } = yield axios.put(
+      `http://localhost:5000/api/diplome/${seeker.idJobSeeker}`,
+      {
+        school: tempSeeker.school,
+        title: tempSeeker.title,
+        startDate: tempSeeker.storagePath,
+        endDate: tempSeeker.endDate,
+      }
+    );
+
+    if (data.message === 'Education attached.') {
+      yield put(attachEducation(data.message));
+    } else {
+      yield put(attachEducationError('Something went wrong !'));
+    }
+  } catch (error) {
+    yield put(attachEducationError('Something went wrong !'));
   }
 }
 
@@ -298,8 +382,12 @@ function* rootSaga() {
     takeLatest(createAdmin.type, addAdmin),
     takeLatest(fetchSeekers.type, loadSeekers),
     takeLatest(fetchSeeker.type, loadSeeker),
+    takeLatest(fetchSeeker.type, loadDiplomes),
+    takeLatest(fetchSeeker.type, loadEducation),
     takeLatest(deleteSeeker.type, removeSeeker),
     takeLatest(updateSeeker.type, putSeeker),
+    takeLatest(createDiplome.type, addDiplome),
+    takeLatest(attachEducation.type, addEducation),
     takeLatest(login.type, authenticate),
     takeLatest(signup.type, registerSeeker),
   ]);

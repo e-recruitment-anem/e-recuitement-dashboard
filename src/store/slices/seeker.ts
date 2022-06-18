@@ -1,19 +1,23 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { ManageSeekerState } from "../../helpers/types";
+import { ManageSeekerState } from '../../helpers/types';
 
 export const initialState: ManageSeekerState = {
   error: false,
-  msg: "",
+  msg: '',
   loading: false,
   updated: false,
+  success: false,
   seekers: [],
   seeker: {},
+  diplomes: [],
+  educations: [],
+  experience: [],
   tempSeeker: {},
 };
 
 const manageSeekerSlice = createSlice({
-  name: "seeker",
+  name: 'seeker',
   initialState,
   reducers: {
     fetchSeekers: (state) => {
@@ -39,13 +43,42 @@ const manageSeekerSlice = createSlice({
     },
 
     fetchSeekerSuccess: (state, { payload }: PayloadAction<any>) => {
-      state.seeker = payload;
+      state.seeker = payload.seeker;
+      state.diplomes = payload.diplomes;
       state.tempSeeker = {};
       state.loading = false;
       state.error = false;
     },
 
     fetchSeekerError: (state, { payload }: PayloadAction<string>) => {
+      state.msg = payload;
+      state.tempSeeker = {};
+      state.error = true;
+      state.loading = false;
+    },
+
+    fetchDiplomesSuccess: (state, { payload }: PayloadAction<any>) => {
+      state.diplomes = payload.diplomes;
+      state.tempSeeker = {};
+      state.loading = false;
+      state.error = false;
+    },
+
+    fetchDiplomesError: (state, { payload }: PayloadAction<string>) => {
+      state.msg = payload;
+      state.tempSeeker = {};
+      state.error = true;
+      state.loading = false;
+    },
+
+    fetchEducationSuccess: (state, { payload }: PayloadAction<any>) => {
+      state.educations = payload.educations;
+      state.tempSeeker = {};
+      state.loading = false;
+      state.error = false;
+    },
+
+    fetchEducationError: (state, { payload }: PayloadAction<string>) => {
       state.msg = payload;
       state.tempSeeker = {};
       state.error = true;
@@ -94,6 +127,60 @@ const manageSeekerSlice = createSlice({
       state.error = true;
       state.loading = false;
     },
+
+    // Manage Diplomes
+    createDiplome: (state, { payload }: PayloadAction<any>) => {
+      state.loading = true;
+      state.tempSeeker = {
+        title: payload.title,
+        storagePath: payload.storagePath,
+      };
+    },
+
+    // eslint-disable-next-line
+    createDiplomeSuccess: (state, { payload }: PayloadAction<string>) => {
+      state.tempSeeker = {};
+      state.success = true;
+      state.msg = payload;
+      state.loading = false;
+      state.error = false;
+    },
+
+    createDiplomeError: (state, { payload }: PayloadAction<string>) => {
+      state.msg = payload;
+      state.error = true;
+      state.success = false;
+      state.tempSeeker = {};
+      state.loading = false;
+    },
+
+    // Manage Educations
+    attachEducation: (state, { payload }: PayloadAction<any>) => {
+      state.loading = true;
+      state.tempSeeker = {
+        school: payload.school,
+        title: payload.title,
+        startDate: payload.storagePath,
+        endDate: payload.endDate,
+      };
+    },
+
+    // eslint-disable-next-line
+    attachEducationSuccess: (state, { payload }: PayloadAction<string>) => {
+      state.tempSeeker = {};
+      state.success = true;
+      state.msg = payload;
+      state.loading = false;
+      state.error = false;
+    },
+
+    attachEducationError: (state, { payload }: PayloadAction<string>) => {
+      state.msg = payload;
+      state.error = true;
+      state.success = false;
+      state.tempSeeker = {};
+      state.loading = false;
+    },
   },
 });
 
@@ -110,6 +197,16 @@ export const {
   updateSeeker,
   updateSeekerSuccess,
   updateSeekerError,
+  createDiplome,
+  createDiplomeSuccess,
+  createDiplomeError,
+  fetchDiplomesSuccess,
+  fetchDiplomesError,
+  fetchEducationSuccess,
+  fetchEducationError,
+  attachEducation,
+  attachEducationSuccess,
+  attachEducationError,
 } = manageSeekerSlice.actions;
 
 export default manageSeekerSlice.reducer;
