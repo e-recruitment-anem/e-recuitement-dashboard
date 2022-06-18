@@ -8,6 +8,7 @@ export const initialState: AuthState = {
   isAuthenticated: undefined,
   error: false,
   success: false,
+  synched: false,
   msg: '',
   loading: false,
   token: '',
@@ -21,11 +22,13 @@ const authSlice = createSlice({
   reducers: {
     verify: (state) => {
       state.loading = false;
+      state.synched = false;
     },
     // eslint-disable-next-line
     verifySuccess: (state, { payload }: PayloadAction<any>) => {
-      state.isAuthenticated = payload.isValid;
+      state.isAuthenticated = payload.isAuthenticated;
       state.user = payload.user;
+      state.synched = true
       state.loading = false;
     },
     // eslint-disable-next-line
@@ -39,6 +42,7 @@ const authSlice = createSlice({
       state.user = payload;
       state.currentUser = {};
       state.isAuthenticated = true;
+      state.synched = true;
       state.loading = false;
       state.error = false;
     },
@@ -47,6 +51,7 @@ const authSlice = createSlice({
       state.msg = payload;
       state.error = true;
       state.isAuthenticated = false;
+      state.synched = true
       state.loading = false;
     },
 

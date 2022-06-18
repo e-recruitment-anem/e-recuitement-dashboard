@@ -28,6 +28,11 @@ export interface Education {
   [anyProp: string]: any;
 }
 
+export interface Request {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [anyProp: string]: any;
+}
+
 export interface Agence {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [anyProp: string]: any;
@@ -55,6 +60,7 @@ export interface AuthState {
   user: User;
   isAuthenticated: boolean | undefined;
   error: boolean;
+  synched: boolean;
   success: boolean;
   msg: string;
   token: string;
@@ -85,6 +91,17 @@ export interface ManageSeekerState {
   msg: string;
 }
 
+export interface ManageJobRequestState {
+  loading: boolean;
+  request: Request;
+  requests: Request[];
+  tempRequest: Request;
+  success: boolean;
+  error: boolean;
+  updated: boolean;
+  msg: string;
+}
+
 export interface AgenceState {
   loading: boolean;
   error: boolean;
@@ -99,6 +116,7 @@ export interface RootState {
   agenceState: AgenceState;
   manageAccountsState: ManageAccountsState;
   manageSeekerState: ManageSeekerState;
+  manageJobRequestsState: ManageJobRequestState;
 }
 
 export interface authData {

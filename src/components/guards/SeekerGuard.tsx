@@ -18,21 +18,22 @@ function SeekerGuard({ children }: AuthGuardType) {
 
   // ===========================================================================
   // Dispatch
-  // ==========================================================================
+  //==========================================================================
 
-  //   const dispatch = useDispatch();
+//   const dispatch = useDispatch();
 
-  //   const _verify = async () => {
-  //     dispatch(verify());
-  //   };
+//   const _verify = () => {
+//     dispatch(verify());
+//   };
 
-  //   useEffect(() => {
-  //     _verify();
-  //     // eslint-disable-next-line
-  //   }, []);
+//   useEffect(() => {
+//     if (!synched) {
+//       _verify();
+//     }
+//     // eslint-disable-next-line
+//   }, []);
 
   if (!isAuthenticated && user.role !== 'JOB_SEKER') {
-      console.log('hello some')
     return <Navigate to="/login" />;
   }
 

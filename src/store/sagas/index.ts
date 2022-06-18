@@ -5,15 +5,18 @@ import {
   getAgence,
   getAuth,
   getManageAccounts,
+  getManageJobRequest,
   getManageSeeker,
 } from '../selectors';
 import {
+  verify,
   login,
   loginError,
   loginSuccess,
   signup,
   signupError,
   signupSuccess,
+  verifySuccess,
 } from '../slices/auth';
 import {
   createAgence,
@@ -38,7 +41,7 @@ import {
   fetchAdminsSuccess,
 } from '../slices/manageAccounts';
 import {
-    attachEducation,
+  attachEducation,
   attachEducationError,
   createDiplome,
   createDiplomeError,
@@ -57,17 +60,39 @@ import {
   updateSeekerError,
   updateSeekerSuccess,
 } from '../slices/seeker';
+import {
+  createJobRequest,
+  fetchJobRequest,
+  fetchJobRequests,
+  fetchJobRequestsError,
+  fetchJobRequestsSuccess,
+} from '../slices/manageJobRequests';
+
+function* reloadAuth() {
+  try {
+    const { data } = yield axios.get('http://localhost:5000/api/auth/get-auth');
+    if (data.message === 'account found.') {
+      yield put(verifySuccess({ user: data.body, isAuthenticated: true }));
+    } else {
+      yield put(verifySuccess({ user: {}, isAuthenticated: false }));
+    }
+  } catch (Err) {
+    yield put(verifySuccess({ user: {}, isAuthenticated: false }));
+  }
+}
 
 function* authenticate() {
   try {
     const { currentUser } = yield select(getAuth);
-    const { data } = yield axios.post('http://localhost:5000/api/auth/login', {
+    const res = yield axios.post('http://localhost:5000/api/auth/login', {
       email: currentUser.email,
       password: currentUser.password,
     });
 
-    if (data.message === 'logged in successfully') {
-      yield put(loginSuccess(data.body));
+    console.log(res)
+
+    if (res.data.message === 'logged in successfully') {
+      yield put(loginSuccess(res.data.body));
     } else {
       yield put(loginError('Something went wrong !'));
     }
@@ -371,9 +396,71 @@ function* putSeeker() {
   }
 }
 
+function* loadRequests() {
+  try {
+    const { data } = yield axios.get(
+      `http://localhost:8090/api/job-seekers/jobRequests/search?page=0&size=10`,
+      {}
+    );
+
+    if (data.message === 'Get JobSeekers List.') {
+      yield put(fetchJobRequestsSuccess(data.body));
+    } else {
+      yield put(fetchJobRequestsError('Something went wrong !'));
+    }
+  } catch (error) {
+    yield put(fetchJobRequestsError('Something went wrong !'));
+  }
+}
+
+function* loadRequestById() {
+  try {
+    // const { tempRequest } = yield select(getManageJobRequest);
+    const { data } = yield axios.get(
+      `http://localhost:8090/api/job-seekers/job-request/b/1`
+    );
+
+    if (data.message === 'job request List found.') {
+      yield put(fetchJobRequestsSuccess(data.body));
+    } else {
+      yield put(fetchJobRequestsError('Something went wrong !'));
+    }
+  } catch (error) {
+    yield put(fetchJobRequestsError('Something went wrong !'));
+  }
+}
+
+function* addJobRequest() {
+  try {
+    const { seeker } = yield select(getManageSeeker);
+    const { tempRequest } = yield select(getManageJobRequest);
+    const { data } = yield axios.post(
+      `http://localhost:8090/api/job-seekers/job-request/1`,
+      {
+        agency: 5,
+        jobSeeker: seeker.idJobSeeker,
+        reason: tempRequest.reason,
+        training: false,
+        learning: true,
+        nightWork: true,
+        teamWork: true,
+      }
+    );
+
+    if (data.message === 'job request List found.') {
+      yield put(fetchJobRequestsSuccess(data.body));
+    } else {
+      yield put(fetchJobRequestsError('Something went wrong !'));
+    }
+  } catch (error) {
+    yield put(fetchJobRequestsError('Something went wrong !'));
+  }
+}
+
 // If any of these functions are dispatched, invoke the appropriate saga
 function* rootSaga() {
   yield all([
+    takeLatest(verify.type, reloadAuth),
     takeLatest(fetchAgences.type, loadAgences),
     takeLatest(createAgence.type, addAgence),
     takeLatest(deleteAgence.type, removeAgence),
@@ -388,6 +475,9 @@ function* rootSaga() {
     takeLatest(updateSeeker.type, putSeeker),
     takeLatest(createDiplome.type, addDiplome),
     takeLatest(attachEducation.type, addEducation),
+    takeLatest(fetchJobRequests.type, loadRequests),
+    takeLatest(fetchJobRequest.type, loadRequestById),
+    takeLatest(createJobRequest.type, addJobRequest),
     takeLatest(login.type, authenticate),
     takeLatest(signup.type, registerSeeker),
   ]);
