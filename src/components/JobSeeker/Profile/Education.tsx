@@ -6,7 +6,7 @@ import React, { useEffect } from "react";
 import { FC } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getManageSeeker } from "../../../store/selectors";
-import { fetchSeeker } from "../../../store/slices/seeker";
+import { fetchSeeker, initMessages } from "../../../store/slices/seeker";
 import AddEducationModal from "./Modals/AddEducationModal";
 
 const Education: FC = () => {
@@ -24,6 +24,10 @@ const Education: FC = () => {
     dispatch(fetchSeeker());
   };
 
+  const _initMessages = () => {
+    dispatch(initMessages());
+  };
+
   // ===========================================================================
   // Hooks
   // ===========================================================================
@@ -36,8 +40,10 @@ const Education: FC = () => {
   const [open, setOpen] = React.useState(false);
 
   const onToggle = () => {
+    if (open) {
+      _initMessages();
+    }
     setOpen(!open);
-    console.log(open);
   };
 
   return (

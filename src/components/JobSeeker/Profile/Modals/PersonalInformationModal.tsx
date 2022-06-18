@@ -61,7 +61,7 @@ const PersonalInformationModal: FC<Props> = ({ open, onToggle }) => {
   // ===========================================================================
   // Selectors
   // ===========================================================================
-  const { error, msg } = useSelector(getManageSeeker);
+  const { seeker, error, msg } = useSelector(getManageSeeker);
 
   // ===========================================================================
   // Dispatch
@@ -80,19 +80,19 @@ const PersonalInformationModal: FC<Props> = ({ open, onToggle }) => {
   // State
   // ===========================================================================
   const [jobSeeker, updateJobSeeker] = useState({
-    firstName: "",
-    lastName: "",
+    firstName: seeker.firstName ? seeker.firstName : "",
+    lastName: seeker.lastName ? seeker.lastName : "",
     email: "",
     phoneNumber: "",
-    address: "",
-    birthDate: "",
-    gender: "",
-    birthPlace: "",
-    nationality: "",
-    postalCode: "",
-    familySituation: "",
-    milltarySituation: "",
-    identityCardNumber: "",
+    address: seeker.address ? seeker.address : "",
+    birthDate: seeker.birthDate ? seeker.birthDate : "",
+    gender: seeker.gender ? seeker.gender : "",
+    birthPlace: seeker.birthPlace ? seeker.birthPlace : "",
+    nationality: seeker.nationality ? seeker.nationality : "",
+    postalCode: seeker.postalCode ? seeker.postalCode : "",
+    familySituation: seeker.familySituation ? seeker.familySituation : "",
+    milltarySituation: seeker.milltarySituation ? seeker.milltarySituation : "",
+    identityCardNumber: seeker.identityCardNumber ? seeker.identityCardNumber : "",
   });
 
   // ===========================================================================
@@ -193,6 +193,7 @@ const PersonalInformationModal: FC<Props> = ({ open, onToggle }) => {
                 type="text"
                 id="full-name"
                 name="firstName"
+                defaultValue={seeker.firstName}
                 placeholder="Full name"
                 className="personalInfoModal_inputs-item--input"
               />
@@ -207,6 +208,7 @@ const PersonalInformationModal: FC<Props> = ({ open, onToggle }) => {
               <Input
                 onChange={handleChange}
                 name="lastName"
+                defaultValue={seeker.lastName}
                 type="text"
                 id="full-name"
                 placeholder="Full name"
@@ -223,6 +225,7 @@ const PersonalInformationModal: FC<Props> = ({ open, onToggle }) => {
               <Input
                 onChange={handleChange}
                 name="address"
+                defaultValue={seeker.address}
                 type="text"
                 id="address"
                 placeholder="Address"
@@ -239,6 +242,7 @@ const PersonalInformationModal: FC<Props> = ({ open, onToggle }) => {
               <Input
                 onChange={handleChange}
                 name="birthDate"
+                defaultValue={seeker.birthDate}
                 type="date"
                 className="personalInfoModal_inputs-item--input"
                 placeholder="Select a date"
@@ -272,6 +276,7 @@ const PersonalInformationModal: FC<Props> = ({ open, onToggle }) => {
               <Input
                 onChange={handleChange}
                 name="birthPlace"
+                defaultValue={seeker.birthPlace}
                 type="text"
                 id="address"
                 placeholder="Address"
@@ -306,6 +311,7 @@ const PersonalInformationModal: FC<Props> = ({ open, onToggle }) => {
               <Input
                 onChange={handleChange}
                 name="postalCode"
+                defaultValue={seeker.postalCode}
                 className="personalInfoModal_inputs-item--input"
                 id="postal-code"
                 type="number"
@@ -357,6 +363,7 @@ const PersonalInformationModal: FC<Props> = ({ open, onToggle }) => {
               <Input
                 onChange={handleChange}
                 name="identityCardNumber"
+                defaultValue={seeker.identityCardNumber}
                 className="personalInfoModal_inputs-item--input"
                 id="postal-code"
                 type="number"
