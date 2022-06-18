@@ -185,11 +185,11 @@ const Profile: FC = () => {
               </Box>
 
               <Box className="jsprofile__box">
-                <ProfessionalExperience></ProfessionalExperience>
+                <Certificates></Certificates>
               </Box>
 
               <Box className="jsprofile__box">
-                <Certificates></Certificates>
+                <ProfessionalExperience></ProfessionalExperience>
               </Box>
             </div>
           )}

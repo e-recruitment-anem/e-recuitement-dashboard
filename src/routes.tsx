@@ -133,7 +133,12 @@ const routes = [
   },
   {
     path: "/jobrequest",
-    element: <CreateJobRequest />,
+
+    element: (
+      <SeekerGuard>
+        <CreateJobRequest />,
+      </SeekerGuard>
+    ),
   },
 
   // Employer
