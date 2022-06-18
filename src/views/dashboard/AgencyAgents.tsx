@@ -45,10 +45,6 @@ const AgencyAgents: FC = () => {
     // eslint-disable-next-line
   }, []);
 
-  const showAgent = () => {
-    console.log(agences);
-  };
-
   return (
     <AdminLayout>
       <div className="main-nav">

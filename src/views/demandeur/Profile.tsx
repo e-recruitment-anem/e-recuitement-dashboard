@@ -1,5 +1,5 @@
 import { Box, Tab, TabList, Tabs } from "@chakra-ui/react";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import SimilarOffers from "../../components/JobSeeker/SimilarOffers/SimilarOffers";
 import NavBar from "../../components/NavBar";
 import "../../styles/_components.scss";
@@ -22,7 +22,7 @@ const Profile: FC = () => {
   // ===========================================================================
   // Selectors
   // ===========================================================================
-  const { seeker, msg, error } = useSelector(getManageSeeker);
+  const { msg, error } = useSelector(getManageSeeker);
   const toast = useToast();
 
   // ===========================================================================
@@ -37,7 +37,6 @@ const Profile: FC = () => {
   // ===========================================================================
   // State
   // ===========================================================================
-  const [general, setGeneral] = useState(seeker);
 
   // ===========================================================================
   // Hooks

@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import { Table, Thead, Tbody, Tr, Td } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,14 +15,6 @@ interface Props {
 }
 
 const AgenceTable: FC<Props> = ({ agents, agencies }) => {
-  // TETSING
-  const showAgent = () => {
-    console.log(agents);
-  };
-
-  const showAgencies = () => {
-    console.log(agencies);
-  };
 
   const calculateDiff = (adminDate) => {
     const difference = moment(adminDate).fromNow(true);
