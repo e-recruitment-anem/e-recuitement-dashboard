@@ -22,7 +22,7 @@ import {
   ReactChangeEvent,
   ReactClickEvent,
 } from "../../../../helpers/types";
-import { getManageAccounts } from "../../../../store/selectors";
+import { getManageSeeker } from "../../../../store/selectors";
 
 import {
   attachEducation,
@@ -40,7 +40,7 @@ const AddEducationModal: FC<Props> = ({ open, onToggle, actionButton }) => {
   // ===========================================================================
   // Selectors
   // ===========================================================================
-  const { error, msg } = useSelector(getManageAccounts);
+  const { error, success, loading, msg } = useSelector(getManageSeeker);
 
   // ===========================================================================
   // Dispatch
@@ -107,6 +107,7 @@ const AddEducationModal: FC<Props> = ({ open, onToggle, actionButton }) => {
         <ModalCloseButton onClick={onToggle} />
         <ModalBody pb={6}>
           {error && <Alert className="auth_alert-error">{msg}</Alert>}
+          {success && <Alert className="auth_alert-success">{msg}</Alert>}
           <div className="personalInfoModal_inputs">
             <FormControl>
               <FormLabel
@@ -189,6 +190,7 @@ const AddEducationModal: FC<Props> = ({ open, onToggle, actionButton }) => {
             background="#0061FF"
             className="personalInfoModal_inputs-item--input"
             onClick={handleSubmit}
+            disabled={success || loading}
           >
             {actionButton}
           </Button>

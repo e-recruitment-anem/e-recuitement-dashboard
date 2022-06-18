@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import { FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getManageSeeker } from '../../../store/selectors';
-import { fetchSeeker } from '../../../store/slices/seeker';
+import { fetchSeeker, initMessages } from '../../../store/slices/seeker';
 import AddEducationModal from './Modals/AddEducationModal';
 
 const Education: FC = () => {
@@ -22,6 +22,10 @@ const Education: FC = () => {
 
   const _fetchSeeker = () => {
     dispatch(fetchSeeker());
+  };
+
+  const _initMessages = () => {
+    dispatch(initMessages());
   };
 
   // ===========================================================================
@@ -40,8 +44,10 @@ const Education: FC = () => {
   const [open, setOpen] = React.useState(false);
 
   const onToggle = () => {
+    if (open) {
+      _initMessages();
+    }
     setOpen(!open);
-    console.log(open);
   };
 
   return (
@@ -56,7 +62,7 @@ const Education: FC = () => {
           <span>Add education</span>
         </div>
       </div>
-      {(loading && educations.length === 0) && (
+      {loading && educations.length === 0 && (
         <div>
           <SkeletonText mt="4" noOfLines={4} spacing="4" />
           <hr className="jsprofile__education--divider" />

@@ -157,6 +157,7 @@ const manageSeekerSlice = createSlice({
     // Manage Educations
     attachEducation: (state, { payload }: PayloadAction<any>) => {
       state.loading = true;
+      state.success = false;
       state.tempSeeker = {
         school: payload.school,
         title: payload.title,
@@ -180,6 +181,12 @@ const manageSeekerSlice = createSlice({
       state.success = false;
       state.tempSeeker = {};
       state.loading = false;
+    },
+
+    initMessages: (state) => {
+      state.error = false;
+      state.success = false;
+      state.msg = '';
     },
   },
 });
@@ -207,6 +214,7 @@ export const {
   attachEducation,
   attachEducationSuccess,
   attachEducationError,
+  initMessages
 } = manageSeekerSlice.actions;
 
 export default manageSeekerSlice.reducer;
