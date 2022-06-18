@@ -47,6 +47,10 @@ import {
   createDiplome,
   createDiplomeError,
   createDiplomeSuccess,
+  deleteDiplome,
+  deleteEducation,
+  deleteEducationError,
+  deleteEducationSuccess,
   deleteSeeker,
   fetchDiplomesError,
   fetchDiplomesSuccess,
@@ -331,6 +335,23 @@ function* loadDiplomes() {
   }
 }
 
+function* removeDiplome() {
+  try {
+    const { tempSeeker } = yield select(getManageSeeker);
+    const { data } = yield axios.delete(
+      `http://localhost:8090/api/job-seekers/diplome/${tempSeeker.id}`
+    );
+
+    if (data.message === 'diplome deleted.') {
+      yield put(deleteEducationSuccess(data.message));
+    } else {
+      yield put(deleteEducationError('Something went wrong !'));
+    }
+  } catch (error) {
+    yield put(deleteEducationError('Something went wrong !'));
+  }
+}
+
 function* loadEducation() {
   try {
     // const { user } = yield select(getAuth);
@@ -372,6 +393,23 @@ function* addEducation() {
     }
   } catch (error) {
     yield put(attachEducationError('Something went wrong !'));
+  }
+}
+
+function* removeEducation() {
+  try {
+    const { tempSeeker } = yield select(getManageSeeker);
+    const { data } = yield axios.delete(
+      `http://localhost:8090/api/job-seekers/educations/${tempSeeker.id}`
+    );
+
+    if (data.message === 'Education deleted.') {
+      yield put(deleteEducationSuccess(data.message));
+    } else {
+      yield put(deleteEducationError('Something went wrong !'));
+    }
+  } catch (error) {
+    yield put(deleteEducationError('Something went wrong !'));
   }
 }
 
@@ -475,7 +513,9 @@ function* rootSaga() {
     takeLatest(deleteSeeker.type, removeSeeker),
     takeLatest(updateSeeker.type, putSeeker),
     takeLatest(createDiplome.type, addDiplome),
+    takeLatest(deleteDiplome.type, removeDiplome),
     takeLatest(attachEducation.type, addEducation),
+    takeLatest(deleteEducation.type, removeEducation),
     takeLatest(fetchJobRequests.type, loadRequests),
     takeLatest(fetchJobRequest.type, loadRequestById),
     takeLatest(createJobRequest.type, addJobRequest),

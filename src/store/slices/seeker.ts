@@ -111,19 +111,19 @@ const manageSeekerSlice = createSlice({
 
     deleteSeeker: (state, { payload }: PayloadAction<string>) => {
       state.loading = true;
-      state.seeker = { id: payload };
+      state.tempSeeker = { id: payload };
     },
 
     deleteSeekerSuccess: (state, { payload }: PayloadAction<string>) => {
       state.msg = payload;
-      state.seeker = {};
+      state.tempSeeker = {};
       state.loading = false;
       state.error = false;
     },
 
     deleteSeekerError: (state, { payload }: PayloadAction<string>) => {
       state.msg = payload;
-      state.seeker = {};
+      state.tempSeeker = {};
       state.error = true;
       state.loading = false;
     },
@@ -183,6 +183,50 @@ const manageSeekerSlice = createSlice({
       state.loading = false;
     },
 
+    // Delete Education
+    deleteEducation: (state, { payload }: PayloadAction<string>) => {
+      state.loading = true;
+      state.tempSeeker = { id: payload };
+    },
+
+    deleteEducationSuccess: (state, { payload }: PayloadAction<string>) => {
+      state.msg = payload;
+      state.tempSeeker = {};
+      state.loading = false;
+      state.success = true;
+      state.error = false;
+    },
+
+    deleteEducationError: (state, { payload }: PayloadAction<string>) => {
+      state.msg = payload;
+      state.tempSeeker = {};
+      state.error = true;
+      state.success = false;
+      state.loading = false;
+    },
+
+    // Delete Diplome
+    deleteDiplome: (state, { payload }: PayloadAction<string>) => {
+      state.loading = true;
+      state.tempSeeker = { id: payload };
+    },
+
+    deleteDiplomeSuccess: (state, { payload }: PayloadAction<string>) => {
+      state.msg = payload;
+      state.tempSeeker = {};
+      state.loading = false;
+      state.success = true;
+      state.error = false;
+    },
+
+    deleteDiplomeError: (state, { payload }: PayloadAction<string>) => {
+      state.msg = payload;
+      state.tempSeeker = {};
+      state.error = true;
+      state.success = false;
+      state.loading = false;
+    },
+
     initMessages: (state) => {
       state.error = false;
       state.success = false;
@@ -214,7 +258,13 @@ export const {
   attachEducation,
   attachEducationSuccess,
   attachEducationError,
-  initMessages
+  deleteEducation,
+  deleteEducationSuccess,
+  deleteEducationError,
+  deleteDiplome,
+  deleteDiplomeSuccess,
+  deleteDiplomeError,
+  initMessages,
 } = manageSeekerSlice.actions;
 
 export default manageSeekerSlice.reducer;
