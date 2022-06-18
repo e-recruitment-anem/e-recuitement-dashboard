@@ -29,7 +29,7 @@ const AddAgency: FC<Props> = ({ open, onToggle }) => {
   // ===========================================================================
   // Selectors
   // ===========================================================================
-  const { agence, error, msg, success, loading } = useSelector(getAgence);
+  const { error, msg, success, loading } = useSelector(getAgence);
 
   // ===========================================================================
   // Dispatch

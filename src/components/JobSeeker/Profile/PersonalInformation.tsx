@@ -1,8 +1,12 @@
 import { InputProps } from "@chakra-ui/react";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
 import { FC } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getManageSeeker } from "../../../store/selectors";
+import { fetchSeeker } from "../../../store/slices/seeker";
 import PersonalInformationModal from "./Modals/PersonalInformationModal";
 
 interface Props extends InputProps {
@@ -16,16 +20,46 @@ const PersonalInformation: FC<Props> = ({ paragraph }) => {
     setOpen(!open);
   };
 
+  // ===========================================================================
+  // Selectors
+  // ===========================================================================
+  const { seeker, msg, error } = useSelector(getManageSeeker);
+
+  // ===========================================================================
+  // Dispatch
+  // ==========================================================================
+  const dispatch = useDispatch();
+
+  const _fetchSeeker = () => {
+    dispatch(fetchSeeker());
+  };
+
+  // ===========================================================================
+  // State
+  // ===========================================================================
+  const [general, setGeneral] = useState(seeker);
+
+  // ===========================================================================
+  // Hooks
+  // ===========================================================================
+  useEffect(() => {
+    _fetchSeeker();
+    // eslint-disable-next-line
+  }, []);
+
   const personalInformation = [
-    { title: "Fullname", content: "Mahdaoui Abdelouadoud" },
-    { title: "Email", content: "example@gmail.com" },
-    { title: "Phone number", content: "+213 559321737" },
-    { title: "Address", content: "City 70 LGT, B05 N12, Zabana, Blida" },
-    { title: "Birthday", content: "08/02/2001" },
-    { title: "Sexe", content: "Man" },
-    { title: "Country", content: "Algeria" },
-    { title: "Postal Code", content: "209230" },
-    { title: "Familial situation", content: "Signle" },
+    { title: "Fullname", content: seeker.firstName + " " + seeker.lastName },
+    { title: "Email", content: seeker.email },
+    { title: "Phone number", content: seeker.phoneNumber },
+    { title: "Address", content: seeker.address },
+    { title: "Birth Date", content: moment(seeker.birthDate).format("L") },
+    { title: "Gender", content: seeker.gender },
+    { title: "Nationality", content: seeker.nationality },
+    { title: "Birth Place", content: seeker.birthPlace },
+    { title: "Postal Code", content: seeker.postalCode },
+    { title: "Familial situation", content: seeker.familySituation },
+    { title: "Milltary Situation", content: seeker.milltarySituation },
+    { title: "Identity Card Number", content: seeker.identityCardNumber },
   ];
   return (
     <div>
