@@ -13,18 +13,18 @@ import {
   ModalHeader,
   ModalOverlay,
   Select,
-} from '@chakra-ui/react';
-import moment from 'moment';
+} from "@chakra-ui/react";
+import moment from "moment";
 
-import { FC, useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { ReactChangeEvent, ReactClickEvent, User } from '../../helpers/types';
-import { getAgence, getManageAccounts } from '../../store/selectors';
-import { fetchAgences } from '../../store/slices/agence';
+import { FC, useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { ReactChangeEvent, ReactClickEvent, User } from "../../helpers/types";
+import { getAgence, getManageAccounts } from "../../store/selectors";
+import { fetchAgences } from "../../store/slices/agence";
 import {
   createAdmin,
   createAdminError,
-} from '../../store/slices/manageAccounts';
+} from "../../store/slices/manageAccounts";
 
 interface Props extends InputProps {
   open: boolean;
@@ -35,7 +35,7 @@ const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
   // ===========================================================================
   // Selectors
   // ===========================================================================
-  const { admin, error, msg, loading } = useSelector(getManageAccounts);
+  const { error, msg } = useSelector(getManageAccounts);
   const { agences } = useSelector(getAgence);
 
   // ===========================================================================
@@ -59,12 +59,12 @@ const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
   // State
   // ===========================================================================
   const [agencyAdmin, setAgencyAdmin] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    birthday: '',
-    phoneNumber: '',
-    agency: '',
+    firstname: "",
+    lastname: "",
+    email: "",
+    birthday: "",
+    phoneNumber: "",
+    agency: "",
   });
 
   // ===========================================================================
@@ -107,7 +107,7 @@ const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
       _createAgencyAdmin(payload);
     } else {
       _createAgencyAdminError(
-        'Please, make sure all inputs are filled correctly'
+        "Please, make sure all inputs are filled correctly"
       );
     }
   };
@@ -234,7 +234,7 @@ const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
 
         <ModalFooter>
           <Button
-            color={'white'}
+            color={"white"}
             background="#828282"
             mr={3}
             onClick={onToggle}
@@ -244,7 +244,7 @@ const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
           </Button>
           <Button
             variant="ghost"
-            color={'white'}
+            color={"white"}
             background="#0061FF"
             className="personalInfoModal_inputs-item--input"
             onClick={handleSubmit}

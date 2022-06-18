@@ -43,8 +43,10 @@ import {
 import {
   attachEducation,
   attachEducationError,
+  attachEducationSuccess,
   createDiplome,
   createDiplomeError,
+  createDiplomeSuccess,
   deleteSeeker,
   fetchDiplomesError,
   fetchDiplomesSuccess,
@@ -84,15 +86,13 @@ function* reloadAuth() {
 function* authenticate() {
   try {
     const { currentUser } = yield select(getAuth);
-    const res = yield axios.post('http://localhost:5000/api/auth/login', {
+    const { data } = yield axios.post('http://localhost:5000/api/auth/login', {
       email: currentUser.email,
       password: currentUser.password,
     });
 
-    console.log(res)
-
-    if (res.data.message === 'logged in successfully') {
-      yield put(loginSuccess(res.data.body));
+    if (data.message === 'logged in successfully') {
+      yield put(loginSuccess(data.body));
     } else {
       yield put(loginError('Something went wrong !'));
     }
@@ -292,8 +292,8 @@ function* loadSeeker() {
 function* addDiplome() {
   try {
     const { tempSeeker, seeker } = yield select(getManageSeeker);
-    const { data } = yield axios.put(
-      `http://localhost:5000/api/diplome/${seeker.idJobSeeker}`,
+    const { data } = yield axios.post(
+      `http://localhost:8090/api/job-seekers/diplome/${seeker.idJobSeeker}`,
       {
         title: tempSeeker.title,
         storagePath: tempSeeker.storagePath,
@@ -301,7 +301,7 @@ function* addDiplome() {
     );
 
     if (data.message === 'Diplome attached.') {
-      yield put(createDiplome(data.message));
+      yield put(createDiplomeSuccess(data.message));
     } else {
       yield put(createDiplomeError('Something went wrong !'));
     }
@@ -355,18 +355,18 @@ function* loadEducation() {
 function* addEducation() {
   try {
     const { tempSeeker, seeker } = yield select(getManageSeeker);
-    const { data } = yield axios.put(
-      `http://localhost:5000/api/diplome/${seeker.idJobSeeker}`,
+    const { data } = yield axios.post(
+      `http://localhost:8090/api/job-seekers/educations/${seeker.idJobSeeker}`,
       {
         school: tempSeeker.school,
         title: tempSeeker.title,
-        startDate: tempSeeker.storagePath,
+        startDate: tempSeeker.startDate,
         endDate: tempSeeker.endDate,
       }
     );
 
     if (data.message === 'Education attached.') {
-      yield put(attachEducation(data.message));
+      yield put(attachEducationSuccess(data.message));
     } else {
       yield put(attachEducationError('Something went wrong !'));
     }
@@ -378,8 +378,9 @@ function* addEducation() {
 function* putSeeker() {
   try {
     const { tempSeeker, seeker } = yield select(getManageSeeker);
+
     const { data } = yield axios.put(
-      `http://localhost:5000/api/job-seekers/${tempSeeker.idJobSeeker}`,
+      `http://localhost:8090/api/job-seekers/${seeker.idJobSeeker}`,
       {
         ...seeker,
         ...tempSeeker,

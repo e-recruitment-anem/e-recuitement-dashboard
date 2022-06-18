@@ -71,8 +71,8 @@ const SignIn = () => {
         <div className="auth_side-left--block">
           <h2 className="auth_heading-title">E-RECRUITMENT</h2>
           <div className="auth_heading-subtitle">
-            <span className="auth_heading-subtitle--light">Get More Money</span>
-            <div className="auth_heading-subtitle--bold">Right Now!</div>
+            <span className="auth_heading-subtitle--light">Get your job</span>
+            <div className="auth_heading-subtitle--bold">In one ckick!</div>
           </div>
           <span className="auth_heading-footer">Whenever, Everywhere</span>
         </div>

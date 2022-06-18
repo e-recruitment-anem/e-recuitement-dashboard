@@ -53,7 +53,7 @@ const AgencyAgents: FC = () => {
     <AdminLayout>
       <div className="main-nav">
         <div className="main-nav__search">
-          <Input type="text" placeholder="Rechercher..." onClick={showAgent} />
+          <Input type="text" placeholder="Rechercher..." />
         </div>
         <UserNav />
       </div>

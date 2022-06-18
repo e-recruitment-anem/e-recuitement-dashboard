@@ -22,8 +22,8 @@ const OfferDetails: FC = () => {
       agence: "Yassir Algérie",
       deadline: "Il y a 8 jours: ",
       applicants: "12 applicant",
-      agenceImage: "img/demandeur/agencelogo.png",
-      cover: "img/demandeur/agencelogo.png",
+      agenceImage: "demandeur/agencelogo.png",
+      cover: "/img/demandeur/agencelogo.png",
     },
     {
       role: "UI/UX Design",
@@ -32,8 +32,8 @@ const OfferDetails: FC = () => {
       agence: "Yassir Algérie",
       deadline: "Il y a 8 jours: ",
       applicants: "12 applicant",
-      agenceImage: "img/demandeur/agencelogo.png",
-      cover: "img/demandeur/agencelogo.png",
+      agenceImage: "/img/demandeur/agencelogo.png",
+      cover: "/img/demandeur/agencelogo.png",
     },
     {
       role: "UI/UX Design",
@@ -42,8 +42,8 @@ const OfferDetails: FC = () => {
       agence: "Yassir Algérie",
       deadline: "Il y a 8 jours: ",
       applicants: "12 applicant",
-      agenceImage: "img/demandeur/agencelogo.png",
-      cover: "img/demandeur/agencelogo.png",
+      agenceImage: "/img/demandeur/agencelogo.png",
+      cover: "/img/demandeur/agencelogo.png",
     },
   ];
 

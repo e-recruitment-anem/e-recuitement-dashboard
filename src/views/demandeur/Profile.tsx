@@ -1,23 +1,22 @@
-import { Box, Tab, TabList, Tabs } from '@chakra-ui/react';
-import { FC, useEffect, useState } from 'react';
-import SimilarOffers from '../../components/JobSeeker/SimilarOffers/SimilarOffers';
-import NavBar from '../../components/NavBar';
-import '../../styles/_components.scss';
-import { v4 as uuidv4 } from 'uuid';
-import PrimaryButton from '../../components/PrimaryButton';
-import Biography from '../../components/JobSeeker/Profile/Biography';
-import PersonalInformation from '../../components/JobSeeker/Profile/PersonalInformation';
-import Languages from '../../components/JobSeeker/Profile/Languages';
-import Education from '../../components/JobSeeker/Profile/Education';
-import ProfessionalExperience from '../../components/JobSeeker/Profile/ProfessionalExperience';
-import Certificates from '../../components/JobSeeker/Profile/Certificates';
-import ProfileSkills from '../../components/JobSeeker/Profile/ProfileSkills';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getManageSeeker } from '../../store/selectors';
-import { fetchSeeker } from '../../store/slices/seeker';
-import { useParams } from 'react-router-dom';
-import { useToast } from '@chakra-ui/react';
+import { Box, Tab, TabList, Tabs } from "@chakra-ui/react";
+import { FC, useEffect, useState } from "react";
+import SimilarOffers from "../../components/JobSeeker/SimilarOffers/SimilarOffers";
+import NavBar from "../../components/NavBar";
+import "../../styles/_components.scss";
+import { v4 as uuidv4 } from "uuid";
+import PrimaryButton from "../../components/PrimaryButton";
+import Biography from "../../components/JobSeeker/Profile/Biography";
+import PersonalInformation from "../../components/JobSeeker/Profile/PersonalInformation";
+import Languages from "../../components/JobSeeker/Profile/Languages";
+import Education from "../../components/JobSeeker/Profile/Education";
+import ProfessionalExperience from "../../components/JobSeeker/Profile/ProfessionalExperience";
+import Certificates from "../../components/JobSeeker/Profile/Certificates";
+import ProfileSkills from "../../components/JobSeeker/Profile/ProfileSkills";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getManageSeeker } from "../../store/selectors";
+import { fetchSeeker } from "../../store/slices/seeker";
+import { useToast } from "@chakra-ui/react";
 
 const Profile: FC = () => {
   // ===========================================================================
@@ -25,7 +24,6 @@ const Profile: FC = () => {
   // ===========================================================================
   const { seeker, msg, error } = useSelector(getManageSeeker);
   const toast = useToast();
-  const { id } = useParams();
 
   // ===========================================================================
   // Dispatch
@@ -49,52 +47,50 @@ const Profile: FC = () => {
     // eslint-disable-next-line
   }, []);
 
-  useEffect(() => {
+  if (error) {
     toast({
-      position: 'bottom-left',
+      position: "bottom-left",
       render: () => (
         <Box color="white" p={3} bg="red.500">
           {msg}
         </Box>
       ),
     });
-    // eslint-disable-next-line
-  }, [error]);
-
+  }
   const similarOffers = [
     {
-      role: 'UI/UX Design',
+      role: "UI/UX Design",
       description:
-        'Nisi turpis duis quisque est leo at et fermentum. Pretium nulla libero integer volutpat et odio eu ac neque. Non dolor et aliquet fringilla. Non lacinia commodo quam sed nullam gravida',
-      agence: 'Yassir Algérie',
-      deadline: 'Il y a 8 jours: ',
-      applicants: '12 applicant',
-      agenceImage: 'img/demandeur/agencelogo.png',
-      cover: '/img/demandeur/agencelogo.png',
+        "Nisi turpis duis quisque est leo at et fermentum. Pretium nulla libero integer volutpat et odio eu ac neque. Non dolor et aliquet fringilla. Non lacinia commodo quam sed nullam gravida",
+      agence: "Yassir Algérie",
+      deadline: "Il y a 8 jours: ",
+      applicants: "12 applicant",
+      agenceImage: "/img/demandeur/agencelogo.png",
+      cover: "/img/demandeur/agencelogo.png",
     },
     {
-      role: 'UI/UX Design',
+      role: "UI/UX Design",
       description:
-        'Nisi turpis duis quisque est leo at et fermentum. Pretium nulla libero integer volutpat et odio eu ac neque. Non dolor et aliquet fringilla. Non lacinia commodo quam sed nullam gravida',
-      agence: 'Yassir Algérie',
-      deadline: 'Il y a 8 jours: ',
-      applicants: '12 applicant',
-      agenceImage: 'img/demandeur/agencelogo.png',
-      cover: '/img/demandeur/agencelogo.png',
+        "Nisi turpis duis quisque est leo at et fermentum. Pretium nulla libero integer volutpat et odio eu ac neque. Non dolor et aliquet fringilla. Non lacinia commodo quam sed nullam gravida",
+      agence: "Yassir Algérie",
+      deadline: "Il y a 8 jours: ",
+      applicants: "12 applicant",
+      agenceImage: "/img/demandeur/agencelogo.png",
+      cover: "/img/demandeur/agencelogo.png",
     },
     {
-      role: 'UI/UX Design',
+      role: "UI/UX Design",
       description:
-        'Nisi turpis duis quisque est leo at et fermentum. Pretium nulla libero integer volutpat et odio eu ac neque. Non dolor et aliquet fringilla. Non lacinia commodo quam sed nullam gravida',
-      agence: 'Yassir Algérie',
-      deadline: 'Il y a 8 jours: ',
-      applicants: '12 applicant',
-      agenceImage: 'img/demandeur/agencelogo.png',
-      cover: '/img/demandeur/agencelogo.png',
+        "Nisi turpis duis quisque est leo at et fermentum. Pretium nulla libero integer volutpat et odio eu ac neque. Non dolor et aliquet fringilla. Non lacinia commodo quam sed nullam gravida",
+      agence: "Yassir Algérie",
+      deadline: "Il y a 8 jours: ",
+      applicants: "12 applicant",
+      agenceImage: "/img/demandeur/agencelogo.png",
+      cover: "/img/demandeur/agencelogo.png",
     },
   ];
 
-  const [visible, setVisible] = React.useState('general');
+  const [visible, setVisible] = React.useState("general");
 
   return (
     <>
@@ -131,33 +127,33 @@ const Profile: FC = () => {
 
           {/*TABS*/}
           <Tabs isLazy className="jsprofile__tabs">
-            <TabList borderBottom={'none'}>
+            <TabList borderBottom={"none"}>
               <Tab
-                _selected={{ color: '#0061FF' }}
+                _selected={{ color: "#0061FF" }}
                 className="jsprofile__tabs-item"
-                fontSize={'2xl'}
-                onClick={() => setVisible('general')}
+                fontSize={"2xl"}
+                onClick={() => setVisible("general")}
               >
                 General
               </Tab>
               <Tab
                 className="jsprofile__tabs-item"
-                fontSize={'2xl'}
-                onClick={() => setVisible('experience')}
+                fontSize={"2xl"}
+                onClick={() => setVisible("experience")}
               >
                 Exeprience
               </Tab>
               <Tab
                 className="jsprofile__tabs-item"
-                fontSize={'2xl'}
-                onClick={() => setVisible('settings')}
+                fontSize={"2xl"}
+                onClick={() => setVisible("settings")}
               >
                 Settings
               </Tab>
               <Tab
                 className="jsprofile__tabs-item"
-                fontSize={'2xl'}
-                onClick={() => setVisible('cv')}
+                fontSize={"2xl"}
+                onClick={() => setVisible("cv")}
               >
                 Generated CV
               </Tab>
@@ -166,7 +162,7 @@ const Profile: FC = () => {
 
           {/**PROFILE SECTIONS */}
 
-          {visible === 'general' && (
+          {visible === "general" && (
             <div>
               <Box className="jsprofile__box">
                 <PersonalInformation></PersonalInformation>
@@ -183,7 +179,7 @@ const Profile: FC = () => {
             </div>
           )}
 
-          {visible === 'experience' && (
+          {visible === "experience" && (
             <div>
               <Box className="jsprofile__box">
                 <Education></Education>
@@ -199,7 +195,7 @@ const Profile: FC = () => {
             </div>
           )}
 
-          {visible === 'cv' && (
+          {visible === "cv" && (
             <div>
               <Box className="jsprofile__box-cv">
                 <Biography></Biography>

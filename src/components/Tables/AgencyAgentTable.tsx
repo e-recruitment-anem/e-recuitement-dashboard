@@ -7,9 +7,7 @@ import {
   faCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { Agence, User } from "../../helpers/types";
-import { useSelector, useDispatch } from "react-redux";
-import { getAgence } from "../../store/selectors";
-import { fetchAgences } from "../../store/slices/agence";
+import moment from "moment";
 
 interface Props {
   agents: User[];
@@ -26,6 +24,11 @@ const AgenceTable: FC<Props> = ({ agents, agencies }) => {
     console.log(agencies);
   };
 
+  const calculateDiff = (adminDate) => {
+    const difference = moment(adminDate).fromNow(true);
+    return difference;
+  };
+
   return (
     <>
       <Table className="dataTable">
@@ -37,9 +40,7 @@ const AgenceTable: FC<Props> = ({ agents, agencies }) => {
                 icon={faCaretDown}
               />
             </Td>
-            <Td className="dataTable_header" onClick={showAgencies}>
-              PM
-            </Td>
+            <Td className="dataTable_header">PM</Td>
             <Td className="dataTable_header dataTable_header-sortable">
               Agent
               <FontAwesomeIcon
@@ -48,7 +49,7 @@ const AgenceTable: FC<Props> = ({ agents, agencies }) => {
               />
             </Td>
             <Td className="dataTable_header dataTable_header-sortable">
-              Agency{" "}
+              Agency
               <FontAwesomeIcon
                 className="dataTbale_header-icon"
                 icon={faCaretDown}
@@ -56,7 +57,7 @@ const AgenceTable: FC<Props> = ({ agents, agencies }) => {
             </Td>
             <Td className="dataTable_header">Email</Td>
             <Td className="dataTable_header">Telephone</Td>
-            <Td className="dataTable_header">Offres</Td>
+            <Td className="dataTable_header">Age</Td>
             <Td className="dataTable_header">Status</Td>
           </Tr>
         </Thead>
@@ -80,15 +81,15 @@ const AgenceTable: FC<Props> = ({ agents, agencies }) => {
               <Td className="dataTable_item">
                 (213) {agent.admin.phoneNumber}
               </Td>
-              <Td className="dataTable_item dataTable_item--center">
-                <span className="dataTable_item-box">3</span>
+              <Td className="dataTable_item">
+                {calculateDiff(agent.admin.birthDate)}
               </Td>
               <Td className="dataTable_item">
                 <div className="dataTable_item-status">
                   <FontAwesomeIcon
                     className="dataTable_item-status--icon"
                     icon={faCircle}
-                  />{" "}
+                  />
                   On Track
                 </div>
               </Td>

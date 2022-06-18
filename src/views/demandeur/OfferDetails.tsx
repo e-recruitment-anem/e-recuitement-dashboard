@@ -37,8 +37,8 @@ const OfferDetails: FC = () => {
       agence: 'Yassir Algérie',
       deadline: 'Il y a 8 jours: ',
       applicants: '12 applicant',
-      agenceImage: 'img/demandeur/agencelogo.png',
-      cover: 'img/demandeur/agencelogo.png',
+      agenceImage: '/img/demandeur/agencelogo.png',
+      cover: '/img/demandeur/agencelogo.png',
     },
     {
       role: 'UI/UX Design',
@@ -47,8 +47,8 @@ const OfferDetails: FC = () => {
       agence: 'Yassir Algérie',
       deadline: 'Il y a 8 jours: ',
       applicants: '12 applicant',
-      agenceImage: 'img/demandeur/agencelogo.png',
-      cover: 'img/demandeur/agencelogo.png',
+      agenceImage: '/img/demandeur/agencelogo.png',
+      cover: '/img/demandeur/agencelogo.png',
     },
     {
       role: 'UI/UX Design',
@@ -57,8 +57,8 @@ const OfferDetails: FC = () => {
       agence: 'Yassir Algérie',
       deadline: 'Il y a 8 jours: ',
       applicants: '12 applicant',
-      agenceImage: 'img/demandeur/agencelogo.png',
-      cover: 'img/demandeur/agencelogo.png',
+      agenceImage: '/img/demandeur/agencelogo.png',
+      cover: '/img/demandeur/agencelogo.png',
     },
   ];
 
@@ -86,14 +86,14 @@ const OfferDetails: FC = () => {
       <div className="offerdetails">
         <Box className="offerdetails__bigcard">
           <img
-            src="img/demandeur/agence_cover.png"
+            src="/img/demandeur/agence_cover.png"
             alt=""
             className="offerdetails__bigcard--cover"
           />
 
           <div className="offerdetails__bigcard-content">
             <img
-              src="img/demandeur/agencelogo.png"
+              src="/img/demandeur/agencelogo.png"
               alt=""
               className="offerdetails__bigcard--profilepic"
             />

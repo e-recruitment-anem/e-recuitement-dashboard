@@ -16,49 +16,58 @@ import {
 
 import { FC, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Agence, ReactChangeEvent, ReactClickEvent } from "../../helpers/types";
-import { getAgence } from "../../store/selectors";
-import { createAgence, createAgenceError } from "../../store/slices/agence";
+import {
+  ReactChangeEvent,
+  ReactClickEvent,
+  Diplome,
+} from "../../../../helpers/types";
+import { getManageAccounts } from "../../../../store/selectors";
+
+import {
+  createDiplome,
+  createDiplomeError,
+} from "../../../../store/slices/seeker";
+import "./Modals.scss";
 
 interface Props extends InputProps {
   open: boolean;
   onToggle?: () => void;
+  actionButton: string;
 }
 
-const AddAgency: FC<Props> = ({ open, onToggle }) => {
+const AddDiplomeModal: FC<Props> = ({ open, onToggle, actionButton }) => {
   // ===========================================================================
   // Selectors
   // ===========================================================================
-  const { error, msg, success, loading } = useSelector(getAgence);
+  const { error, msg } = useSelector(getManageAccounts);
 
   // ===========================================================================
   // Dispatch
   // ==========================================================================
   const dispatch = useDispatch();
 
-  const _createAgency = (payload: Agence) => {
-    dispatch(createAgence(payload));
+  const _createDiplome = (payload: Diplome) => {
+    dispatch(createDiplome(payload));
   };
 
-  const _createAgencyError = (payload: string) => {
-    dispatch(createAgenceError(payload));
+  const _createDiplomeError = (payload: string) => {
+    dispatch(createDiplomeError(payload));
   };
 
   // ===========================================================================
   // State
   // ===========================================================================
-  const [agency, setAgency] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
+  const [diplome, setDiplome] = useState({
+    title: "",
+    storagePath: "ss",
   });
 
   // ===========================================================================
   // Handlers
   // ===========================================================================
   const handleChange = (event: ReactChangeEvent) => {
-    setAgency({
-      ...agency,
+    setDiplome({
+      ...diplome,
       [event.target.name]: event.target.value,
     });
   };
@@ -67,75 +76,41 @@ const AddAgency: FC<Props> = ({ open, onToggle }) => {
     event.preventDefault();
 
     const payload = {
-      name: agency.name,
-      email: agency.email.trim(),
-      phoneNumber: agency.phoneNumber,
+      title: diplome.title,
+      storagePath: diplome.storagePath,
     };
 
-    if (payload.name && payload.email && payload.phoneNumber) {
-      _createAgency(payload);
+    if (payload.storagePath && payload.title) {
+      _createDiplome(payload);
     } else {
-      _createAgencyError("Please, make sure all inputs are filled correctly");
+      _createDiplomeError("Please, make sure all inputs are filled correctly");
     }
   };
 
   return (
-    <Modal size="3xl" isOpen={open} onClose={() => onToggle}>
+    <Modal size="4xl" isOpen={open} onClose={() => onToggle}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader className="personalInfoModal_inputs-item--title">
-          Add agency admin
+          Add Diplome
         </ModalHeader>
         <ModalCloseButton onClick={onToggle} />
         <ModalBody pb={6}>
           {error && <Alert className="auth_alert-error">{msg}</Alert>}
-          {success && <Alert className="auth_alert-success">{msg}</Alert>}
           <div className="personalInfoModal_inputs">
             <FormControl>
               <FormLabel
-                htmlFor="name"
                 className="personalInfoModal_inputs-item--label"
+                htmlFor="title"
               >
-                Agency name
+                Diplome title
               </FormLabel>
               <Input
                 onChange={handleChange}
-                type="name"
-                id="name"
-                name="name"
-                placeholder="ex. John"
-                className="personalInfoModal_inputs-item--input"
-              />
-            </FormControl>
-            <FormControl>
-              <FormLabel
-                htmlFor="email"
-                className="personalInfoModal_inputs-item--label"
-              >
-                Email
-              </FormLabel>
-              <Input
-                onChange={handleChange}
-                type="email"
-                id="email"
-                name="email"
-                placeholder="ex. example@gmail.com"
-                className="personalInfoModal_inputs-item--input"
-              />
-            </FormControl>
-            <FormControl>
-              <FormLabel
-                htmlFor="phone-number"
-                className="personalInfoModal_inputs-item--label"
-              >
-                Phone number
-              </FormLabel>
-              <Input
-                onChange={handleChange}
-                name="phoneNumber"
-                type="number"
-                id="phone-number"
-                placeholder="ex. 0560000000"
+                type="text"
+                name="title"
+                id="title"
+                placeholder="Enter a title"
                 className="personalInfoModal_inputs-item--input"
               />
             </FormControl>
@@ -158,9 +133,8 @@ const AddAgency: FC<Props> = ({ open, onToggle }) => {
             background="#0061FF"
             className="personalInfoModal_inputs-item--input"
             onClick={handleSubmit}
-            disabled={loading}
           >
-            Create agency admin
+            {actionButton}
           </Button>
         </ModalFooter>
       </ModalContent>
@@ -168,4 +142,4 @@ const AddAgency: FC<Props> = ({ open, onToggle }) => {
   );
 };
 
-export default AddAgency;
+export default AddDiplomeModal;

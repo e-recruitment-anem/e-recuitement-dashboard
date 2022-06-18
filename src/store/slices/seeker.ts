@@ -160,7 +160,7 @@ const manageSeekerSlice = createSlice({
       state.tempSeeker = {
         school: payload.school,
         title: payload.title,
-        startDate: payload.storagePath,
+        startDate: payload.startDate,
         endDate: payload.endDate,
       };
     },

@@ -1,39 +1,54 @@
 import { InputProps } from "@chakra-ui/react";
 import { faAdd, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
 import { FC } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getManageSeeker } from "../../../store/selectors";
+import { fetchSeeker } from "../../../store/slices/seeker";
+import AddEducationModal from "./Modals/AddEducationModal";
 
-interface Props extends InputProps {
-  paragraph?: string;
-}
+const Education: FC = () => {
+  // ===========================================================================
+  // Selectors
+  // ===========================================================================
+  const { educations, msg, error } = useSelector(getManageSeeker);
 
-const Education: FC<Props> = ({ paragraph }) => {
-  const educationItems = [
-    {
-      title: "Higher National School of Computer Science (Algeria)",
-      subtitle: "Master of Computer Science (MSCS), Computer science",
-      duration: "2018 - 2023",
-      pictures: [
-        "img/demandeur/agence_cover.png",
-        "img/demandeur/agence_cover.png",
-      ],
-    },
-    {
-      title: "Higher National School of Computer Science (Algeria)",
-      subtitle: "Master of Computer Science (MSCS), Computer science",
-      duration: "2018 - 2023",
-      pictures: [
-        "img/demandeur/agence_cover.png",
-        "img/demandeur/agence_cover.png",
-      ],
-    },
-  ];
+  // ===========================================================================
+  // Dispatch
+  // ==========================================================================
+  const dispatch = useDispatch();
+
+  const _fetchSeeker = () => {
+    dispatch(fetchSeeker());
+  };
+
+  // ===========================================================================
+  // State
+  // ===========================================================================
+
+  // ===========================================================================
+  // Hooks
+  // ===========================================================================
+  useEffect(() => {
+    _fetchSeeker();
+    // eslint-disable-next-line
+  }, []);
+
+  //Modal state management
+  const [open, setOpen] = React.useState(false);
+
+  const onToggle = () => {
+    setOpen(!open);
+    console.log(open);
+  };
 
   return (
     <div>
       <div className="jsprofile__box--header">
         <h1>Education</h1>
-        <div className="jsprofile__box--action">
+        <div className="jsprofile__box--action" onClick={() => onToggle()}>
           <FontAwesomeIcon
             className="jsprofile__box--action-icon"
             icon={faAdd}
@@ -41,18 +56,24 @@ const Education: FC<Props> = ({ paragraph }) => {
           <span>Add education</span>
         </div>
       </div>
-      {educationItems.map((data) => {
+      {educations.map((education) => {
         return (
           <div>
             <div className="jsprofile__education">
               <div className="jsprofile__education--content">
-                <h1>{data.title}</h1>
-                <h2>{data.subtitle}</h2>
-                <span>{data.duration}</span>
+                <h1>{education.school}</h1>
+                <h2>{education.title}</h2>
+                <span>
+                  {moment(education.startDate).year() +
+                    " - " +
+                    moment(education.endDate).year()}
+                </span>
                 <div className="jsprofile__education--content-files">
-                  {data.pictures.map((myImage) => (
+                  {/* {education.pictures.map((myImage) => (
                     <img src={myImage} alt="" />
-                  ))}
+                  ))} */}
+                  <img src="/img/demandeur/agence_cover.png" alt="" />
+                  <img src="/img/demandeur/agence_cover.png" alt="" />
                 </div>
               </div>
               <div className="jsprofile__education--actions">
@@ -70,6 +91,12 @@ const Education: FC<Props> = ({ paragraph }) => {
           </div>
         );
       })}
+      <AddEducationModal
+        open={open}
+        onToggle={onToggle}
+        className="modal"
+        actionButton="Save changes"
+      />
     </div>
   );
 };

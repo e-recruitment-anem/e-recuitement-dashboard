@@ -35,18 +35,15 @@ const Agence: FC = () => {
   // ===========================================================================
   useEffect(() => {
     _fetchSeekers();
+    console.log(seekers);
     // eslint-disable-next-line
   }, []);
-
-  const test = () => {
-    console.log(seekers);
-  };
 
   return (
     <AdminLayout>
       <div className="main-nav">
         <div className="main-nav__search">
-          <Input type="text" placeholder="Rechercher..." onClick={test} />
+          <Input type="text" placeholder="Rechercher..." />
         </div>
         <UserNav />
       </div>

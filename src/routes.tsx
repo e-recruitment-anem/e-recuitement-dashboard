@@ -26,6 +26,7 @@ import SeekerGuard from "./components/guards/SeekerGuard";
 import GuestGuard from "./components/guards/GuestGuard";
 import AgencyAgents from "./views/dashboard/AgencyAgents";
 import Users from "./views/dashboard/Users";
+import CreateJobRequest from "./views/demandeur/Offers/CreateJobRequest";
 
 const routes = [
   {
@@ -129,6 +130,10 @@ const routes = [
         <MyApplications />
       </SeekerGuard>
     ),
+  },
+  {
+    path: "/jobrequest",
+    element: <CreateJobRequest />,
   },
 
   // Employer

@@ -13,52 +13,64 @@ import {
   ModalHeader,
   ModalOverlay,
 } from "@chakra-ui/react";
+import moment from "moment";
 
 import { FC, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Agence, ReactChangeEvent, ReactClickEvent } from "../../helpers/types";
-import { getAgence } from "../../store/selectors";
-import { createAgence, createAgenceError } from "../../store/slices/agence";
+import {
+  User,
+  ReactChangeEvent,
+  ReactClickEvent,
+} from "../../../../helpers/types";
+import { getManageAccounts } from "../../../../store/selectors";
+
+import {
+  attachEducation,
+  attachEducationError,
+} from "../../../../store/slices/seeker";
+import "./Modals.scss";
 
 interface Props extends InputProps {
   open: boolean;
   onToggle?: () => void;
+  actionButton: string;
 }
 
-const AddAgency: FC<Props> = ({ open, onToggle }) => {
+const AddEducationModal: FC<Props> = ({ open, onToggle, actionButton }) => {
   // ===========================================================================
   // Selectors
   // ===========================================================================
-  const { error, msg, success, loading } = useSelector(getAgence);
+  const { error, msg } = useSelector(getManageAccounts);
 
   // ===========================================================================
   // Dispatch
   // ==========================================================================
   const dispatch = useDispatch();
 
-  const _createAgency = (payload: Agence) => {
-    dispatch(createAgence(payload));
+  const _addEducation = (payload: User) => {
+    dispatch(attachEducation(payload));
   };
 
-  const _createAgencyError = (payload: string) => {
-    dispatch(createAgenceError(payload));
+  const _addEducationError = (payload: string) => {
+    dispatch(attachEducationError(payload));
   };
 
   // ===========================================================================
   // State
   // ===========================================================================
-  const [agency, setAgency] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
+  const [education, setEducation] = useState({
+    school: "",
+    title: "",
+    startDate: "",
+    endDate: "",
   });
 
   // ===========================================================================
   // Handlers
   // ===========================================================================
   const handleChange = (event: ReactChangeEvent) => {
-    setAgency({
-      ...agency,
+    setEducation({
+      ...education,
       [event.target.name]: event.target.value,
     });
   };
@@ -67,76 +79,95 @@ const AddAgency: FC<Props> = ({ open, onToggle }) => {
     event.preventDefault();
 
     const payload = {
-      name: agency.name,
-      email: agency.email.trim(),
-      phoneNumber: agency.phoneNumber,
+      school: education.school,
+      title: education.title,
+      startDate: moment(education.startDate).toISOString(),
+      endDate: moment(education.endDate).toISOString(),
     };
 
-    if (payload.name && payload.email && payload.phoneNumber) {
-      _createAgency(payload);
+    if (
+      payload.school &&
+      payload.title &&
+      payload.startDate &&
+      payload.endDate
+    ) {
+      _addEducation(payload);
     } else {
-      _createAgencyError("Please, make sure all inputs are filled correctly");
+      _addEducationError("Please, make sure all inputs are filled correctly");
     }
   };
 
   return (
-    <Modal size="3xl" isOpen={open} onClose={() => onToggle}>
+    <Modal size="6xl" isOpen={open} onClose={() => onToggle}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader className="personalInfoModal_inputs-item--title">
-          Add agency admin
+          Add Education
         </ModalHeader>
         <ModalCloseButton onClick={onToggle} />
         <ModalBody pb={6}>
           {error && <Alert className="auth_alert-error">{msg}</Alert>}
-          {success && <Alert className="auth_alert-success">{msg}</Alert>}
           <div className="personalInfoModal_inputs">
             <FormControl>
               <FormLabel
-                htmlFor="name"
                 className="personalInfoModal_inputs-item--label"
+                htmlFor="title"
               >
-                Agency name
+                School name
               </FormLabel>
               <Input
                 onChange={handleChange}
-                type="name"
-                id="name"
-                name="name"
-                placeholder="ex. John"
+                type="text"
+                name="school"
+                id="title"
+                placeholder="Enter a title"
                 className="personalInfoModal_inputs-item--input"
               />
             </FormControl>
             <FormControl>
               <FormLabel
-                htmlFor="email"
                 className="personalInfoModal_inputs-item--label"
+                htmlFor="title"
               >
-                Email
+                Degree
               </FormLabel>
               <Input
                 onChange={handleChange}
-                type="email"
-                id="email"
-                name="email"
-                placeholder="ex. example@gmail.com"
+                type="text"
+                name="title"
+                id="title"
+                placeholder="Enter a title"
                 className="personalInfoModal_inputs-item--input"
               />
             </FormControl>
-            <FormControl>
+            <FormControl className="personalInfoModal_inputs-item">
               <FormLabel
-                htmlFor="phone-number"
+                htmlFor="start-date"
                 className="personalInfoModal_inputs-item--label"
               >
-                Phone number
+                Starting date
               </FormLabel>
               <Input
                 onChange={handleChange}
-                name="phoneNumber"
-                type="number"
-                id="phone-number"
-                placeholder="ex. 0560000000"
+                type="date"
+                name="startDate"
                 className="personalInfoModal_inputs-item--input"
+                placeholder="Select a date"
+              />
+            </FormControl>
+            <FormControl className="personalInfoModal_inputs-item">
+              <FormLabel
+                htmlFor="end-date"
+                className="personalInfoModal_inputs-item--label"
+              >
+                Ending date
+              </FormLabel>
+              <Input
+                onChange={handleChange}
+                type="date"
+                name="endDate"
+                className="personalInfoModal_inputs-item--input"
+                placeholder="Select a date"
               />
             </FormControl>
           </div>
@@ -158,9 +189,8 @@ const AddAgency: FC<Props> = ({ open, onToggle }) => {
             background="#0061FF"
             className="personalInfoModal_inputs-item--input"
             onClick={handleSubmit}
-            disabled={loading}
           >
-            Create agency admin
+            {actionButton}
           </Button>
         </ModalFooter>
       </ModalContent>
@@ -168,4 +198,4 @@ const AddAgency: FC<Props> = ({ open, onToggle }) => {
   );
 };
 
-export default AddAgency;
+export default AddEducationModal;

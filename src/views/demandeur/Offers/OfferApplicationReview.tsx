@@ -40,8 +40,8 @@ const OfferApplicationReview: FC = () => {
       agence: "Yassir Algérie",
       deadline: "Il y a 8 jours: ",
       applicants: "12 applicant",
-      agenceImage: "img/demandeur/agencelogo.png",
-      cover: "img/demandeur/agencelogo.png",
+      agenceImage: "/img/demandeur/agencelogo.png",
+      cover: "/img/demandeur/agencelogo.png",
     },
     {
       role: "UI/UX Design",
@@ -50,8 +50,8 @@ const OfferApplicationReview: FC = () => {
       agence: "Yassir Algérie",
       deadline: "Il y a 8 jours: ",
       applicants: "12 applicant",
-      agenceImage: "img/demandeur/agencelogo.png",
-      cover: "img/demandeur/agencelogo.png",
+      agenceImage: "/img/demandeur/agencelogo.png",
+      cover: "/img/demandeur/agencelogo.png",
     },
     {
       role: "UI/UX Design",
@@ -60,8 +60,8 @@ const OfferApplicationReview: FC = () => {
       agence: "Yassir Algérie",
       deadline: "Il y a 8 jours: ",
       applicants: "12 applicant",
-      agenceImage: "img/demandeur/agencelogo.png",
-      cover: "img/demandeur/agencelogo.png",
+      agenceImage: "/img/demandeur/agencelogo.png",
+      cover: "/img/demandeur/agencelogo.png",
     },
   ];
 
@@ -81,14 +81,14 @@ const OfferApplicationReview: FC = () => {
       <div className="offerdetails">
         <Box className="offerdetails__bigcard Card-size3">
           <img
-            src="img/demandeur/agence_cover.png"
+            src="/img/demandeur/agence_cover.png"
             alt=""
             className="offerdetails__bigcard--cover"
           />
 
           <div className="offerdetails__bigcard-content">
             <img
-              src="img/demandeur/agencelogo.png"
+              src="/img/demandeur/agencelogo.png"
               alt=""
               className="offerdetails__bigcard--profilepic"
             />
