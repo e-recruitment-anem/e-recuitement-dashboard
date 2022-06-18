@@ -386,11 +386,7 @@ function* addEducation() {
       }
     );
 
-<<<<<<< Updated upstream
     if (data.message === 'Education attached.') {
-=======
-    if (data.message === "Education attached.") {
->>>>>>> Stashed changes
       yield put(attachEducationSuccess(data.message));
     } else {
       yield put(attachEducationError('Something went wrong !'));
