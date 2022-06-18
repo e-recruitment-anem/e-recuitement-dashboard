@@ -34,9 +34,8 @@ const manageSeekerSlice = createSlice({
 
     // Fetch Job seeker data
 
-    fetchSeeker: (state, { payload }: PayloadAction<string>) => {
+    fetchSeeker: (state) => {
       state.loading = true;
-      state.tempSeeker = { id: payload }
     },
 
     fetchSeekerSuccess: (state, { payload }: PayloadAction<any>) => {

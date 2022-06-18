@@ -27,6 +27,9 @@ import {
   fetchAgencesSuccess,
 } from '../slices/agence';
 import {
+    createAdmin,
+    createAdminError,
+    createAdminSuccess,
   deleteAdmin,
   deleteAdminError,
   deleteAdminSuccess,
@@ -175,6 +178,28 @@ function* removeAdmin() {
   }
 }
 
+function* addAdmin() {
+    try {
+      const { admin } = yield select(getManageAccounts);
+      const { data } = yield axios.post('http://localhost:5000/api/auth/register-admin', {
+        name: admin.name,
+        email: admin.email,
+        phoneNumber: admin.phoneNumber,
+        type: "SUPER_ADMIN",
+        agencyId: admin.agency,
+        birthDate: admin.birthDate,
+      });
+  
+      if (data.message === 'admin created successfuly;') {
+        yield put(createAdminSuccess(data.message));
+      } else {
+        yield put(createAdminError('Something went wrong !'));
+      }
+    } catch (error) {
+      yield put(createAdminError('Something went wrong !'));
+    }
+  }
+
 function* loadSeekers() {
   try {
     const { data } = yield axios.get(
@@ -211,10 +236,12 @@ function* removeSeeker() {
 
 function* loadSeeker() {
   try {
-    const { tempSeeker } = yield select(getManageSeeker);
+    const { user } = yield select(getAuth);
     const { data } = yield axios.get(
-      `http://localhost:8090/api/job-seekers/${tempSeeker.id}`
+      `http://localhost:8090/api/job-seekers/1`
     );
+
+    console.log(data)
 
     if (data.message === 'job seeker found.') {
       yield put(fetchSeekerSuccess(data.body));
@@ -255,6 +282,7 @@ function* rootSaga() {
     takeLatest(deleteAgence.type, removeAgence),
     takeLatest(fetchAdmins.type, loadAdmins),
     takeLatest(deleteAdmin.type, removeAdmin),
+    takeLatest(createAdmin.type, addAdmin),
     takeLatest(fetchSeekers.type, loadSeekers),
     takeLatest(fetchSeeker.type, loadSeeker),
     takeLatest(deleteSeeker.type, removeSeeker),

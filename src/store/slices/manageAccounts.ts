@@ -31,6 +31,26 @@ const manageAccountsSlice = createSlice({
       state.loading = false;
     },
 
+    createAdmin: (state, { payload }: PayloadAction<any>) => {
+      state.loading = true;
+      state.admin = payload;
+    },
+
+    // eslint-disable-next-line
+    createAdminSuccess: (state, { payload }: PayloadAction<string>) => {
+      state.admin = {};
+      state.msg = payload;
+      state.loading = false;
+      state.error = false;
+    },
+
+    createAdminError: (state, { payload }: PayloadAction<string>) => {
+      state.msg = payload;
+      state.error = true;
+      state.admin = {};
+      state.loading = false;
+    },
+
     deleteAdmin: (state, { payload }: PayloadAction<string>) => {
       state.loading = true;
       state.admin = { id: payload };
@@ -59,6 +79,9 @@ export const {
   deleteAdmin,
   deleteAdminError,
   deleteAdminSuccess,
+  createAdmin,
+  createAdminSuccess,
+  createAdminError
 } = manageAccountsSlice.actions;
 
 export default manageAccountsSlice.reducer;
