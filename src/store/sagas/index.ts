@@ -1,6 +1,7 @@
-import axios from 'axios';
 import { all, takeLatest, select, put } from 'redux-saga/effects';
 import { setSession } from '../../helpers/api';
+
+import axios from 'axios';
 import {
   getAgence,
   getAuth,
@@ -27,9 +28,9 @@ import {
   fetchAgencesSuccess,
 } from '../slices/agence';
 import {
-    createAdmin,
-    createAdminError,
-    createAdminSuccess,
+  createAdmin,
+  createAdminError,
+  createAdminSuccess,
   deleteAdmin,
   deleteAdminError,
   deleteAdminSuccess,
@@ -149,7 +150,7 @@ function* removeAgence() {
 
 function* loadAdmins() {
   try {
-    const { data } = yield axios.get(`localhost:5000/api/users/admins`);
+    const { data } = yield axios.get(`http://localhost:5000/api/users/admins`);
 
     if (data.message === 'admins list') {
       yield put(fetchAdminsSuccess(data.body));
@@ -179,26 +180,29 @@ function* removeAdmin() {
 }
 
 function* addAdmin() {
-    try {
-      const { admin } = yield select(getManageAccounts);
-      const { data } = yield axios.post('http://localhost:5000/api/auth/register-admin', {
+  try {
+    const { admin } = yield select(getManageAccounts);
+    const { data } = yield axios.post(
+      'http://localhost:5000/api/auth/register-admin',
+      {
         name: admin.name,
         email: admin.email,
         phoneNumber: admin.phoneNumber,
-        type: "SUPER_ADMIN",
+        type: 'SUPER_ADMIN',
         agencyId: admin.agency,
         birthDate: admin.birthDate,
-      });
-  
-      if (data.message === 'admin created successfuly;') {
-        yield put(createAdminSuccess(data.message));
-      } else {
-        yield put(createAdminError('Something went wrong !'));
       }
-    } catch (error) {
+    );
+
+    if (data.message === 'admin created successfuly;') {
+      yield put(createAdminSuccess(data.message));
+    } else {
       yield put(createAdminError('Something went wrong !'));
     }
+  } catch (error) {
+    yield put(createAdminError('Something went wrong !'));
   }
+}
 
 function* loadSeekers() {
   try {
@@ -237,11 +241,7 @@ function* removeSeeker() {
 function* loadSeeker() {
   try {
     const { user } = yield select(getAuth);
-    const { data } = yield axios.get(
-      `http://localhost:8090/api/job-seekers/1`
-    );
-
-    console.log(data)
+    const { data } = yield axios.get(`http://localhost:8090/api/job-seekers/1`);
 
     if (data.message === 'job seeker found.') {
       yield put(fetchSeekerSuccess(data.body));

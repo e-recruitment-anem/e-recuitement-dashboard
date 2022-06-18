@@ -1,8 +1,4 @@
-import React from "react";
 import { FormControl, Button } from "@chakra-ui/react";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 
 const Resetpass = () => {
   return (
@@ -29,16 +25,15 @@ const Resetpass = () => {
             <label htmlFor="password" className="auth_form-label">
               Enter your Password
             </label>
-           
+
             <input id="password" type="password" className="auth_form-input" />
             <span className="auth_form-helper">
               We'll never share your password.
             </span>
-            
           </FormControl>
           <FormControl className="auth_form-group">
             <label htmlFor="password" className="auth_form-label">
-            Confirm your password
+              Confirm your password
             </label>
             <input id="password" type="password" className="auth_form-input" />
             <span className="auth_form-helper">
@@ -47,7 +42,8 @@ const Resetpass = () => {
           </FormControl>
           <Button className="auth_form-button">Confirm</Button>
         </form>
-        <br/><br/>
+        <br />
+        <br />
         <div className="auth_footer ">
           <span className="auth_footer-text">Already have an account ?</span>{" "}
           <span className="auth_footer-cta"> back to login</span>

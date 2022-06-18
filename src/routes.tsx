@@ -1,37 +1,38 @@
-import React from 'react';
+import React from "react";
 // import AuthGuard from './components/guards/AuthGuard';
 
 // Hello components
-import Hello from './components/Hello';
-import Home from './views/demandeur/Home';
-import SignIn from './views/auth/SignIn';
-import Dashboard from './views/dashboard/Dashboard';
-import OfferDetails from './views/demandeur/Offers/OfferDetails';
-import Profile from './views/demandeur/Profile';
-import Agence from './views/dashboard/Agence';
-import OfferApplication from './views/demandeur/Offers/OfferApplication';
-import OfferApplicationReview from './views/demandeur/Offers/OfferApplicationReview';
-import MyApplications from './views/demandeur/Offers/MyApplications';
-import EmployerDashboard from './views/employer/Dashboard';
-import CreateJobOffer from './views/employer/CreateJobOffer';
-import EmplOfferDetails from './views/employer/OfferDetails';
-import Offers from './views/employer/Offers';
-import Interviews from './views/employer/Interviews';
-import InterviewDetails from './views/employer/InterviewDetails';
-import Forgetpass from './views/auth/Forgetpass';
-import Signup from './views/auth/Signup';
-import Resetpass from './views/auth/Resetpass';
-import AdminGuard from './components/guards/AdminGuard';
-import SeekerGuard from './components/guards/SeekerGuard';
-import GuestGuard from './components/guards/GuestGuard';
+import Hello from "./components/Hello";
+import Home from "./views/demandeur/Home";
+import SignIn from "./views/auth/SignIn";
+import Dashboard from "./views/dashboard/Dashboard";
+import OfferDetails from "./views/demandeur/Offers/OfferDetails";
+import Profile from "./views/demandeur/Profile";
+import Agence from "./views/dashboard/Agence";
+import OfferApplication from "./views/demandeur/Offers/OfferApplication";
+import OfferApplicationReview from "./views/demandeur/Offers/OfferApplicationReview";
+import MyApplications from "./views/demandeur/Offers/MyApplications";
+import EmployerDashboard from "./views/employer/Dashboard";
+import CreateJobOffer from "./views/employer/CreateJobOffer";
+import EmplOfferDetails from "./views/employer/OfferDetails";
+import Offers from "./views/employer/Offers";
+import Interviews from "./views/employer/Interviews";
+import InterviewDetails from "./views/employer/InterviewDetails";
+import Forgetpass from "./views/auth/Forgetpass";
+import Signup from "./views/auth/Signup";
+import Resetpass from "./views/auth/Resetpass";
+import AdminGuard from "./components/guards/AdminGuard";
+import SeekerGuard from "./components/guards/SeekerGuard";
+import GuestGuard from "./components/guards/GuestGuard";
+import AgencyAgents from "./views/dashboard/AgencyAgents";
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     element: <Hello />,
   },
   {
-    path: '/login',
+    path: "/login",
     element: (
       <GuestGuard>
         <SignIn />
@@ -39,19 +40,19 @@ const routes = [
     ),
   },
   {
-    path: '/SignUp',
+    path: "/SignUp",
     element: <Signup />,
   },
   {
-    path: '/Resetpass',
+    path: "/Resetpass",
     element: <Resetpass />,
   },
   {
-    path: '/Forgetpass',
+    path: "/Forgetpass",
     element: <Forgetpass />,
   },
   {
-    path: '/dashboard',
+    path: "/dashboard",
     element: (
       <AdminGuard>
         <Dashboard title="Dashboard" cta="agency admin" />
@@ -59,16 +60,24 @@ const routes = [
     ),
   },
   {
-    path: '/agences',
+    path: "/agences",
     element: (
       <AdminGuard>
         <Agence />
       </AdminGuard>
     ),
   },
+  {
+    path: "/agents",
+    element: (
+      <AdminGuard>
+        <AgencyAgents />
+      </AdminGuard>
+    ),
+  },
   // Offers
   {
-    path: '/offers',
+    path: "/offers",
     element: (
       <SeekerGuard>
         <Home />
@@ -76,7 +85,7 @@ const routes = [
     ),
   },
   {
-    path: '/offers/detail',
+    path: "/offers/detail",
     element: (
       <SeekerGuard>
         <OfferDetails />
@@ -84,7 +93,7 @@ const routes = [
     ),
   },
   {
-    path: '/offers/apply',
+    path: "/offers/apply",
     element: (
       <SeekerGuard>
         <OfferApplication />
@@ -92,12 +101,12 @@ const routes = [
     ),
   },
   {
-    path: '/offers/application',
+    path: "/offers/application",
     element: <OfferApplicationReview />,
   },
 
   {
-    path: '/seeker/profile',
+    path: "/seeker/profile",
     element: (
       <SeekerGuard>
         <Profile />
@@ -105,7 +114,7 @@ const routes = [
     ),
   },
   {
-    path: '/seeker/applications',
+    path: "/seeker/applications",
     element: (
       <SeekerGuard>
         <MyApplications />
@@ -115,27 +124,27 @@ const routes = [
 
   // Employer
   {
-    path: '/employer',
+    path: "/employer",
     element: <EmployerDashboard />,
   },
   {
-    path: '/employer/offers/create',
+    path: "/employer/offers/create",
     element: <CreateJobOffer />,
   },
   {
-    path: '/employer/offer/details',
+    path: "/employer/offer/details",
     element: <EmplOfferDetails />,
   },
   {
-    path: '/employer/offers',
+    path: "/employer/offers",
     element: <Offers />,
   },
   {
-    path: '/employer/interviews',
+    path: "/employer/interviews",
     element: <Interviews />,
   },
   {
-    path: '/employer/interview/details',
+    path: "/employer/interview/details",
     element: <InterviewDetails />,
   },
 ];

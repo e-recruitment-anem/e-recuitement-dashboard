@@ -42,6 +42,7 @@ const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
                 Firstname
               </FormLabel>
               <Input
+                type="text"
                 id="first-name"
                 placeholder="ex. John"
                 className="personalInfoModal_inputs-item--input"
@@ -55,6 +56,7 @@ const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
                 Lastname
               </FormLabel>
               <Input
+                type="text"
                 id="last"
                 placeholder="ex. Smith"
                 className="personalInfoModal_inputs-item--input"
@@ -68,6 +70,7 @@ const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
                 Email
               </FormLabel>
               <Input
+                type="email"
                 id="email"
                 placeholder="ex. example@gmail.com"
                 className="personalInfoModal_inputs-item--input"
@@ -111,6 +114,7 @@ const AddAdminAgency: FC<Props> = ({ open, onToggle }) => {
                 Phone number
               </FormLabel>
               <Input
+                type="number"
                 id="phone-number"
                 placeholder="ex. 0560000000"
                 className="personalInfoModal_inputs-item--input"
