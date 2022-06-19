@@ -88,7 +88,7 @@ const MyOffers: FC = () => {
                 PublicationDate={PublicationDate}
                 description={description}
                 JobState={JobState}
-                applicationURL="/offerapplicationreview"
+                applicationURL="/offers/detail"
                 role={0}
               />
             )

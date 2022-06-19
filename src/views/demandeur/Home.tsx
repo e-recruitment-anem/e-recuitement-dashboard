@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import OfferResultItem from "../../components/JobSeeker/OfferResultItem";
 import SearchBar from "../../components/JobSeeker/SearchBar";
 import NavBar from "../../components/NavBar";
@@ -44,6 +45,11 @@ const Home: FC = () => {
     },
   ];
 
+  const navigate = useNavigate();
+  const openInNewTab = (url) => {
+    navigate(url);
+  };
+
   return (
     <>
       <NavBar />
@@ -54,6 +60,7 @@ const Home: FC = () => {
           <PrimaryButton
             content="Request special job offer"
             color="primaryColor"
+            onClick={() => openInNewTab("/seeker/jobrequest")}
           />
         </div>
         <div className="home__jobOffers--container">
@@ -64,7 +71,7 @@ const Home: FC = () => {
               agence={agence}
               agenceImage={agenceImage}
               detailsURL="/offers/detail"
-              applicationURL="/offerapplication"
+              applicationURL="/offers/apply"
             />
           ))}
         </div>

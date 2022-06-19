@@ -5,6 +5,7 @@ import SummaryBox from "./JobSeeker/SummaryBox/SummaryBox";
 import { v4 as uuidv4 } from "uuid";
 import "./PrimaryButton/PrimaryButton.scss";
 import PrimaryButton from "./PrimaryButton";
+import { useNavigate } from "react-router-dom";
 
 interface summaryBox {
   title: string;
@@ -24,7 +25,6 @@ const OfferDetailsCard: FC<Props> = ({
   summaryBoxItems,
   additionalStyle,
   role,
-  onClick,
 }) => {
   const circle = (
     <svg
@@ -38,6 +38,10 @@ const OfferDetailsCard: FC<Props> = ({
     </svg>
   );
   const style = "offerdetails__bigcard " + additionalStyle;
+  const navigate = useNavigate();
+  const openInNewTab = (url) => {
+    navigate(url);
+  };
 
   return (
     <Box className={style}>
@@ -61,13 +65,21 @@ const OfferDetailsCard: FC<Props> = ({
           <div className="offerdetails__bigcard--heading-right">
             {role === 1 && (
               <div className="offerdetails__bigcard--heading-right-buttons">
-                <PrimaryButton color="primaryColor" content="Edit job offer " />
+                <PrimaryButton
+                  color="primaryColor"
+                  content="Edit job offer "
+                  onClick={() => openInNewTab("/offers/apply")}
+                />
                 <PrimaryButton color="delete" content="Close offer" />
               </div>
             )}
             {role === 0 && (
               <div className="offerdetails__bigcard--heading-right-buttons">
-                <PrimaryButton color="primaryColor" content="Apply for job" />{" "}
+                <PrimaryButton
+                  color="primaryColor"
+                  content="Apply for job"
+                  onClick={() => openInNewTab("/offers/apply")}
+                />
               </div>
             )}
             <div className="offerdetails__bigcard--heading-right-span">
