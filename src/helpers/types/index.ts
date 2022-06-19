@@ -38,6 +38,11 @@ export interface Agence {
   [anyProp: string]: any;
 }
 
+export interface Offer {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [anyProp: string]: any;
+}
+
 export interface ISummary {
   items: ISummaryItem[];
 }
@@ -118,6 +123,7 @@ export interface ManageEmployerState {
   msg: string;
   employers: User[];
   employer: User;
+  offers: Offer[];
   tempEmployer: User;
 }
 

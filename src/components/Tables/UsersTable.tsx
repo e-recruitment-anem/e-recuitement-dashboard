@@ -9,10 +9,10 @@ import {
 import { User } from "../../helpers/types";
 
 interface Props {
-  seekers: User[];
+  employers: User[];
 }
 
-const AgenceTable: FC<Props> = ({ seekers }) => {
+const AgenceTable: FC<Props> = ({ employers }) => {
   return (
     <>
       <Table className="dataTable">
@@ -46,7 +46,7 @@ const AgenceTable: FC<Props> = ({ seekers }) => {
           </Tr>
         </Thead>
         <Tbody className="dataTable_body">
-          {seekers.map((jobSeeker) => (
+          {employers.map((jobSeeker) => (
             <Tr className="dataTable_row">
               <Td className="dataTable_item dataTable_item-id">
                 {jobSeeker.id}

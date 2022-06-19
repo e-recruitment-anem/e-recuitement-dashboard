@@ -78,7 +78,7 @@ const routes = [
     ),
   },
   {
-    path: "/seekers",
+    path: "/employers",
     element: (
       <AdminGuard>
         <Users />

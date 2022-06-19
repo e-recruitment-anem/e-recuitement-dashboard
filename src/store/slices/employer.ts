@@ -9,6 +9,7 @@ export const initialState: ManageEmployerState = {
   loading: false,
   employers: [],
   employer: {},
+  offers: [],
   tempEmployer: {},
 };
 
@@ -68,24 +69,44 @@ const employer = createSlice({
       state.loading = false;
     },
 
-    // deleteAgence: (state, { payload }: PayloadAction<string>) => {
-    //   state.loading = true;
-    //   state.agence = { id: payload };
-    // },
+    // Fetch Job employer data
 
-    // // eslint-disable-next-line
-    // deleteAgenceSuccess: (state, { payload }: PayloadAction<any>) => {
-    //   state.agence = {};
-    //   state.loading = false;
-    //   state.error = false;
-    // },
+    fetchEmployer: (state) => {
+      state.loading = true;
+    },
 
-    // deleteAgenceError: (state, { payload }: PayloadAction<string>) => {
-    //   state.msg = payload;
-    //   state.error = true;
-    //   state.agence = {};
-    //   state.loading = false;
-    // },
+    fetchEmployerSuccess: (state, { payload }: PayloadAction<any>) => {
+      state.employer = payload.employer;
+      state.tempEmployer = {};
+      state.loading = false;
+      state.error = false;
+    },
+
+    fetchEmployerError: (state, { payload }: PayloadAction<string>) => {
+      state.msg = payload;
+      state.tempEmployer = {};
+      state.error = true;
+      state.loading = false;
+    },
+
+    // fetch employer offers
+    fetchEmployerOffers: (state) => {
+      state.loading = true;
+    },
+
+    fetchEmployerOffersSuccess: (state, { payload }: PayloadAction<any>) => {
+      state.offers = payload.employer;
+      state.tempEmployer = {};
+      state.loading = false;
+      state.error = false;
+    },
+
+    fetchEmployerOffersError: (state, { payload }: PayloadAction<string>) => {
+      state.msg = payload;
+      state.tempEmployer = {};
+      state.error = true;
+      state.loading = false;
+    },
   },
 });
 
@@ -96,6 +117,9 @@ export const {
   createEmployer,
   createEmployerSuccess,
   createEmployerError,
+  fetchEmployer,
+  fetchEmployerSuccess,
+  fetchEmployerError,
 } = employer.actions;
 
 export default employer.reducer;

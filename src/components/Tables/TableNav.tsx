@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import { Button } from "@chakra-ui/react";
 import AddAgency from "../Dashboard/AddAgency";
 import AddAdminAgency from "../Dashboard/AddAdminAgency";
+import AddEmployer from "../Dashboard/AddEmployer";
 
 interface Props {
   title: string;
@@ -60,6 +61,13 @@ const TableNav: FC<Props> = ({ title, cta, cta2 }) => {
             </Button>
           </div>
         )}
+        {title === "Employers" && (
+          <div className="dataTable_nav-actions">
+            <Button className="dataTable_nav-cta" onClick={() => onToggle()}>
+              + Créer {cta}
+            </Button>
+          </div>
+        )}
         {}
       </div>
       {title === "Agences" && (
@@ -67,6 +75,9 @@ const TableNav: FC<Props> = ({ title, cta, cta2 }) => {
       )}
       {title === "Agents" && (
         <AddAdminAgency open={open} onToggle={onToggle} className="modal" />
+      )}
+      {title === "Employers" && (
+        <AddEmployer open={open} onToggle={onToggle} className="modal" />
       )}
     </div>
   );
