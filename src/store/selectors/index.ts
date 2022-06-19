@@ -5,4 +5,7 @@ export const getAgence = (state: RootState) => state.agenceState;
 export const getManageAccounts = (state: RootState) =>
   state.manageAccountsState;
 export const getManageSeeker = (state: RootState) => state.manageSeekerState;
-export const getManageJobRequest = (state: RootState) => state.manageJobRequestsState;
+export const getManageJobRequest = (state: RootState) =>
+  state.manageJobRequestsState;
+export const getManageEmployer = (state: RootState) =>
+  state.manageEmployerState;

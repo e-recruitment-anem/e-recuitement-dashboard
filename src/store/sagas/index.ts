@@ -5,6 +5,7 @@ import {
   getAgence,
   getAuth,
   getManageAccounts,
+  getManageEmployer,
   getManageJobRequest,
   getManageSeeker,
 } from '../selectors';
@@ -73,7 +74,14 @@ import {
   fetchJobRequestsError,
   fetchJobRequestsSuccess,
 } from '../slices/manageJobRequests';
-import { fetchEmployers, fetchEmployersError, fetchEmployersSuccess } from '../slices/employer';
+import {
+    createEmployer,
+    createEmployerError,
+    createEmployerSuccess,
+  fetchEmployers,
+  fetchEmployersError,
+  fetchEmployersSuccess,
+} from '../slices/employer';
 
 function* reloadAuth() {
   try {
@@ -498,9 +506,7 @@ function* addJobRequest() {
 
 function* loadEmployers() {
   try {
-    const { data } = yield axios.get(
-      `http://localhost:8060/api/employers/`
-    );
+    const { data } = yield axios.get(`http://localhost:8060/api/employers/`);
 
     if (data) {
       yield put(fetchEmployersSuccess(data._embedded));
@@ -509,6 +515,35 @@ function* loadEmployers() {
     }
   } catch (error) {
     yield put(fetchEmployersError('Something went wrong !'));
+  }
+}
+
+function* addEmployer() {
+  try {
+    const { tempEmployer } = yield select(getManageEmployer);
+    const { data } = yield axios.post(
+      `http://localhost:5000/api/auth/register-employer`,
+      {
+        password: tempEmployer.password,
+        email: tempEmployer.email,
+        phoneNumber: tempEmployer.phoneNumber,
+        agencyId: tempEmployer.agencyId,
+        name: tempEmployer.name,
+        postalCode: tempEmployer.postalCode,
+        fax: tempEmployer.fax,
+        biography: tempEmployer.biography,
+        mainActivity: tempEmployer.mainActivity,
+        state: tempEmployer.state,
+      }
+    );
+
+    if (data.message === 'employer created successfuly;') {
+      yield put(createEmployerSuccess(data.message));
+    } else {
+      yield put(createEmployerError('Something went wrong !'));
+    }
+  } catch (error) {
+    yield put(createEmployerError('Something went wrong !'));
   }
 }
 
@@ -536,6 +571,7 @@ function* rootSaga() {
     takeLatest(fetchJobRequest.type, loadRequestById),
     takeLatest(createJobRequest.type, addJobRequest),
     takeLatest(fetchEmployers.type, loadEmployers),
+    takeLatest(createEmployer.type, addEmployer),
     takeLatest(login.type, authenticate),
     takeLatest(signup.type, registerSeeker),
   ]);

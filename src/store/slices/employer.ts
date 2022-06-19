@@ -1,19 +1,19 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { ManageEmployerState } from "../../helpers/types";
+import { ManageEmployerState } from '../../helpers/types';
 
 export const initialState: ManageEmployerState = {
   error: false,
   success: false,
-  msg: "",
+  msg: '',
   loading: false,
   employers: [],
   employer: {},
-  tempEmployer: {}
+  tempEmployer: {},
 };
 
 const employer = createSlice({
-  name: "employer",
+  name: 'employer',
   initialState,
   reducers: {
     // eslint-disable-next-line
@@ -35,31 +35,38 @@ const employer = createSlice({
       state.loading = false;
     },
 
-    // createEmployer: (state, { payload }: PayloadAction<any>) => {
-    //   state.loading = true;
-    //   state.agence = {
-    //     name: payload.name,
-    //     email: payload.email,
-    //     phoneNumber: payload.phoneNumber,
-    //   };
-    // },
+    createEmployer: (state, { payload }: PayloadAction<any>) => {
+      state.loading = true;
+      state.tempEmployer = {
+        password: payload.password,
+        email: payload.email,
+        phoneNumber: payload.phoneNumber,
+        agencyId: 5,
+        name: payload.name,
+        postalCode: payload.postalCode,
+        fax: payload.fax,
+        biography: payload.biography,
+        mainActivity: payload.mainActivity,
+        state: 1,
+      };
+    },
 
-    // // eslint-disable-next-line
-    // createEmployerSuccess: (state, { payload }: PayloadAction<string>) => {
-    //   state.agence = {};
-    //   state.success = true; 
-    //   state.msg = payload;
-    //   state.loading = false;
-    //   state.error = false;
-    // },
+    // eslint-disable-next-line
+    createEmployerSuccess: (state, { payload }: PayloadAction<string>) => {
+      state.tempEmployer = {};
+      state.success = true;
+      state.msg = payload;
+      state.loading = false;
+      state.error = false;
+    },
 
-    // createEmployerError: (state, { payload }: PayloadAction<string>) => {
-    //   state.msg = payload;
-    //   state.error = true;
-    //   state.success = false;
-    //   state.agence = {};
-    //   state.loading = false;
-    // },
+    createEmployerError: (state, { payload }: PayloadAction<string>) => {
+      state.msg = payload;
+      state.error = true;
+      state.success = false;
+      state.tempEmployer = {};
+      state.loading = false;
+    },
 
     // deleteAgence: (state, { payload }: PayloadAction<string>) => {
     //   state.loading = true;
@@ -82,10 +89,7 @@ const employer = createSlice({
   },
 });
 
-export const {
-  fetchEmployers,
-  fetchEmployersSuccess,
-  fetchEmployersError,
-} = employer.actions;
+export const { fetchEmployers, fetchEmployersSuccess, fetchEmployersError, createEmployer, createEmployerSuccess, createEmployerError } =
+  employer.actions;
 
 export default employer.reducer;
