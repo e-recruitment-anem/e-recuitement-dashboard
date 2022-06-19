@@ -75,12 +75,15 @@ import {
   fetchJobRequestsSuccess,
 } from '../slices/manageJobRequests';
 import {
-    createEmployer,
-    createEmployerError,
-    createEmployerSuccess,
+  createEmployer,
+  createEmployerError,
+  createEmployerSuccess,
+  fetchEmployer,
+  fetchEmployerError,
   fetchEmployers,
   fetchEmployersError,
   fetchEmployersSuccess,
+  fetchEmployerSuccess,
 } from '../slices/employer';
 
 function* reloadAuth() {
@@ -547,6 +550,27 @@ function* addEmployer() {
   }
 }
 
+function* loadEmployer() {
+  try {
+    const { user } = yield select(getAuth);
+    const { data } = yield axios.get(
+      `http://localhost:8090/api/job-seekers/${user.id}`
+    );
+
+    if (data.message === 'Employer found.') {
+      yield put(
+        fetchEmployerSuccess({
+          seeker: data.body,
+        })
+      );
+    } else {
+      yield put(fetchEmployerError('Employer not found !'));
+    }
+  } catch (error) {
+    yield put(fetchEmployerError('Employer not found !'));
+  }
+}
+
 // If any of these functions are dispatched, invoke the appropriate saga
 function* rootSaga() {
   yield all([
@@ -572,6 +596,7 @@ function* rootSaga() {
     takeLatest(createJobRequest.type, addJobRequest),
     takeLatest(fetchEmployers.type, loadEmployers),
     takeLatest(createEmployer.type, addEmployer),
+    takeLatest(fetchEmployer.type, loadEmployer),
     takeLatest(login.type, authenticate),
     takeLatest(signup.type, registerSeeker),
   ]);

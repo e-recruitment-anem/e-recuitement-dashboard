@@ -68,28 +68,38 @@ const employer = createSlice({
       state.loading = false;
     },
 
-    // deleteAgence: (state, { payload }: PayloadAction<string>) => {
-    //   state.loading = true;
-    //   state.agence = { id: payload };
-    // },
+    // Fetch Job employer data
 
-    // // eslint-disable-next-line
-    // deleteAgenceSuccess: (state, { payload }: PayloadAction<any>) => {
-    //   state.agence = {};
-    //   state.loading = false;
-    //   state.error = false;
-    // },
+    fetchEmployer: (state) => {
+      state.loading = true;
+    },
 
-    // deleteAgenceError: (state, { payload }: PayloadAction<string>) => {
-    //   state.msg = payload;
-    //   state.error = true;
-    //   state.agence = {};
-    //   state.loading = false;
-    // },
+    fetchEmployerSuccess: (state, { payload }: PayloadAction<any>) => {
+      state.employer = payload.employer;
+      state.tempEmployer = {};
+      state.loading = false;
+      state.error = false;
+    },
+
+    fetchEmployerError: (state, { payload }: PayloadAction<string>) => {
+      state.msg = payload;
+      state.tempEmployer = {};
+      state.error = true;
+      state.loading = false;
+    },
   },
 });
 
-export const { fetchEmployers, fetchEmployersSuccess, fetchEmployersError, createEmployer, createEmployerSuccess, createEmployerError } =
-  employer.actions;
+export const {
+  fetchEmployers,
+  fetchEmployersSuccess,
+  fetchEmployersError,
+  createEmployer,
+  createEmployerSuccess,
+  createEmployerError,
+  fetchEmployer,
+  fetchEmployerSuccess,
+  fetchEmployerError
+} = employer.actions;
 
 export default employer.reducer;
