@@ -5,6 +5,7 @@ import SkillTag from "../../../components/JobSeeker/SkillTag/SkillTag";
 import NavBar from "../../../components/NavBar";
 import "../../../styles/_components.scss";
 import PrimaryButton from "../../../components/PrimaryButton";
+import { useNavigate } from "react-router-dom";
 
 const OfferApplication: FC = () => {
   const applicationDetails = {
@@ -36,6 +37,12 @@ const OfferApplication: FC = () => {
     "Figma",
     "ReactJs",
   ];
+
+  const navigate = useNavigate();
+  const openInNewTab = (url) => {
+    navigate(url);
+  };
+
   return (
     <>
       <NavBar />
@@ -151,6 +158,7 @@ const OfferApplication: FC = () => {
               <PrimaryButton
                 color="primaryColor"
                 content="Submit application"
+                onClick={() => openInNewTab("/seeker/applications")}
               ></PrimaryButton>
             </div>
           </div>

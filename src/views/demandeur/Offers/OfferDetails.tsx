@@ -61,6 +61,7 @@ const OfferDetails: FC = () => {
     "Figma",
     "ReactJs",
   ];
+
   return (
     <>
       <NavBar />

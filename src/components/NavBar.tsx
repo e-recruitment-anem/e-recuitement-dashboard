@@ -23,7 +23,7 @@ const NavBar: FC = () => {
         <span onClick={() => openInNewTab("/seeker/applications")}>
           My applications
         </span>
-        <span onClick={() => openInNewTab("/")}>Alerts</span>
+        <span onClick={() => openInNewTab("/offers")}>Alerts</span>
       </div>
       <div className="navbar-right">
         <img

@@ -2,7 +2,6 @@ import React from "react";
 // import AuthGuard from './components/guards/AuthGuard';
 
 // Hello components
-import Hello from "./components/Hello";
 import Home from "./views/demandeur/Home";
 import SignIn from "./views/auth/SignIn";
 import Dashboard from "./views/dashboard/Dashboard";
@@ -31,7 +30,7 @@ import CreateJobRequest from "./views/demandeur/Offers/CreateJobRequest";
 const routes = [
   {
     path: "/",
-    element: <Hello />,
+    element: <Dashboard title="Dashboard" cta="agency admin" />,
   },
   {
     path: "/login",
@@ -132,7 +131,7 @@ const routes = [
     ),
   },
   {
-    path: "/jobrequest",
+    path: "/seeker/jobrequest",
 
     element: (
       <SeekerGuard>
