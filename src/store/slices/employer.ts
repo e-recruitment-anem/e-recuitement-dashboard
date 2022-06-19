@@ -9,6 +9,7 @@ export const initialState: ManageEmployerState = {
   loading: false,
   employers: [],
   employer: {},
+  offers: [],
   tempEmployer: {},
 };
 
@@ -87,6 +88,25 @@ const employer = createSlice({
       state.error = true;
       state.loading = false;
     },
+
+    // fetch employer offers
+    fetchEmployerOffers: (state) => {
+      state.loading = true;
+    },
+
+    fetchEmployerOffersSuccess: (state, { payload }: PayloadAction<any>) => {
+      state.offers = payload.employer;
+      state.tempEmployer = {};
+      state.loading = false;
+      state.error = false;
+    },
+
+    fetchEmployerOffersError: (state, { payload }: PayloadAction<string>) => {
+      state.msg = payload;
+      state.tempEmployer = {};
+      state.error = true;
+      state.loading = false;
+    },
   },
 });
 
@@ -99,7 +119,7 @@ export const {
   createEmployerError,
   fetchEmployer,
   fetchEmployerSuccess,
-  fetchEmployerError
+  fetchEmployerError,
 } = employer.actions;
 
 export default employer.reducer;
