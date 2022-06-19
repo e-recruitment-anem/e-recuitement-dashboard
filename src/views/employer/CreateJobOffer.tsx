@@ -3,6 +3,7 @@ import { faAdd } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import EmployerNavbar from "../../components/Employer/EmployerNavbar";
 import AddSkillModal from "../../components/JobSeeker/Profile/Modals/AddSkillModal";
 import SkillTag from "../../components/JobSeeker/SkillTag/SkillTag";
@@ -21,6 +22,11 @@ const CreateJobOffer: FC = () => {
       <rect width="1312" height="1" fill="#D9D9D9" />
     </svg>
   );
+
+  const navigate = useNavigate();
+  const openInNewTab = (url) => {
+    navigate(url);
+  };
 
   //MODAL STATE
   const [open, setOpen] = React.useState(false);
@@ -55,8 +61,9 @@ const CreateJobOffer: FC = () => {
         <div className="createOffer__heading">
           <h1>Create a new customized job offer</h1>
           <PrimaryButton
-            content="Post your new job"
+            content="Post your job"
             color="primaryColor"
+            onClick={() => openInNewTab("/employer/offers")}
           ></PrimaryButton>
         </div>
         {divider}

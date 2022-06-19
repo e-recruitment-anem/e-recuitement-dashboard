@@ -68,7 +68,7 @@ const OfferDetailsCard: FC<Props> = ({
                 <PrimaryButton
                   color="primaryColor"
                   content="Edit job offer "
-                  onClick={() => openInNewTab("/offers/apply")}
+                  onClick={() => openInNewTab("/employer/offers/create")}
                 />
                 <PrimaryButton color="delete" content="Close offer" />
               </div>

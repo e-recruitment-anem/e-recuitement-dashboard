@@ -17,6 +17,7 @@ import {
 import { DatePicker } from "chakra-ui-date-input";
 
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Props extends InputProps {
   open: boolean;
@@ -26,6 +27,12 @@ interface Props extends InputProps {
 
 const InterviewModal: FC<Props> = ({ open, onToggle, actionButton }) => {
   const workingTime = ["08:00", "09:00", "10:00", "11:00", "12:00"];
+
+  const navigate = useNavigate();
+  const openInNewTab = (url) => {
+    navigate(url);
+  };
+
   return (
     <Modal size="4xl" isOpen={open} onClose={() => onToggle}>
       <ModalOverlay />
@@ -80,7 +87,12 @@ const InterviewModal: FC<Props> = ({ open, onToggle, actionButton }) => {
           >
             Close
           </Button>
-          <Button variant="ghost" color={"white"} background="#0061FF">
+          <Button
+            variant="ghost"
+            color={"white"}
+            background="#0061FF"
+            onClick={() => openInNewTab("/employer/interviews")}
+          >
             {actionButton}
           </Button>
         </ModalFooter>

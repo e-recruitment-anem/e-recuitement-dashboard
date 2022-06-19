@@ -4,6 +4,7 @@ import "../../styles/_components.scss";
 import { Tabs, TabList, Tab } from "@chakra-ui/react";
 import MyOffersBox from "../../components/JobSeeker/MyOffersBox";
 import PrimaryButton from "../../components/PrimaryButton";
+import { useNavigate } from "react-router-dom";
 
 const Offers: FC = () => {
   const [JobState, setJobState] = useState<string | null>(null);
@@ -34,6 +35,11 @@ const Offers: FC = () => {
     },
   ];
 
+  const navigate = useNavigate();
+  const openInNewTab = (url) => {
+    navigate(url);
+  };
+
   const filterData = () => {
     return JobState
       ? myOffers.filter(
@@ -47,7 +53,11 @@ const Offers: FC = () => {
       <div className="myoffers">
         <div className="myoffers__heading">
           <h1>My offers</h1>
-          <PrimaryButton content="Create job offer" color="primaryColor" />
+          <PrimaryButton
+            content="Create job offer"
+            color="primaryColor"
+            onClick={() => openInNewTab("/employer/offers/create")}
+          />
         </div>
         <Tabs isLazy className="myoffers__tabs">
           <TabList borderBottom={"none"}>

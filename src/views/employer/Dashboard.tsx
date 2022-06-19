@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import EmployerNavbar from "../../components/Employer/EmployerNavbar";
 import PrimaryButton from "../../components/PrimaryButton";
 import "../../styles/_components.scss";
@@ -51,6 +52,11 @@ const EmployerDashboard: FC = () => {
     },
   ];
 
+  const navigate = useNavigate();
+  const openInNewTab = (url) => {
+    navigate(url);
+  };
+
   return (
     <>
       <EmployerNavbar />
@@ -66,8 +72,9 @@ const EmployerDashboard: FC = () => {
               color="primaryColor"
             ></PrimaryButton>
             <PrimaryButton
-              content="Post a job"
+              content="Create job offer"
               color="primaryColor"
+              onClick={() => openInNewTab("/employer/offers/create")}
             ></PrimaryButton>
           </div>
         </div>
