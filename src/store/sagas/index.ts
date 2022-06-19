@@ -78,6 +78,12 @@ import {
   createEmployer,
   createEmployerError,
   createEmployerSuccess,
+  createOffre,
+  createOffreError,
+  createOffreSuccess,
+  fetchAllOffers,
+  fetchAllOffersError,
+  fetchAllOffersSuccess,
   fetchEmployer,
   fetchEmployerError,
   fetchEmployers,
@@ -571,6 +577,74 @@ function* loadEmployer() {
   }
 }
 
+function* loadOffers() {
+  try {
+    const { data } = yield axios.get(
+      `http://localhost:8060/api/job-offers/search?page=0&size=20`
+    );
+
+    if (data.message === 'jobOffers List found.') {
+      yield put(
+        fetchAllOffersSuccess({
+          seeker: data.body,
+        })
+      );
+    } else {
+      yield put(fetchAllOffersError('Something went wrong !'));
+    }
+  } catch (error) {
+    yield put(fetchAllOffersError('Something went wrong !'));
+  }
+}
+
+function* addOffer() {
+  try {
+    const { user } = yield select(getAuth);
+    const { tempEmployer } = yield select(getManageEmployer);
+    const { data } = yield axios.post(
+      `http://localhost:8060/api/job-offers/${user.id}`,
+      {
+        agency: user.agencyId,
+        title: tempEmployer.title,
+        positionsNumber: tempEmployer.positionsNumber,
+        avaialablePositionsNumber: tempEmployer.avaialablePositionsNumber,
+        jobTitle: tempEmployer.jobTitle,
+        workAddress: tempEmployer.workAddress,
+        minAge: tempEmployer.minAge,
+        maxAge: tempEmployer.maxAge,
+        mobility: tempEmployer.mobility,
+        duration: tempEmployer.duration,
+        milltarySituation: tempEmployer.milltarySituation,
+        contractType: tempEmployer.contractType,
+        description: tempEmployer.description,
+        skills: null,
+        close: null,
+        gender: null,
+        closedAt: null,
+        qualificationLevel: null,
+        educationLevel: null,
+        familySituation: 'SINGLE',
+        deviceEligibilty: null,
+        nightWork: null,
+        teamWork: null,
+        residencyCity: null,
+        languages: null,
+        accomodation: null,
+        transport: null,
+        restauration: null,
+      }
+    );
+
+    if (data.message === 'JobOffer Created.') {
+      yield put(createOffreSuccess(data.message));
+    } else {
+      yield put(createOffreError('Something went wrong !'));
+    }
+  } catch (error) {
+    yield put(createOffreError('Something went wrong !'));
+  }
+}
+
 // If any of these functions are dispatched, invoke the appropriate saga
 function* rootSaga() {
   yield all([
@@ -597,6 +671,8 @@ function* rootSaga() {
     takeLatest(fetchEmployers.type, loadEmployers),
     takeLatest(createEmployer.type, addEmployer),
     takeLatest(fetchEmployer.type, loadEmployer),
+    takeLatest(createOffre.type, addOffer),
+    takeLatest(fetchAllOffers.type, loadOffers),
     takeLatest(login.type, authenticate),
     takeLatest(signup.type, registerSeeker),
   ]);

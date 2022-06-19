@@ -95,7 +95,7 @@ const employer = createSlice({
     },
 
     fetchEmployerOffersSuccess: (state, { payload }: PayloadAction<any>) => {
-      state.offers = payload.employer;
+      state.offers = payload.offers;
       state.tempEmployer = {};
       state.loading = false;
       state.error = false;
@@ -105,6 +105,76 @@ const employer = createSlice({
       state.msg = payload;
       state.tempEmployer = {};
       state.error = true;
+      state.loading = false;
+    },
+
+    // fetch employer offers
+    fetchAllOffers: (state) => {
+      state.loading = true;
+    },
+
+    fetchAllOffersSuccess: (state, { payload }: PayloadAction<any>) => {
+      state.offers = payload.offers;
+      state.tempEmployer = {};
+      state.loading = false;
+      state.error = false;
+    },
+
+    fetchAllOffersError: (state, { payload }: PayloadAction<string>) => {
+      state.msg = payload;
+      state.tempEmployer = {};
+      state.error = true;
+      state.loading = false;
+    },
+
+    // Create job offer
+    createOffre: (state, { payload }: PayloadAction<any>) => {
+      state.loading = true;
+      state.tempEmployer = {
+        title: payload.title,
+        positionsNumber: payload.positionsNumber,
+        avaialablePositionsNumber: payload.avaialablePositionsNumber,
+        jobTitle: payload.jobTitle,
+        workAddress: payload.workAddress,
+        minAge: payload.minAge,
+        maxAge: payload.maxAge,
+        mobility: payload.mobility,
+        duration: payload.duration,
+        milltarySituation: payload.milltarySituation,
+        contractType: payload.contractType,
+        description: payload.description,
+        skills: null,
+        close: null,
+        gender: null,
+        closedAt: null,
+        qualificationLevel: null,
+        educationLevel: null,
+        familySituation: 'SINGLE',
+        deviceEligibilty: null,
+        nightWork: null,
+        teamWork: null,
+        residencyCity: null,
+        languages: null,
+        accomodation: null,
+        transport: null,
+        restauration: null,
+      };
+    },
+
+    // eslint-disable-next-line
+    createOffreSuccess: (state, { payload }: PayloadAction<string>) => {
+      state.tempEmployer = {};
+      state.success = true;
+      state.msg = payload;
+      state.loading = false;
+      state.error = false;
+    },
+
+    createOffreError: (state, { payload }: PayloadAction<string>) => {
+      state.msg = payload;
+      state.error = true;
+      state.success = false;
+      state.tempEmployer = {};
       state.loading = false;
     },
   },
@@ -120,6 +190,12 @@ export const {
   fetchEmployer,
   fetchEmployerSuccess,
   fetchEmployerError,
+  createOffre,
+  createOffreSuccess,
+  createOffreError,
+  fetchAllOffers,
+  fetchAllOffersSuccess,
+  fetchAllOffersError
 } = employer.actions;
 
 export default employer.reducer;
