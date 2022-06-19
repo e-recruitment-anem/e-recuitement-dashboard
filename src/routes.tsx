@@ -143,7 +143,7 @@ const routes = [
 
   // Employer
   {
-    path: "/employer",
+    path: "/employer/dashboard",
     element: <EmployerDashboard />,
   },
   {
