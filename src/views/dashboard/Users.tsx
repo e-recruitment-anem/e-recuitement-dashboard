@@ -26,6 +26,11 @@ const Agence: FC = () => {
     dispatch(fetchSeekers());
   };
 
+  const testJobSeekers = () => {
+    console.log("-----------");
+    console.log(seekers);
+    console.log("-----------");
+  };
   // ===========================================================================
   // State
   // ===========================================================================
@@ -42,7 +47,11 @@ const Agence: FC = () => {
     <AdminLayout>
       <div className="main-nav">
         <div className="main-nav__search">
-          <Input type="text" placeholder="Rechercher..." />
+          <Input
+            type="text"
+            placeholder="Rechercher..."
+            onClick={testJobSeekers}
+          />
         </div>
         <UserNav />
       </div>

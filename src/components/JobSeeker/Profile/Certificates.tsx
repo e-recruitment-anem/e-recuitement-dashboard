@@ -47,29 +47,10 @@ const Certificates: FC<Props> = ({ paragraph }) => {
     // eslint-disable-next-line
   }, []);
 
-  const showDiplomes = () => {
-    console.log("-------------");
-    console.log(diplomes);
-    console.log("-------------");
-  };
-
-  const certificates = [
-    {
-      title: "Higher National School of Computer Science (Algeria)",
-      date: "January 2020",
-      images: ["/img/demandeur/agence_cover.png"],
-    },
-    {
-      title: "Higher National School of Computer Science (Algeria)",
-      date: "January 2020",
-      images: ["/img/demandeur/agence_cover.png"],
-    },
-  ];
-
   return (
     <div>
       <div className="jsprofile__box--header">
-        <h1 onClick={showDiplomes}>Certficates & diplomas</h1>
+        <h1>Certficates & diplomas</h1>
         <div className="jsprofile__box--action" onClick={() => onToggle()}>
           <FontAwesomeIcon
             className="jsprofile__box--action-icon"
