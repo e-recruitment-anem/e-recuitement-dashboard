@@ -1,11 +1,11 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { ManageEmployerState } from '../../helpers/types';
+import { ManageEmployerState } from "../../helpers/types";
 
 export const initialState: ManageEmployerState = {
   error: false,
   success: false,
-  msg: '',
+  msg: "",
   loading: false,
   employers: [],
   employer: {},
@@ -14,7 +14,7 @@ export const initialState: ManageEmployerState = {
 };
 
 const employer = createSlice({
-  name: 'employer',
+  name: "employer",
   initialState,
   reducers: {
     // eslint-disable-next-line

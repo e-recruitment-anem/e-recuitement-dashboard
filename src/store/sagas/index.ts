@@ -1,6 +1,6 @@
-import { all, takeLatest, select, put } from 'redux-saga/effects';
+import { all, takeLatest, select, put } from "redux-saga/effects";
 
-import axios from 'axios';
+import axios from "axios";
 import {
   getAgence,
   getAuth,
@@ -8,7 +8,7 @@ import {
   getManageEmployer,
   getManageJobRequest,
   getManageSeeker,
-} from '../selectors';
+} from "../selectors";
 import {
   verify,
   login,
@@ -18,7 +18,7 @@ import {
   signupError,
   signupSuccess,
   verifySuccess,
-} from '../slices/auth';
+} from "../slices/auth";
 import {
   createAgence,
   createAgenceError,
@@ -29,7 +29,7 @@ import {
   fetchAgences,
   fetchAgencesError,
   fetchAgencesSuccess,
-} from '../slices/agence';
+} from "../slices/agence";
 import {
   createAdmin,
   createAdminError,
@@ -40,7 +40,7 @@ import {
   fetchAdmins,
   fetchAdminsError,
   fetchAdminsSuccess,
-} from '../slices/manageAccounts';
+} from "../slices/manageAccounts";
 import {
   attachEducation,
   attachEducationError,
@@ -66,14 +66,14 @@ import {
   updateSeeker,
   updateSeekerError,
   updateSeekerSuccess,
-} from '../slices/seeker';
+} from "../slices/seeker";
 import {
   createJobRequest,
   fetchJobRequest,
   fetchJobRequests,
   fetchJobRequestsError,
   fetchJobRequestsSuccess,
-} from '../slices/manageJobRequests';
+} from "../slices/manageJobRequests";
 import {
   createEmployer,
   createEmployerError,
@@ -90,12 +90,12 @@ import {
   fetchEmployersError,
   fetchEmployersSuccess,
   fetchEmployerSuccess,
-} from '../slices/employer';
+} from "../slices/employer";
 
 function* reloadAuth() {
   try {
-    const { data } = yield axios.get('http://localhost:5000/api/auth/get-auth');
-    if (data.message === 'account found.') {
+    const { data } = yield axios.get("http://localhost:5000/api/auth/get-auth");
+    if (data.message === "account found.") {
       yield put(verifySuccess({ user: data.body, isAuthenticated: true }));
     } else {
       yield put(verifySuccess({ user: {}, isAuthenticated: false }));
@@ -108,18 +108,18 @@ function* reloadAuth() {
 function* authenticate() {
   try {
     const { currentUser } = yield select(getAuth);
-    const { data } = yield axios.post('http://localhost:5000/api/auth/login', {
+    const { data } = yield axios.post("http://localhost:5000/api/auth/login", {
       email: currentUser.email,
       password: currentUser.password,
     });
 
-    if (data.message === 'logged in successfully') {
+    if (data.message === "logged in successfully") {
       yield put(loginSuccess(data.body));
     } else {
-      yield put(loginError('Something went wrong !'));
+      yield put(loginError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(loginError('Something went wrong !'));
+    yield put(loginError("Something went wrong !"));
   }
 }
 
@@ -127,59 +127,59 @@ function* registerSeeker() {
   try {
     const { currentUser } = yield select(getAuth);
     const { data } = yield axios.post(
-      'http://localhost:5000/api/auth/register-job-seeker',
+      "http://localhost:5000/api/auth/register-job-seeker",
       {
         email: currentUser.email,
         password: currentUser.password,
         firstname: currentUser.firstname,
         lastname: currentUser.lastname,
         agencyId: 5,
-        phoneNumber: '558956964',
+        phoneNumber: "558956964",
       }
     );
 
-    if (data.message === 'job-seeker created successfuly;') {
+    if (data.message === "job-seeker created successfuly;") {
       yield put(signupSuccess(data.message));
     } else {
-      yield put(signupError('Something went wrong !'));
+      yield put(signupError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(signupError('Something went wrong !'));
+    yield put(signupError("Something went wrong !"));
   }
 }
 
 function* loadAgences() {
   try {
     const { data } = yield axios.get(
-      'http://localhost:5000/api/agencies?page=1&itemsPerPage=10'
+      "http://localhost:5000/api/agencies?page=1&itemsPerPage=10"
     );
 
-    if (data.message === 'agencies list') {
+    if (data.message === "agencies list") {
       yield put(fetchAgencesSuccess(data.body));
     } else {
-      yield put(fetchAgencesError('Something went wrong !'));
+      yield put(fetchAgencesError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(fetchAgencesError('Something went wrong !'));
+    yield put(fetchAgencesError("Something went wrong !"));
   }
 }
 
 function* addAgence() {
   try {
     const { agence } = yield select(getAgence);
-    const { data } = yield axios.post('http://localhost:5000/api/agencies', {
+    const { data } = yield axios.post("http://localhost:5000/api/agencies", {
       name: agence.name,
       email: agence.email,
       phoneNumber: agence.phoneNumber,
     });
 
-    if (data.message === 'agency created successfully.') {
+    if (data.message === "agency created successfully.") {
       yield put(createAgenceSuccess(data.message));
     } else {
-      yield put(createAgenceError('Something went wrong !'));
+      yield put(createAgenceError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(createAgenceError('Something went wrong !'));
+    yield put(createAgenceError("Something went wrong !"));
   }
 }
 
@@ -190,13 +190,13 @@ function* removeAgence() {
       `http://localhost:5000/api/agencies/${agence.id}`
     );
 
-    if (data.message === 'agency deleted successfully.') {
+    if (data.message === "agency deleted successfully.") {
       yield put(deleteAgenceSuccess(data.message));
     } else {
-      yield put(deleteAgenceError('Something went wrong !'));
+      yield put(deleteAgenceError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(deleteAgenceError('Something went wrong !'));
+    yield put(deleteAgenceError("Something went wrong !"));
   }
 }
 
@@ -204,13 +204,13 @@ function* loadAdmins() {
   try {
     const { data } = yield axios.get(`http://localhost:5000/api/users/admins`);
 
-    if (data.message === 'admins list') {
+    if (data.message === "admins list") {
       yield put(fetchAdminsSuccess(data.body));
     } else {
-      yield put(fetchAdminsError('Something went wrong !'));
+      yield put(fetchAdminsError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(fetchAdminsError('Something went wrong !'));
+    yield put(fetchAdminsError("Something went wrong !"));
   }
 }
 
@@ -221,13 +221,13 @@ function* removeAdmin() {
       `http://localhost:5000/api/users/${admin.id}`
     );
 
-    if (data.message === 'agency deleted successfully.') {
+    if (data.message === "agency deleted successfully.") {
       yield put(deleteAdminSuccess(data.message));
     } else {
-      yield put(deleteAdminError('Something went wrong !'));
+      yield put(deleteAdminError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(deleteAdminError('Something went wrong !'));
+    yield put(deleteAdminError("Something went wrong !"));
   }
 }
 
@@ -236,25 +236,25 @@ function* addAdmin() {
     const { admin } = yield select(getManageAccounts);
 
     const { data } = yield axios.post(
-      'http://localhost:5000/api/auth/register-admin',
+      "http://localhost:5000/api/auth/register-admin",
       {
         firstname: admin.firstname,
         lastname: admin.lastname,
         email: admin.email,
         phoneNumber: admin.phoneNumber,
-        type: 'SUPER_ADMIN',
+        type: "SUPER_ADMIN",
         agencyId: parseInt(admin.agency),
         birthDate: admin.birthday,
       }
     );
 
-    if (data.message === 'admin created successfuly;') {
+    if (data.message === "admin created successfuly;") {
       yield put(createAdminSuccess(data.message));
     } else {
-      yield put(createAdminError('Something went wrong !'));
+      yield put(createAdminError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(createAdminError('Something went wrong !'));
+    yield put(createAdminError("Something went wrong !"));
   }
 }
 
@@ -264,13 +264,13 @@ function* loadSeekers() {
       `http://localhost:8090/api/job-seekers/search?page=0&size=10`
     );
 
-    if (data.message === 'Get JobSeekers List.') {
+    if (data.message === "Get JobSeekers List.") {
       yield put(fetchSeekersSuccess(data.body));
     } else {
-      yield put(fetchSeekersError('Something went wrong !'));
+      yield put(fetchSeekersError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(fetchSeekersError('Something went wrong !'));
+    yield put(fetchSeekersError("Something went wrong !"));
   }
 }
 
@@ -281,13 +281,13 @@ function* removeSeeker() {
       `http://localhost:5000/api/job-seekers/${tempSeeker.id}`
     );
 
-    if (data.message === 'agency deleted successfully.') {
+    if (data.message === "agency deleted successfully.") {
       yield put(deleteAgenceSuccess(data.message));
     } else {
-      yield put(deleteAgenceError('Something went wrong !'));
+      yield put(deleteAgenceError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(deleteAgenceError('Something went wrong !'));
+    yield put(deleteAgenceError("Something went wrong !"));
   }
 }
 
@@ -296,17 +296,17 @@ function* loadSeeker() {
     // const { user } = yield select(getAuth);
     const { data } = yield axios.get(`http://localhost:8090/api/job-seekers/1`);
 
-    if (data.message === 'job seeker found.') {
+    if (data.message === "job seeker found.") {
       yield put(
         fetchSeekerSuccess({
           seeker: data.body,
         })
       );
     } else {
-      yield put(fetchSeekerError('Job seeker not found !'));
+      yield put(fetchSeekerError("Job seeker not found !"));
     }
   } catch (error) {
-    yield put(fetchSeekerError('Job seeker not found !'));
+    yield put(fetchSeekerError("Job seeker not found !"));
   }
 }
 
@@ -321,13 +321,13 @@ function* addDiplome() {
       }
     );
 
-    if (data.message === 'Diplome attached.') {
+    if (data.message === "Diplome attached.") {
       yield put(createDiplomeSuccess(data.message));
     } else {
-      yield put(createDiplomeError('Something went wrong !'));
+      yield put(createDiplomeError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(createDiplomeError('Something went wrong !'));
+    yield put(createDiplomeError("Something went wrong !"));
   }
 }
 
@@ -338,17 +338,17 @@ function* loadDiplomes() {
       `http://localhost:8090/api/job-seekers/diplome/b/1`
     );
 
-    if (data.message === 'Diplomes List found.') {
+    if (data.message === "Diplomes List found.") {
       yield put(
         fetchDiplomesSuccess({
           diplomes: data.body,
         })
       );
     } else {
-      yield put(fetchDiplomesError('Something went wrong!'));
+      yield put(fetchDiplomesError("Something went wrong!"));
     }
   } catch (error) {
-    yield put(fetchDiplomesError('Something went wrong!'));
+    yield put(fetchDiplomesError("Something went wrong!"));
   }
 }
 
@@ -359,13 +359,13 @@ function* removeDiplome() {
       `http://localhost:8090/api/job-seekers/diplome/${tempSeeker.id}`
     );
 
-    if (data.message === 'diplome deleted.') {
+    if (data.message === "diplome deleted.") {
       yield put(deleteEducationSuccess(data.message));
     } else {
-      yield put(deleteEducationError('Something went wrong !'));
+      yield put(deleteEducationError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(deleteEducationError('Something went wrong !'));
+    yield put(deleteEducationError("Something went wrong !"));
   }
 }
 
@@ -376,17 +376,17 @@ function* loadEducation() {
       `http://localhost:8090/api/job-seekers/educations/1`
     );
 
-    if (data.message === 'Education List found.') {
+    if (data.message === "Education List found.") {
       yield put(
         fetchEducationSuccess({
           educations: data.body,
         })
       );
     } else {
-      yield put(fetchEducationError('Something went wrong!'));
+      yield put(fetchEducationError("Something went wrong!"));
     }
   } catch (error) {
-    yield put(fetchEducationError('Something went wrong!'));
+    yield put(fetchEducationError("Something went wrong!"));
   }
 }
 
@@ -403,13 +403,13 @@ function* addEducation() {
       }
     );
 
-    if (data.message === 'Education attached.') {
+    if (data.message === "Education attached.") {
       yield put(attachEducationSuccess(data.message));
     } else {
-      yield put(attachEducationError('Something went wrong !'));
+      yield put(attachEducationError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(attachEducationError('Something went wrong !'));
+    yield put(attachEducationError("Something went wrong !"));
   }
 }
 
@@ -420,13 +420,13 @@ function* removeEducation() {
       `http://localhost:8090/api/job-seekers/educations/${tempSeeker.id}`
     );
 
-    if (data.message === 'Education deleted.') {
+    if (data.message === "Education deleted.") {
       yield put(deleteEducationSuccess(data.message));
     } else {
-      yield put(deleteEducationError('Something went wrong !'));
+      yield put(deleteEducationError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(deleteEducationError('Something went wrong !'));
+    yield put(deleteEducationError("Something went wrong !"));
   }
 }
 
@@ -442,13 +442,13 @@ function* putSeeker() {
       }
     );
 
-    if (data.message === 'item updated successfully.') {
+    if (data.message === "item updated successfully.") {
       yield put(updateSeekerSuccess(data.body));
     } else {
-      yield put(updateSeekerError('Something went wrong !'));
+      yield put(updateSeekerError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(updateSeekerError('Something went wrong !'));
+    yield put(updateSeekerError("Something went wrong !"));
   }
 }
 
@@ -459,13 +459,13 @@ function* loadRequests() {
       {}
     );
 
-    if (data.message === 'Get JobSeekers List.') {
+    if (data.message === "Get JobSeekers List.") {
       yield put(fetchJobRequestsSuccess(data.body));
     } else {
-      yield put(fetchJobRequestsError('Something went wrong !'));
+      yield put(fetchJobRequestsError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(fetchJobRequestsError('Something went wrong !'));
+    yield put(fetchJobRequestsError("Something went wrong !"));
   }
 }
 
@@ -476,13 +476,13 @@ function* loadRequestById() {
       `http://localhost:8090/api/job-seekers/job-request/b/1`
     );
 
-    if (data.message === 'job request List found.') {
+    if (data.message === "job request List found.") {
       yield put(fetchJobRequestsSuccess(data.body));
     } else {
-      yield put(fetchJobRequestsError('Something went wrong !'));
+      yield put(fetchJobRequestsError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(fetchJobRequestsError('Something went wrong !'));
+    yield put(fetchJobRequestsError("Something went wrong !"));
   }
 }
 
@@ -503,13 +503,13 @@ function* addJobRequest() {
       }
     );
 
-    if (data.message === 'job request List found.') {
+    if (data.message === "job request List found.") {
       yield put(fetchJobRequestsSuccess(data.body));
     } else {
-      yield put(fetchJobRequestsError('Something went wrong !'));
+      yield put(fetchJobRequestsError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(fetchJobRequestsError('Something went wrong !'));
+    yield put(fetchJobRequestsError("Something went wrong !"));
   }
 }
 
@@ -520,16 +520,17 @@ function* loadEmployers() {
     if (data) {
       yield put(fetchEmployersSuccess(data._embedded));
     } else {
-      yield put(fetchEmployersError('Something went wrong !'));
+      yield put(fetchEmployersError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(fetchEmployersError('Something went wrong !'));
+    yield put(fetchEmployersError("Something went wrong !"));
   }
 }
 
 function* addEmployer() {
   try {
     const { tempEmployer } = yield select(getManageEmployer);
+    console.log(tempEmployer)
     const { data } = yield axios.post(
       `http://localhost:5000/api/auth/register-employer`,
       {
@@ -545,14 +546,17 @@ function* addEmployer() {
         state: tempEmployer.state,
       }
     );
+    console.log("----------");
+    console.log(data);
+    console.log("----------");
 
-    if (data.message === 'employer created successfuly;') {
+    if (data.message === "employer created successfuly;") {
       yield put(createEmployerSuccess(data.message));
     } else {
-      yield put(createEmployerError('Something went wrong !'));
+      yield put(createEmployerError("Something went wrong !"));
     }
   } catch (error) {
-    yield put(createEmployerError('Something went wrong !'));
+    yield put(createEmployerError("Something went wrong !"));
   }
 }
 
@@ -563,17 +567,17 @@ function* loadEmployer() {
       `http://localhost:8090/api/job-seekers/${user.id}`
     );
 
-    if (data.message === 'Employer found.') {
+    if (data.message === "Employer found.") {
       yield put(
         fetchEmployerSuccess({
           seeker: data.body,
         })
       );
     } else {
-      yield put(fetchEmployerError('Employer not found !'));
+      yield put(fetchEmployerError("Employer not found !"));
     }
   } catch (error) {
-    yield put(fetchEmployerError('Employer not found !'));
+    yield put(fetchEmployerError("Employer not found !"));
   }
 }
 

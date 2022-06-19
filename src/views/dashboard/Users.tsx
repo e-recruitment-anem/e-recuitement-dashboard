@@ -7,23 +7,30 @@ import AdminLayout from "../layouts/AdminLayout";
 import UserNav from "../../components/UserNav";
 import TableNav from "../../components/Tables/TableNav";
 
-import { getManageSeeker } from "../../store/selectors";
+import { getManageEmployer, getManageSeeker } from "../../store/selectors";
 import UsersTable from "../../components/Tables/UsersTable";
 import { fetchSeekers } from "../../store/slices/seeker";
+import { fetchEmployers } from "../../store/slices/employer";
 
 const Agence: FC = () => {
   // ===========================================================================
   // Selectors
   // ===========================================================================
-  const { seekers } = useSelector(getManageSeeker);
+  const { employers } = useSelector(getManageEmployer);
 
   // ===========================================================================
   // Dispatch
   // ==========================================================================
   const dispatch = useDispatch();
 
-  const _fetchSeekers = () => {
-    dispatch(fetchSeekers());
+  const _fetchEmployers = () => {
+    dispatch(fetchEmployers());
+  };
+
+  const testEmployers = () => {
+    console.log("-----------");
+    console.log(employers);
+    console.log("-----------");
   };
 
   // ===========================================================================
@@ -34,7 +41,7 @@ const Agence: FC = () => {
   // Hooks
   // ===========================================================================
   useEffect(() => {
-    _fetchSeekers();
+    _fetchEmployers();
     // eslint-disable-next-line
   }, []);
 
@@ -42,12 +49,16 @@ const Agence: FC = () => {
     <AdminLayout>
       <div className="main-nav">
         <div className="main-nav__search">
-          <Input type="text" placeholder="Rechercher..." />
+          <Input
+            type="text"
+            placeholder="Rechercher..."
+            onClick={testEmployers}
+          />
         </div>
         <UserNav />
       </div>
-      <TableNav title={"Job Seekers"} />
-      <UsersTable seekers={seekers} />
+      <TableNav title={"Employers"} cta="Employer" />
+      <UsersTable employers={employers} />
     </AdminLayout>
   );
 };

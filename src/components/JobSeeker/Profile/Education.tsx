@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getManageSeeker } from "../../../store/selectors";
 import { fetchSeeker, initMessages } from "../../../store/slices/seeker";
 import AddEducationModal from "./Modals/AddEducationModal";
+import DeleteModal from "./Modals/DeleteModal";
 
 const Education: FC = () => {
   // ===========================================================================
@@ -92,6 +93,7 @@ const Education: FC = () => {
                 <FontAwesomeIcon
                   className="jsprofile__education--actions-deleteicon"
                   icon={faTrash}
+                  // onClick={() => onToggle()}
                 />
               </div>
             </div>
@@ -105,6 +107,13 @@ const Education: FC = () => {
         className="modal"
         actionButton="Save changes"
       />
+      {/* <DeleteModal
+        open={open}
+        onToggle={onToggle}
+        className="modal"
+        actionButton="Delete"
+        itemTitle="Education"
+      /> */}
     </div>
   );
 };
