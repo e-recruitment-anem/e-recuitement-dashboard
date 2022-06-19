@@ -35,7 +35,6 @@ const Agence: FC = () => {
   // ===========================================================================
   useEffect(() => {
     _fetchSeekers();
-    console.log(seekers);
     // eslint-disable-next-line
   }, []);
 

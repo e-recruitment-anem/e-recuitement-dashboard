@@ -111,12 +111,23 @@ export interface AgenceState {
   agence: Agence;
 }
 
+export interface ManageEmployerState {
+  loading: boolean;
+  error: boolean;
+  success: boolean;
+  msg: string;
+  employers: User[];
+  employer: User;
+  tempEmployer: User;
+}
+
 export interface RootState {
   authState: AuthState;
   agenceState: AgenceState;
   manageAccountsState: ManageAccountsState;
   manageSeekerState: ManageSeekerState;
   manageJobRequestsState: ManageJobRequestState;
+  manageEmployerState: ManageEmployerState;
 }
 
 export interface authData {

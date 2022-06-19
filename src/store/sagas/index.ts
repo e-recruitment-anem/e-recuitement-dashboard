@@ -73,6 +73,7 @@ import {
   fetchJobRequestsError,
   fetchJobRequestsSuccess,
 } from '../slices/manageJobRequests';
+import { fetchEmployers, fetchEmployersError, fetchEmployersSuccess } from '../slices/employer';
 
 function* reloadAuth() {
   try {
@@ -243,8 +244,7 @@ function* addAdmin() {
 function* loadSeekers() {
   try {
     const { data } = yield axios.get(
-      `http://localhost:8090/api/job-seekers/search?page=0&size=10`,
-      {}
+      `http://localhost:8090/api/job-seekers/search?page=0&size=10`
     );
 
     if (data.message === 'Get JobSeekers List.') {
@@ -496,6 +496,22 @@ function* addJobRequest() {
   }
 }
 
+function* loadEmployers() {
+  try {
+    const { data } = yield axios.get(
+      `http://localhost:8060/api/employers/`
+    );
+
+    if (data) {
+      yield put(fetchEmployersSuccess(data._embedded));
+    } else {
+      yield put(fetchEmployersError('Something went wrong !'));
+    }
+  } catch (error) {
+    yield put(fetchEmployersError('Something went wrong !'));
+  }
+}
+
 // If any of these functions are dispatched, invoke the appropriate saga
 function* rootSaga() {
   yield all([
@@ -519,6 +535,7 @@ function* rootSaga() {
     takeLatest(fetchJobRequests.type, loadRequests),
     takeLatest(fetchJobRequest.type, loadRequestById),
     takeLatest(createJobRequest.type, addJobRequest),
+    takeLatest(fetchEmployers.type, loadEmployers),
     takeLatest(login.type, authenticate),
     takeLatest(signup.type, registerSeeker),
   ]);
